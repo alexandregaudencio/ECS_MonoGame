@@ -29,8 +29,8 @@ namespace ECS
 
         protected override void Initialize()
         {
-            patoSprite = new PatoSprite(this, "pato", new Vector2(101, 0), 0, 1);
-            text = new TextBase(this, " string", Vector2.One, 0, 1);
+            patoSprite = new PatoSprite(this, "pato", new Vector3(101, 0,0), Vector3.Zero, Vector3.One);
+            text = new TextBase(this, " string", Vector3.One, Vector3.Zero, Vector3.One);
             Components.Add(patoSprite);
             Components.Add(text);
 

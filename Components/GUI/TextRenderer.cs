@@ -14,7 +14,7 @@ namespace ECS.Components.GUI
         private SpriteBatch spriteBatch;
         private SpriteFont spriteFont { get; set; }
         private Color Color { get; set; }
-        private Transform<Vector2> Transform { get; set; }
+        private Transform Transform { get; set; }
         private string LayerName { get; set; }
         protected Rectangle rectangle { get; set; }
         protected Alignment alignment = Alignment.Center;
@@ -24,7 +24,7 @@ namespace ECS.Components.GUI
         public string Text => text;
         public event Action propertyChanged;
 
-        public TextRenderer(Game game,string text, string fontFileName, Transform<Vector2> transform, string layerName) : base(game)
+        public TextRenderer(Game game,string text, string fontFileName, Transform transform, string layerName) : base(game)
         {
             propertyChanged += UpdateOrigin;
 
@@ -69,7 +69,7 @@ namespace ECS.Components.GUI
 
         public void DrawString()
         {
-            spriteBatch.DrawString(spriteFont, text, Transform.Position, Color, Transform.Rotation, origin, Transform.Scale, SpriteEffects.None, 0);
+            spriteBatch.DrawString(spriteFont, text, Transform.Vect2Position(), Color, Transform.Vect2Rotation().Length(), origin, Transform.Vect2Scale(), SpriteEffects.None, 0);
         }
 
         private void UpdateOrigin()

@@ -7,16 +7,16 @@ namespace ECS.BaseObject
     public  class SpriteBase : EntityBase
     {
         private Game game { get; set; }
-        protected Transform<Vector2> Transform { get; set; }  
+        protected Transform Transform { get; set; }  
         protected Renderer2D Renderer { get; set; }
         protected string TexturePath { get; set; }
 
 
-        public SpriteBase(Game game, string texturePath, Vector2 position, float rotation, float scale ) : base(game)
+        public SpriteBase(Game game, string texturePath, Vector3 position, Vector3 rotation, Vector3 scale ) : base(game)
         {
             this.game = game;
             TexturePath = texturePath;
-            Transform = new Transform<Vector2>( position, rotation, scale);
+            Transform = new Transform( position, rotation, scale);
             //TODO: corrigir Layering
             Renderer = new Renderer2D(game, TexturePath, Transform, "");
 
@@ -35,15 +35,13 @@ namespace ECS.BaseObject
 
             #region so para brincar
 
-            Transform.Rotation += 0.001f*gameTime.ElapsedGameTime.Milliseconds;
 
-            
             if (Transform.Position.X + 100 > game.Window.ClientBounds.Width || Transform.Position.X - 100 < 0)
             {
                 speedx = -speedx;
             }
 
-            Transform.Position += new Vector2(speedx, 0);
+            Transform.Position += new Vector3(speedx, 0, 0);
 
             #endregion
 
