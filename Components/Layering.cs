@@ -1,21 +1,14 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
+﻿using System.Collections.Generic;
 
 namespace ECS.Components
 {
     public static class Layering 
     {
-        private static Dictionary<string, int> layers = new Dictionary<string, int>()
+        public static Dictionary<string, int> Layers { get; } = new Dictionary<string, int>()
         {
             {"render",0 },
             {"UI", 1},
         };
-
-        public static Dictionary<string, int> Layers { get => layers; set => layers = value; }
-
 
 
         //public static void GenerateLayer(Dictionary<string, int> layers)

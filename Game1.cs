@@ -3,6 +3,10 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using ECS.Components;
 using System.Collections;
+using Project1.BaseObject;
+using Project1.GameObjects;
+using System.IO;
+using Project1.Components.GUI;
 
 namespace ECS
 {
@@ -10,26 +14,29 @@ namespace ECS
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        private Renderer renderer;
-        private Transform<Vector2> transform;
-        private string layerName;
+        private TextRenderer tRenderer;
+
+        private PatoSprite patoSprite;
+        private TextBase text;
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
             
-            transform = new Transform<Vector2>(this, Vector2.One, Vector2.Zero, Vector2.One/5);
+
+
+
         }
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
-            renderer = new Renderer(this, "pato",transform, layerName );
+            patoSprite = new PatoSprite(this, "pato", Vector2.Zero, 0, 1);
+            text = new TextBase(this,"message", Vector2.One, 0, 1);
+            Components.Add(patoSprite);
+            Components.Add(text);
 
-            Components.Add(renderer);
 
-            
             base.Initialize();
         }
 
@@ -42,10 +49,8 @@ namespace ECS
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Back))
                 Exit();
-            //obj.Update(gameTime);
-            // TODO: Add your update logic here
 
             base.Update(gameTime);
         }
@@ -53,12 +58,6 @@ namespace ECS
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            //_spriteBatch.Begin();
-
-            //obj.Draw(gameTime);
-
-            //_spriteBatch.End();
-            // TODO: Add your drawing code here
 
             base.Draw(gameTime);
         }

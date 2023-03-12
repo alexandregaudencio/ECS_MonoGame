@@ -1,42 +1,27 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ECS.Components
 {
-    public class Transform<T>: GameComponent where T : struct
+
+    //TODO: Criar transform default que renderiza por padrão no centro da tela
+    public class Transform<T>: Component where T : struct
     {
         private T position;
-        private T rotation;
-        private T scale;
+        private float rotation;
+        private float scale;
 
-        public T Scale { get => scale; set => scale = value; }
+        public float Scale { get => scale; set => scale = value; }
         public T Position { get => position; set => position = value; }
-        public T Rotation { get => rotation; set => rotation = value; }
+        public float Rotation { get => rotation; set => rotation = value; }
 
-        public Transform(Game game, T position , T rotation, T scale) : base(game) 
+
+        public Transform(T position , float rotation, float scale)
         {
-            this.Position = position;
-            this.Rotation = rotation;
-            this.Scale = scale; 
+            Position = position;
+            Rotation = rotation;
+            Scale = scale; 
         }
-        public override void Initialize()
-        {
-
-            base.Initialize();
-        }
-
-        public override void Update(GameTime gameTime)
-        {
-
-            base.Update(gameTime);
-        }
-
 
 
     }
