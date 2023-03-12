@@ -1,48 +1,95 @@
 ﻿using ECS.Components;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using System;
 
-namespace Project1.Components.GUI
+namespace ECS.Components.GUI
 {
+    [Flags]
+    public enum Alignment { Center = 0, Left = 1, Right = 2, Top = 4, Bottom = 8 }
+
     public class TextRenderer : DrawableGameComponent
     {
         private string text = "";
         private SpriteBatch spriteBatch;
-        private SpriteFont font { get; set; }
+        private SpriteFont spriteFont { get; set; }
         private Color Color { get; set; }
         private Transform<Vector2> Transform { get; set; }
         private string LayerName { get; set; }
+        protected Rectangle rectangle { get; set; }
+        protected Alignment alignment = Alignment.Center;
+        private Vector2 size;
+        private Vector2 origin;
 
-        public string Text { get => text; set => text = value; }
-
+        public string Text => text;
+        public event Action propertyChanged;
 
         public TextRenderer(Game game,string text, string fontFileName, Transform<Vector2> transform, string layerName) : base(game)
         {
-            this.Text = text;
+            propertyChanged += UpdateOrigin;
+
             spriteBatch = new SpriteBatch(game.GraphicsDevice);
-            font = game.Content.Load<SpriteFont>(fontFileName);
+            spriteFont = game.Content.Load<SpriteFont>(fontFileName);
             Transform = transform;
             LayerName = layerName;
             Color = Color.White;
+            rectangle = spriteFont.Texture.Bounds;
 
+            SetText(text);
         }
-
-
 
         public override void Draw(GameTime gameTime)
         {
             spriteBatch.Begin();
-            spriteBatch.DrawString(font, Text, Transform.Position, Color, Transform.Rotation, Vector2.Zero, Transform.Scale, SpriteEffects.None, 0);
+            DrawString();
             spriteBatch.End();
 
             base.Draw(gameTime);
-
         }
 
         public void SetColor(Color color)
         {
             Color = color;
+
         }
+
+        public void SetAlignment(Alignment alignment)
+        {
+            this.alignment = alignment;
+            propertyChanged?.Invoke();
+
+        }
+
+        public void SetText(string text)
+        {
+           this.text = text;
+            propertyChanged?.Invoke();
+
+        }
+
+        public void DrawString()
+        {
+            spriteBatch.DrawString(spriteFont, text, Transform.Position, Color, Transform.Rotation, origin, Transform.Scale, SpriteEffects.None, 0);
+        }
+
+        private void UpdateOrigin()
+        {
+            size = spriteFont.MeasureString(text);
+            origin = size * 0.5f;
+
+            if (alignment.HasFlag(Alignment.Left))
+                origin.X += rectangle.Width / 2 - size.X / 2;
+
+            if (alignment.HasFlag(Alignment.Right))
+                origin.X -= rectangle.Width / 2 - size.X / 2;
+
+            if (alignment.HasFlag(Alignment.Top))
+                origin.Y += rectangle.Height / 2 - size.Y / 2;
+
+            if (alignment.HasFlag(Alignment.Bottom))
+                origin.Y -= rectangle.Height / 2 - size.Y / 2;
+        }
+
 
 
     }

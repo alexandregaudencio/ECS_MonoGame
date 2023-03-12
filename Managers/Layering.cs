@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace ECS.Components
+namespace ECS.Managers
 {
-    public static class Layering 
+    public static class Layering
     {
         public static Dictionary<string, int> Layers { get; } = new Dictionary<string, int>()
         {

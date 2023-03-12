@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 using System.ComponentModel;
 
 namespace ECS.Components
@@ -14,6 +15,8 @@ namespace ECS.Components
         public float Scale { get => scale; set => scale = value; }
         public T Position { get => position; set => position = value; }
         public float Rotation { get => rotation; set => rotation = value; }
+        
+        //float angleRotation => (float)Math.Atan2((Vector2)Transform.Rotation.Y, Transform.Rotation.X);
 
 
         public Transform(T position , float rotation, float scale)

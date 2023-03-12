@@ -1,8 +1,5 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Project1.Components;
-using System;
-using System.Globalization;
 
 namespace ECS.Components
 {
@@ -23,16 +20,12 @@ namespace ECS.Components
             LayerName = layerName;
             SetRectangle(Texture.Bounds);
             Color = Color.White;
-            //else SetRectangle(new Rectangle(new Point(20, 20), new Point(20, 20)));
-            //this.position = position;
-            //this.size = new Point(100, 100);
-            //this.speed = new Vector2(10, 10)*10;
         }
 
         public override void Draw(GameTime gameTime)
         {
             spriteBatch.Begin();
-            spriteBatch.Draw(Texture, Transform.Position, Rectangle, Color, Transform.Rotation, Vector2.Zero, Transform.Scale, SpriteEffects.None, 0/* Layering.Layers[LayerName]*/);
+            spriteBatch.Draw(Texture, Transform.Position, Rectangle, Color, Transform.Rotation, Rectangle.Center.ToVector2(), Transform.Scale, SpriteEffects.None, 0/* Layering.Layers[LayerName]*/);
             spriteBatch.End();
             base.Draw(gameTime);
         }

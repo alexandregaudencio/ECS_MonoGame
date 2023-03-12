@@ -1,13 +1,13 @@
 ﻿using ECS.Components;
 using Microsoft.Xna.Framework;
-using Project1.Components.GUI;
+using ECS.Components.GUI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project1.BaseObject
+namespace ECS.BaseObject
 {
     public class TextBase : EntityBase
     {
@@ -27,8 +27,10 @@ namespace Project1.BaseObject
 
         public override void Update(GameTime gameTime)
         {
-            Transform.Rotation += 0.001f * gameTime.ElapsedGameTime.Milliseconds;
+            #region so para brincar
+            Transform.Rotation -= 0.001f * gameTime.ElapsedGameTime.Milliseconds;
             base.Update(gameTime);
+            #endregion
         }
 
         public override void Initialize()
@@ -41,8 +43,10 @@ namespace Project1.BaseObject
         public void SetText(string text)
         {
             this.text = text;
-            TextRenderer.Text = text;
+            TextRenderer.SetText(text);
         }
+
+
 
     }
 }

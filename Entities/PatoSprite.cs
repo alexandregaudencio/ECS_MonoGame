@@ -1,13 +1,13 @@
 ﻿using ECS.Components;
 using Microsoft.Xna.Framework;
-using Project1.BaseObject;
+using ECS.BaseObject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project1.GameObjects
+namespace ECS.Entities
 {
     public class PatoSprite : SpriteBase
     {
@@ -15,5 +15,7 @@ namespace Project1.GameObjects
         {
 
         }
+
+
     }
 }

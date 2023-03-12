@@ -1,8 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
+using System.Diagnostics;
 
-
-namespace Project1.BaseObject
+namespace ECS.BaseObject
 {
     public class EntityBase : GameComponent
     {

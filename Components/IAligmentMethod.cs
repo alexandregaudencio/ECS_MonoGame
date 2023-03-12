@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project1.Components
+namespace ECS.Components
 {
-    public interface IRenderMethod
+    public interface IAligmentMethod
     {
-        public abstract void RenderMethod();
+        public void AlignUpdate();
     }
 }

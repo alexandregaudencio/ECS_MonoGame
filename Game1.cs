@@ -1,12 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using ECS.Components;
-using System.Collections;
-using Project1.BaseObject;
-using Project1.GameObjects;
-using System.IO;
-using Project1.Components.GUI;
+using ECS.BaseObject;
+using ECS.Entities;
+using System;
 
 namespace ECS
 {
@@ -14,10 +11,11 @@ namespace ECS
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        private TextRenderer tRenderer;
 
         private PatoSprite patoSprite;
         private TextBase text;
+
+        private Random random = new Random();
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -31,8 +29,8 @@ namespace ECS
 
         protected override void Initialize()
         {
-            patoSprite = new PatoSprite(this, "pato", Vector2.Zero, 0, 1);
-            text = new TextBase(this,"message", Vector2.One, 0, 1);
+            patoSprite = new PatoSprite(this, "pato", new Vector2(101, 0), 0, 1);
+            text = new TextBase(this, " string", Vector2.One, 0, 1);
             Components.Add(patoSprite);
             Components.Add(text);
 
