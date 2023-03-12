@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Globalization;
 
 namespace ECS.Components
@@ -7,25 +8,19 @@ namespace ECS.Components
     public class Renderer : DrawableGameComponent
     {
         private SpriteBatch spriteBatch;
-        private Layering layering;
-
         private Texture2D Texture { get; set; }
         private Color Color { get; set; }
-        //private Point point { get; set; }
         private Rectangle Rectangle { get; set; }
         private Transform<Vector2> Transform { get; set; }
-        private string LayerName { get; set; }
-        //private Vector2 position;
-        //private Vector2 speed;
-        //private float scale { get; set; }
 
-        public Renderer(Game game, string texturePath, Transform<Vector2> transform, string layerName, Layering layering) : base(game)
+        private string LayerName { get; set; }
+
+        public Renderer(Game game, string texturePath, Transform<Vector2> transform, string layerName) : base(game)
         {
 
             spriteBatch = new SpriteBatch(game.GraphicsDevice);
             Texture = game.Content.Load<Texture2D>(@""+texturePath);
             Transform = transform;
-            this.layering = layering;
             LayerName = layerName;
             SetRectangle(Texture.Bounds);
             //scale = 1.0f;
@@ -34,7 +29,11 @@ namespace ECS.Components
             //this.position = position;
             //this.size = new Point(100, 100);
             //this.speed = new Vector2(10, 10)*10;
-
+            Console.WriteLine(Transform.Position);
+            Console.WriteLine(Transform.Rotation);
+            Console.WriteLine(Transform.Rotation.Length());
+            Console.WriteLine(Transform.Scale);
+            Console.WriteLine(Transform.Scale.Length());
         }
 
         public override void Initialize()
@@ -69,7 +68,8 @@ namespace ECS.Components
         public override void Draw(GameTime gameTime)
         {
             spriteBatch.Begin();
-            spriteBatch.Draw(Texture, Transform.Position, Rectangle, Color, Transform.Rotation.Length(), Vector2.Zero, Transform.Scale.Length(), SpriteEffects.None, layering.GetLayerByName(LayerName));
+            
+            spriteBatch.Draw(Texture, Transform.Position, Rectangle, Color, Transform.Rotation.Length(), Vector2.Zero, Transform.Scale.Length(), SpriteEffects.None, 0/* Layering.Layers[LayerName]*/);
             spriteBatch.End();
         }
 

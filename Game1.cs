@@ -10,7 +10,6 @@ namespace ECS
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        private Layering  layering = new Layering();
         private Renderer renderer;
         private Transform<Vector2> transform;
         private string layerName;
@@ -20,13 +19,13 @@ namespace ECS
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
             
-            layering.Add("render", 0);
+            transform = new Transform<Vector2>(this, Vector2.One, Vector2.Zero, Vector2.One/5);
         }
 
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            renderer = new Renderer(this, "pato",transform, layerName, layering );
+            renderer = new Renderer(this, "pato",transform, layerName );
 
             Components.Add(renderer);
 
