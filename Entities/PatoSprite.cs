@@ -6,14 +6,45 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace ECS.Entities
 {
     public class PatoSprite : SpriteBase
     {
+        Game game;
+        private float speedx = 3f;
+
         public PatoSprite(Game game, string texturePath, Vector3 position, Vector3 rotation, Vector3 scale) : base(game, texturePath, position, rotation, scale)
         {
+            this.game = game;
 
+
+        }
+
+        public override void Initialize()
+        {
+            Transform.Position += new Vector3(0, game.Window.ClientBounds.Height - Renderer.Rectangle.Size.Y / 5, 0);
+
+            base.Initialize();
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            #region so para brincar
+            if (Transform.Position.X + 100 > game.Window.ClientBounds.Width || Transform.Position.X - 00 < 0)
+            {
+                speedx = -speedx;
+                Renderer.SpriteEffects = SpriteEffects.FlipHorizontally;
+
+            }
+
+            Transform.Position += new Vector3(speedx, 0, 0);
+            
+
+            #endregion
+
+            base.Update(gameTime);
         }
 
 

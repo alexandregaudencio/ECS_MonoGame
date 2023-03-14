@@ -11,15 +11,13 @@ namespace ECS.BaseObject
 {
     public class TextBase : EntityBase
     {
-        private string text = "hello";
         private string spriteFontPath = "File";
         private TextRenderer TextRenderer { set; get; }
         private Transform Transform { get; set; }
-        public string Text { get => text; set => text = value; }
+        public string Text => TextRenderer.Text;
 
         public TextBase(Game game, string text, Vector3 position, Vector3 rotation, Vector3 scale) : base(game)
         {
-            Text = text;
             Transform = new Transform(position, rotation, scale);
             TextRenderer = new TextRenderer(game, text, spriteFontPath, Transform, "");
 
@@ -43,7 +41,6 @@ namespace ECS.BaseObject
 
         public void SetText(string text)
         {
-            this.text = text;
             TextRenderer.SetText(text);
         }
 

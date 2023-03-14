@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using ECS.BaseObject;
 using ECS.Entities;
 using System;
+using Microsoft.Xna.Framework.Content;
 
 namespace ECS
 {
@@ -13,7 +14,7 @@ namespace ECS
         private SpriteBatch _spriteBatch;
 
         private PatoSprite patoSprite;
-        private TextBase text;
+        private TextBase newText;
 
         private Random random = new Random();
         public Game1()
@@ -29,12 +30,12 @@ namespace ECS
 
         protected override void Initialize()
         {
-            patoSprite = new PatoSprite(this, "pato", new Vector3(101, 0,0), Vector3.Zero, Vector3.One);
-            text = new TextBase(this, " string", Vector3.One, Vector3.Zero, Vector3.One);
+            patoSprite = new PatoSprite(this, "pato", new Vector3(100,0,0), Vector3.Zero, Vector3.One/2);
+            newText = new TextBase(this, " string", Vector3.One, Vector3.Zero, Vector3.One);
             Components.Add(patoSprite);
-            Components.Add(text);
+            Components.Add(newText);
 
-
+            
             base.Initialize();
         }
 
@@ -42,16 +43,26 @@ namespace ECS
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+            base.LoadContent();
+
+        }
+
+        protected override void UnloadContent()
+        {
+            //patoSprite.Renderer.Texture.Dispose();
+            Content.Unload();
+
+            base.UnloadContent();
         }
 
         protected override void Update(GameTime gameTime)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Back))
                 Exit();
-
+            newText.SetText(gameTime.ElapsedGameTime.Milliseconds.ToString());
             base.Update(gameTime);
         }
+
 
         protected override void Draw(GameTime gameTime)
         {

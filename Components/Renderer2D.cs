@@ -1,16 +1,23 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace ECS.Components
 {
     public class Renderer2D : DrawableGameComponent
     {
         private SpriteBatch spriteBatch;
-        private Texture2D Texture { get; set; }
+        public Texture2D Texture { get; set; }
         private Color Color { get; set; }
-        private Rectangle Rectangle { get; set; }
+        public Rectangle Rectangle { get; set; }
         private Transform Transform { get; set; }
         private string LayerName { get; set; }
+
+        private SpriteEffects spriteEffects;
+        public SpriteEffects SpriteEffects { get => spriteEffects; set => spriteEffects = value; }
+
+
 
         public Renderer2D(Game game, string textureName, Transform transform, string layerName) : base(game)
         {
@@ -20,6 +27,7 @@ namespace ECS.Components
             LayerName = layerName;
             SetRectangle(Texture.Bounds);
             Color = Color.White;
+            SpriteEffects = SpriteEffects.None;
         }
 
         public override void Draw(GameTime gameTime)
@@ -30,7 +38,7 @@ namespace ECS.Components
                 Transform.AngleDegrees,
                 Rectangle.Center.ToVector2(),
                 Transform.Vect2Scale(),
-                SpriteEffects.None,
+                SpriteEffects,
                 0/* Layering.Layers[LayerName]*/
             ); 
             spriteBatch.End();
@@ -42,8 +50,16 @@ namespace ECS.Components
             Color = color;
         }
 
+        public void SetRectangle(Point location, Point size)
+        {
+            Rectangle rectangle = new Rectangle(location, size);
+            Rectangle = rectangle;
+        }
+
+
         public void SetRectangle(Rectangle rectangle)
         {
+
             Rectangle = rectangle;
         }
 

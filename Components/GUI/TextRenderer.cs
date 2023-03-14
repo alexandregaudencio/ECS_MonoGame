@@ -16,12 +16,15 @@ namespace ECS.Components.GUI
         private Color Color { get; set; }
         private Transform Transform { get; set; }
         private string LayerName { get; set; }
-        protected Rectangle rectangle { get; set; }
-        protected Alignment alignment = Alignment.Center;
+        private Rectangle rectangle { get; set; }
+        private Alignment alignment = Alignment.Center;
         private Vector2 size;
         private Vector2 origin;
 
         public string Text => text;
+
+        public Alignment Alignment { get => alignment; set => alignment = value; }
+
         public event Action propertyChanged;
 
         public TextRenderer(Game game,string text, string fontFileName, Transform transform, string layerName) : base(game)
@@ -69,7 +72,11 @@ namespace ECS.Components.GUI
 
         public void DrawString()
         {
-            spriteBatch.DrawString(spriteFont, text, Transform.Vect2Position(), Color, Transform.Vect2Rotation().Length(), origin, Transform.Vect2Scale(), SpriteEffects.None, 0);
+            spriteBatch.DrawString(spriteFont, 
+                text, Transform.Vect2Position(), 
+                Color, Transform.Vect2Rotation().Length(), 
+                origin, Transform.Vect2Scale(), 
+                SpriteEffects.None, 0);
         }
 
         private void UpdateOrigin()
