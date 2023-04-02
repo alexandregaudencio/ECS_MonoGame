@@ -7,10 +7,10 @@ namespace ECS.Components
 {
     public class Animator2D : GameComponent
     {
-        private Dictionary<string, Animation> nameAnimationsPairs = new Dictionary<string, Animation>();
+        private readonly Dictionary<string, Animation> nameAnimationsPairs = new();
         private float elapsedTime;
         public Animation CurrentAnimation { get; set; }
-        private IAnimationRenderUpdate iAnimationRenderUpdate;
+        private readonly IAnimationRenderUpdate iAnimationRenderUpdate;
 
         public Animator2D(Game game,IAnimationRenderUpdate iAnimationRenderUpdate, Dictionary<string,Animation> nameAnimationsPairs) : base(game)
         {
@@ -38,7 +38,6 @@ namespace ECS.Components
             CurrentAnimation = animation;
             iAnimationRenderUpdate.SetTexture2D(CurrentAnimation.CurrentTexture);
             iAnimationRenderUpdate.SetRectangle(CurrentAnimation.FrameRectangle());
-
             elapsedTime = 0;
         }
 
@@ -56,7 +55,6 @@ namespace ECS.Components
             }
             base.Update(gameTime);
         }
-
 
 
 

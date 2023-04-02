@@ -14,12 +14,12 @@ namespace ECS.Entities
     public class BoxSprite : SpriteBase
     {
 
-        Dictionary<string, Animation> nameAnimationPairs = new Dictionary<string, Animation>();
+        private readonly Dictionary<string, Animation> nameAnimationPairs = new();
         public Animator2D animator2D;
 
         public BoxSprite(Game game, string texturePath, Vector3 position, Vector3 rotation, Vector3 scale) : base(game, texturePath, position, rotation, scale)
         {
-            nameAnimationPairs.Add("box", new Animation(game, "Images/Boxes/box", 3, true, 0.1f));
+            nameAnimationPairs.Add("box", new Animation(game, "Images/Boxes/box", 3, true, 01f));
 
             animator2D = new Animator2D(game, Renderer, nameAnimationPairs);
             animator2D.Play("box");
