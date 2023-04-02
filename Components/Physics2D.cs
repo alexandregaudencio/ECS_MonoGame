@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace ECS.Components
 {
-    public class Physics2D
+    public class Physics2D : GameComponent
     {
+        private Game game;
         private Transform transform;
         private Vector2 velocity = Vector2.Zero;
         private Vector2 acceleration = Vector2.Zero;
         private float mass = 1;
-
 
         private bool gravityActive = false;
         private float gravity = 1;
@@ -29,14 +29,26 @@ namespace ECS.Components
             this.gravity = gravity;
         }
 
-        public Physics2D(Transform transform)
+        public Physics2D(Game game, Transform transform) : base(game)
         {
             this.transform = transform;
+            this.game = game;
         }
 
+        public void AddForce(Vector2 direction)
+        {
+            acceleration *= direction * (float)game.TargetElapsedTime.TotalMilliseconds;
+        }
 
+        public void Impulse(Vector2 direction, float Intensity)
+        {
+            Acceleration += direction * Intensity;
+        }
 
-
+        public override void Update(GameTime gameTime)
+        {
+            base.Update(gameTime);
+        }
 
 
     }

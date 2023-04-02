@@ -5,7 +5,7 @@ using System;
 
 namespace ECS.Components
 {
-    public class Renderer2D : DrawableGameComponent
+    public class Renderer2D : DrawableGameComponent, IAnimationRenderUpdate
     {
         private SpriteBatch spriteBatch;
         public Texture2D Texture { get; set; }
@@ -19,10 +19,10 @@ namespace ECS.Components
 
 
 
-        public Renderer2D(Game game, string textureName, Transform transform, string layerName) : base(game)
+        public Renderer2D(Game game, string texturePath, Transform transform, string layerName) : base(game)
         {
             spriteBatch = new SpriteBatch(game.GraphicsDevice);
-            Texture = game.Content.Load<Texture2D>(textureName);
+            Texture = game.Content.Load<Texture2D>(texturePath);
             Transform = transform;
             LayerName = layerName;
             SetRectangle(Texture.Bounds);
@@ -50,11 +50,11 @@ namespace ECS.Components
             Color = color;
         }
 
-        public void SetRectangle(Point location, Point size)
-        {
-            Rectangle rectangle = new Rectangle(location, size);
-            Rectangle = rectangle;
-        }
+        //public void SetRectangle(Point location, Point size)
+        //{
+        //    Rectangle rectangle = new Rectangle(location, size);
+        //    Rectangle = rectangle;
+        //}
 
 
         public void SetRectangle(Rectangle rectangle)
@@ -63,5 +63,10 @@ namespace ECS.Components
             Rectangle = rectangle;
         }
 
+        public void SetTexture2D(Texture2D texture2D)
+        {
+            Texture = texture2D;
+
+        }
     }
 }

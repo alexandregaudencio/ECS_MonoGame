@@ -5,6 +5,8 @@ using ECS.BaseObject;
 using ECS.Entities;
 using System;
 using Microsoft.Xna.Framework.Content;
+using ECS.Primitives;
+using System.Collections.Generic;
 
 namespace ECS
 {
@@ -15,27 +17,27 @@ namespace ECS
 
         private PatoSprite patoSprite;
         private TextBase newText;
+        private BoxSprite Box;
+         
 
-        private Random random = new Random();
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+
             
-
-
-
         }
 
         protected override void Initialize()
         {
             patoSprite = new PatoSprite(this, "pato", new Vector3(100,0,0), Vector3.Zero, Vector3.One/2);
-            newText = new TextBase(this, " string", Vector3.One, Vector3.Zero, Vector3.One);
+            Box = new BoxSprite(this, "Images/Boxes/box1", new Vector3(300, 200, 0), Vector3.Zero, Vector3.One*4);
+            newText = new TextBase(this, "string", Vector3.One, Vector3.Zero, Vector3.One);
+            
             Components.Add(patoSprite);
             Components.Add(newText);
-
-            
+            Components.Add(Box);
             base.Initialize();
         }
 
@@ -59,8 +61,11 @@ namespace ECS
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Back))
                 Exit();
-            newText.SetText(gameTime.ElapsedGameTime.Milliseconds.ToString());
+
+            newText.SetText(Box.animator2D.CurrentAnimation.CurrentFrame.ToString());
+
             base.Update(gameTime);
+
         }
 
 

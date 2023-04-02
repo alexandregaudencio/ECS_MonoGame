@@ -9,7 +9,9 @@ namespace ECS.BaseObject
     {
         private Game game { get; set; }
         protected Transform Transform { get; set; }  
+        protected Animator2D Animator { get; set; }
         public Renderer2D Renderer { get; set; }
+
         protected string TexturePath { get; set; }
 
         public SpriteBase(Game game, string texturePath, Vector3 position, Vector3 rotation, Vector3 scale ) : base(game)

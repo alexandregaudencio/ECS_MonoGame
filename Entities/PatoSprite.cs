@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace ECS.Entities
 {
@@ -32,17 +33,19 @@ namespace ECS.Entities
         public override void Update(GameTime gameTime)
         {
             #region so para brincar
-            if (Transform.Position.X + 100 > game.Window.ClientBounds.Width || Transform.Position.X - 00 < 0)
+            if (Keyboard.GetState().IsKeyDown(Keys.Left))
             {
-                speedx = -speedx;
+                Renderer.SpriteEffects = SpriteEffects.None;
+                speedx = Math.Abs(speedx)*-1;
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.Right))
+            {
                 Renderer.SpriteEffects = SpriteEffects.FlipHorizontally;
-
+                speedx = Math.Abs(speedx);
             }
 
-            Transform.Position += new Vector3(speedx, 0, 0);
-            
-
             #endregion
+            Transform.Position += new Vector3(speedx, 0, 0);
 
             base.Update(gameTime);
         }
