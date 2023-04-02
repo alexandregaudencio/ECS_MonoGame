@@ -32,7 +32,7 @@ namespace ECS
         protected override void Initialize()
         {
             patoSprite = new PatoSprite(this, "pato", new Vector3(100,0,0), Vector3.Zero, Vector3.One/2);
-            Box = new BoxSprite(this, "Images/Boxes/box1", new Vector3(300, 200, 0), Vector3.Zero, Vector3.One*4);
+            Box = new BoxSprite(this, "Images/Boxes/box1", new Vector3(10, 10, 0), Vector3.Zero, Vector3.One);
             newText = new TextBase(this, "string", Vector3.One, Vector3.Zero, Vector3.One);
             
             Components.Add(patoSprite);
