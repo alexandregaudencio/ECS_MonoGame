@@ -6,19 +6,25 @@ using ECS.Entities;
 using System;
 using Microsoft.Xna.Framework.Content;
 using ECS.Primitives;
+
 using System.Collections.Generic;
 
 namespace ECS
 {
-    public class Game1 : Microsoft.Xna.Framework.Game
+    public class Game1 : Game
     {
-        private GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;
-
+        readonly GraphicsDeviceManager _graphics;
+        SpriteBatch _spriteBatch;
+        //private EquilateralTriangle tr;
         private PatoSprite patoSprite;
         private TextBase newText;
         private BoxSprite Box;
-         
+        private Cuboid cube;
+        private WireCuboid wireCuboid;
+        private WirePlane wirePlane;
+
+        private Primitives.Plane plane;
+
 
         public Game1()
         {
@@ -32,12 +38,24 @@ namespace ECS
         protected override void Initialize()
         {
             patoSprite = new PatoSprite(this, "pato", new Vector3(100,0,0), Vector3.Zero, Vector3.One/2);
-            Box = new BoxSprite(this, "Images/Boxes/box1", new Vector3(10, 10, 0), Vector3.Zero, Vector3.One);
+            Box = new BoxSprite(this, "Images/Boxes/box1", new Vector3(15, 15, 0), Vector3.Zero, Vector3.One);
             newText = new TextBase(this, "string", Vector3.One, Vector3.Zero, Vector3.One);
-            
+            //tr = new EquilateralTriangle(this, Vector3.Zero, 1, Color.Aqua);
+            plane = new Primitives.Plane(this, Vector3.Zero, 5, Color.ForestGreen);
+            cube = new Cuboid(this, Vector3.Zero, 1, Color.Green);
+            wireCuboid = new WireCuboid(this, Vector3.Zero, 2, Color.Black);
+            wirePlane = new WirePlane(this, Vector3.Zero, 10, Color.Black);
+
+
+            //Components.Add(tr);
             Components.Add(patoSprite);
             Components.Add(newText);
             Components.Add(Box);
+            Components.Add(plane);
+            Components.Add(cube);
+            Components.Add(wireCuboid);
+            Components.Add(wirePlane);
+
             base.Initialize();
         }
 
@@ -51,9 +69,7 @@ namespace ECS
 
         protected override void UnloadContent()
         {
-            //patoSprite.Renderer.Texture.Dispose();
             Content.Unload();
-
             base.UnloadContent();
         }
 
@@ -63,6 +79,7 @@ namespace ECS
                 Exit();
 
             newText.SetText(Box.animator2D.CurrentAnimation.CurrentFrame.ToString());
+
 
             base.Update(gameTime);
 
