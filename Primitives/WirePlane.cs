@@ -5,12 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ECS.Components.Cam;
 
 namespace ECS.Primitives
 {
     public class WirePlane : Plane
     {
-        public WirePlane(Game game, Vector3 position, float scale, Color color) : base(game, position, scale, color)
+        public WirePlane(Game game, ICameraProperties cameraProperties, Vector3 position, float scale, Color color) : base(game, cameraProperties, position, scale, color)
         {
 
         }

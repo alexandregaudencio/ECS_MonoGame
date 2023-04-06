@@ -25,11 +25,11 @@ namespace ECS.Components.GUI
 
         public Alignment Alignment { get => alignment; set => alignment = value; }
 
-        public event Action propertyChanged;
+        public event Action PropertyChanged;
 
         public TextRenderer(Game game,string text, string fontFileName, Transform transform, string layerName) : base(game)
         {
-            propertyChanged += UpdateOrigin;
+            PropertyChanged += UpdateOrigin;
 
             spriteBatch = new SpriteBatch(game.GraphicsDevice);
             spriteFont = game.Content.Load<SpriteFont>(fontFileName);
@@ -59,14 +59,14 @@ namespace ECS.Components.GUI
         public void SetAlignment(Alignment alignment)
         {
             this.alignment = alignment;
-            propertyChanged?.Invoke();
+            PropertyChanged?.Invoke();
 
         }
 
         public void SetText(string text)
         {
            this.text = text;
-            propertyChanged?.Invoke();
+            PropertyChanged?.Invoke();
 
         }
 

@@ -66,7 +66,7 @@ namespace ECS.Components
         internal void NextFrame()
         {
             CurrentFrame++;
-            CurrentFrame = (CurrentFrame % (FrameCount));
+            CurrentFrame %= (FrameCount);
 
         }
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using ECS.Components.Cam;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace ECS.Primitives
     internal class WireCuboid : Cuboid
     {
         
-        public WireCuboid(Game game, Vector3 position, float scale, Color color) : base(game, position, scale, color)
+        public WireCuboid(Game game, ICameraProperties cameraProperties, Vector3 position, float scale, Color color) : base(game, cameraProperties, position, scale, color)
         {
 
         }
@@ -19,9 +20,11 @@ namespace ECS.Primitives
 
         public override void Draw(GameTime gameTime)
         {
-            RasterizerState rs = new RasterizerState();
-            rs.CullMode = CullMode.None;
-            rs.FillMode = FillMode.WireFrame;
+            RasterizerState rs = new()
+            {
+                CullMode = CullMode.None,
+                FillMode = FillMode.WireFrame
+            };
             GraphicsDevice.RasterizerState = rs;
 
 

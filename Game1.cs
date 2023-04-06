@@ -6,8 +6,8 @@ using ECS.Entities;
 using System;
 using Microsoft.Xna.Framework.Content;
 using ECS.Primitives;
-
 using System.Collections.Generic;
+using ECS.Components.Cam;
 
 namespace ECS
 {
@@ -24,7 +24,7 @@ namespace ECS
         private WirePlane wirePlane;
 
         private Primitives.Plane plane;
-
+        private Camera camera;
 
         public Game1()
         {
@@ -32,19 +32,23 @@ namespace ECS
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
 
-            
+            camera = new Camera(this);
+
+
         }
 
         protected override void Initialize()
         {
+
+
             patoSprite = new PatoSprite(this, "pato", new Vector3(100,0,0), Vector3.Zero, Vector3.One/2);
             Box = new BoxSprite(this, "Images/Boxes/box1", new Vector3(15, 15, 0), Vector3.Zero, Vector3.One);
             newText = new TextBase(this, "string", Vector3.One, Vector3.Zero, Vector3.One);
             //tr = new EquilateralTriangle(this, Vector3.Zero, 1, Color.Aqua);
-            plane = new Primitives.Plane(this, Vector3.Zero, 5, Color.ForestGreen);
-            cube = new Cuboid(this, Vector3.Zero, 1, Color.Green);
-            wireCuboid = new WireCuboid(this, Vector3.Zero, 2, Color.Black);
-            wirePlane = new WirePlane(this, Vector3.Zero, 10, Color.Black);
+            plane = new Primitives.Plane(this, camera, Vector3.Zero, 5, Color.ForestGreen);
+            cube = new Cuboid(this, camera, Vector3.Zero, 1, Color.Green);
+            wireCuboid = new WireCuboid(this, camera, Vector3.Zero, 2, Color.Black);
+            wirePlane = new WirePlane(this, camera, Vector3.Zero, 10, Color.Black);
 
 
             //Components.Add(tr);
@@ -55,6 +59,7 @@ namespace ECS
             Components.Add(cube);
             Components.Add(wireCuboid);
             Components.Add(wirePlane);
+            Components.Add(camera);
 
             base.Initialize();
         }

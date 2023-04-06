@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ECS.Components;
+using ECS.Components.Cam;
 
 namespace ECS.Primitives
 {
@@ -12,31 +14,34 @@ namespace ECS.Primitives
     {
         VertexPositionColor[] verts;
         VertexBuffer vertexBuffer;
-        Matrix world;
-        Matrix view;
-        Matrix projection;
+        //Matrix world;
+        //Matrix view;
+        //Matrix projection;
         BasicEffect basicEffect;
 
         public Vector3 Position { get; set; }
         public float Scale { get; set; }
         public Color Color { get; set; }
+        private ICameraProperties cameraProperties;
 
 
-        public Cuboid(Game game, Vector3 position, float scale, Color color) : base(game)
+        public Cuboid(Game game, ICameraProperties cameraProperties, Vector3 position, float scale, Color color) : base(game)
         {
             Position = position;
             Scale = scale;
             Color = color;
+            this.cameraProperties = cameraProperties;
 
         }
+
 
         public override void Initialize()
         {
             base.Initialize();
 
-            world = Matrix.Identity;
-            view = Matrix.CreateLookAt(new Vector3(5, 5, 5), Vector3.Zero, Vector3.Up);
-            projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4, Game.Window.ClientBounds.Width / (float)Game.Window.ClientBounds.Height, 1, 100);
+            //world = Matrix.Identity;
+            //view = Matrix.CreateLookAt(new Vector3(5, 5, 5), Vector3.Zero, Vector3.Up);
+            //projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4, Game.Window.ClientBounds.Width / (float)Game.Window.ClientBounds.Height, 1, 100);
 
             verts = new VertexPositionColor[36];
             verts[0] = new VertexPositionColor(new Vector3(Position.X - 1 * Scale, Position.Y - 1 * Scale, Position.Z - 1 * Scale), Color);
@@ -96,9 +101,9 @@ namespace ECS.Primitives
         {
             GraphicsDevice.SetVertexBuffer(vertexBuffer);
 
-            basicEffect.World = world;
-            basicEffect.View = view;
-            basicEffect.Projection = projection;
+            basicEffect.World = cameraProperties.World;
+            basicEffect.View = cameraProperties.View;
+            basicEffect.Projection = cameraProperties.Projection;
             basicEffect.VertexColorEnabled = true;
 
             foreach (EffectPass pass in basicEffect.CurrentTechnique.Passes)
