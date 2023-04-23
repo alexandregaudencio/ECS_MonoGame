@@ -11,72 +11,69 @@ using ECS.Components;
 
 namespace ECS.Primitives
 {
-    public class Plane : DrawableGameComponent
+    public class Plane : Shape
     {
-        VertexPositionColor[] verts;
-        VertexBuffer vertexBuffer;
-        BasicEffect basicEffect;
-        readonly ICamPerspective cameraProperties;
-        Transform transform;
-
-        public Vector3 Position { get; set; }
-        public float Scale { get; set; }
-        public Color Color { get; set; }
-
-
-
-        public Plane(Game game, Vector3 position, ICamPerspective cameraProperties) : base(game)
+        public Plane(Game game, ICamPerspective iCameraProperties) : base(game, iCameraProperties)
         {
-            transform = new Transform(position);
+            Color = Color.Black;
+            Transform.Scale = Vector3.One*5;
+            SetVertexBuffer();
+            SetIndexBuffer();
+            SetFillMode(FillMode.Solid);
 
-            this.cameraProperties = cameraProperties;
-            Position = position;
-            Scale = 5;
-
+            GraphicsDevice.RasterizerState = new RasterizerState()
+            {
+                CullMode = CullMode.None,
+            };
         }
 
-        public override void Initialize()
-        {
-            base.Initialize();
 
-            verts = new VertexPositionColor[6];
-            verts[0] = new VertexPositionColor(new Vector3( - 1 * Scale,  - 1,  - 1 * Scale), Color);
-            verts[1] = new VertexPositionColor(new Vector3( + 1 * Scale,  - 1,  - 1 * Scale), Color);
-            verts[2] = new VertexPositionColor(new Vector3(+ 1 * Scale,  - 1,  + 1 * Scale), Color);
-            verts[3] = new VertexPositionColor(new Vector3( - 1 * Scale, - 1,  - 1 * Scale), Color);
-            verts[4] = new VertexPositionColor(new Vector3( + 1 * Scale,  - 1,  + 1 * Scale), Color);
-            verts[5] = new VertexPositionColor(new Vector3( - 1 * Scale, - 1,  + 1 * Scale), Color);
-
-            vertexBuffer = new VertexBuffer(GraphicsDevice, typeof(VertexPositionColor), verts.Length, BufferUsage.None);
-            vertexBuffer.SetData(verts);
-
-            basicEffect = new BasicEffect(GraphicsDevice);
-
-            //RasterizerState rs = new RasterizerState();
-            //rs.CullMode = CullMode.None;
-            //rs.FillMode = FillMode.WireFrame;
-            //GraphicsDevice.RasterizerState = rs;
-        }
-
+        protected Color Color { get; set; } = Color.AntiqueWhite;
 
         public override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.SetVertexBuffer(vertexBuffer);
-            GraphicsDevice.RasterizerState = RasterizerState.CullNone;
 
-            basicEffect.World = /*cameraProperties.World;*/ transform.Matrix;
-            basicEffect.View = cameraProperties.View;
-            basicEffect.Projection = cameraProperties.Projection;
-            basicEffect.VertexColorEnabled = true;
-
-            foreach (EffectPass pass in basicEffect.CurrentTechnique.Passes)
-            {
-                pass.Apply();
-                GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, verts, 0, 2);
-
-            }
             base.Draw(gameTime);
         }
+
+        protected override void SetVertexBuffer()
+        {
+            verts = new VertexPositionColor[]
+            {
+                new VertexPositionColor(new Vector3( 1*Transform.Scale.X,0,1*Transform.Scale.Z), Color),
+                new VertexPositionColor(new Vector3(1*Transform.Scale.X,0, -1*Transform.Scale.Z), Color), 
+                new VertexPositionColor(new Vector3( -1*Transform.Scale.X,0,-1*Transform.Scale.Z), Color), 
+                new VertexPositionColor(new Vector3(-1*Transform.Scale.X,0,1*Transform.Scale.Z), Color), 
+            };
+
+            vertexBuffer = new VertexBuffer(GraphicsDevice,
+                                     typeof(VertexPositionColor),
+                                     verts.Length,
+                                     BufferUsage.None);
+
+            vertexBuffer.SetData<VertexPositionColor>(verts);
+
+        }
+
+        protected override void SetIndexBuffer()
+        {
+            indexData = new short[]
+            {
+                0, 1, 2, 
+                0, 2, 3,
+            };
+
+            indexBuffer = new IndexBuffer(GraphicsDevice,
+                                               IndexElementSize.SixteenBits,
+                                               indexData.Length,
+                                               BufferUsage.None);
+
+            indexBuffer.SetData<short>(indexData);
+
+        }
+
+
+
 
 
     }

@@ -7,10 +7,7 @@ namespace ECS.Primitives
     public class Cuboid : Shape 
     {
 
-        //BoundingBox boundingBox;
-        //bool wireframe = true;
         protected Color Color { get; set; } = Color.AntiqueWhite;
-
 
         public Cuboid(Game game,ICamPerspective iCamPerspective) : base(game, iCamPerspective)
         {
@@ -19,7 +16,6 @@ namespace ECS.Primitives
         }
 
       
-
         public override void Draw(GameTime gameTime)
         {
             base.Draw(gameTime);
@@ -29,14 +25,14 @@ namespace ECS.Primitives
         {
             verts = new VertexPositionColor[]
             {
-                new VertexPositionColor(new Vector3(-1*Transform.Scale.X, 1*Transform.Scale.Y, 1*Transform.Scale.Z), Color), // 0
-                new VertexPositionColor(new Vector3( 1*Transform.Scale.X, 1*Transform.Scale.Y, 1*Transform.Scale.Z), Color), // 1
-                new VertexPositionColor(new Vector3( 1*Transform.Scale.X,-1*Transform.Scale.Y, 1*Transform.Scale.Z), Color), // 2
-                new VertexPositionColor(new Vector3(-1*Transform.Scale.X,-1*Transform.Scale.Y, 1*Transform.Scale.Z), Color), // 3
-                new VertexPositionColor(new Vector3(-1*Transform.Scale.X, 1*Transform.Scale.Y,-1*Transform.Scale.Z), Color), // 4
-                new VertexPositionColor(new Vector3( 1*Transform.Scale.X, 1*Transform.Scale.Y,-1*Transform.Scale.Z), Color), // 5
-                new VertexPositionColor(new Vector3( 1*Transform.Scale.X,-1*Transform.Scale.Y,-1*Transform.Scale.Z), Color), // 6
-                new VertexPositionColor(new Vector3(-1*Transform.Scale.X,-1*Transform.Scale.Y,-1*Transform.Scale.Z), Color), // 7
+                new VertexPositionColor(new Vector3(-1*Transform.Scale.X, 1*Transform.Scale.Y, 1*Transform.Scale.Z), Color.Blue), // 0
+                new VertexPositionColor(new Vector3( 1*Transform.Scale.X, 1*Transform.Scale.Y, 1*Transform.Scale.Z), Color.Blue), // 1
+                new VertexPositionColor(new Vector3( 1*Transform.Scale.X,-1*Transform.Scale.Y, 1*Transform.Scale.Z), Color.Brown), // 2
+                new VertexPositionColor(new Vector3(-1*Transform.Scale.X,-1*Transform.Scale.Y, 1*Transform.Scale.Z), Color.Brown), // 3
+                new VertexPositionColor(new Vector3(-1*Transform.Scale.X, 1*Transform.Scale.Y,-1*Transform.Scale.Z), Color.Yellow), // 4
+                new VertexPositionColor(new Vector3( 1*Transform.Scale.X, 1*Transform.Scale.Y,-1*Transform.Scale.Z), Color.Yellow), // 5
+                new VertexPositionColor(new Vector3( 1*Transform.Scale.X,-1*Transform.Scale.Y,-1*Transform.Scale.Z), Color.Green), // 6
+                new VertexPositionColor(new Vector3(-1*Transform.Scale.X,-1*Transform.Scale.Y,-1*Transform.Scale.Z), Color.Green), // 7
             };
 
             vertexBuffer = new VertexBuffer(GraphicsDevice,
@@ -50,7 +46,7 @@ namespace ECS.Primitives
 
         protected override void SetIndexBuffer()
         {
-            index = new short[]
+            indexData = new short[]
             {
                 0, 1, 2, // front
                 0, 2, 3,
@@ -68,10 +64,10 @@ namespace ECS.Primitives
 
             indexBuffer = new IndexBuffer(GraphicsDevice,
                                                IndexElementSize.SixteenBits,
-                                               index.Length,
+                                               indexData.Length,
                                                BufferUsage.None);
 
-            indexBuffer.SetData<short>(index);
+            indexBuffer.SetData<short>(indexData);
 
         }
 

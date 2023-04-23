@@ -20,7 +20,7 @@ namespace ECS.Primitives
 
         protected BasicEffect basicEffect;
 
-        protected short[] index;
+        protected short[] indexData;
         protected IndexBuffer indexBuffer;
 
 
@@ -36,23 +36,21 @@ namespace ECS.Primitives
             this.iCameraProperties = iCameraProperties;
             basicEffect = new BasicEffect(GraphicsDevice);
 
+            //GraphicsDevice.RasterizerState = new RasterizerState()
+            //{
+            //    CullMode = CullMode.None,
+            //};
 
 
         }
 
-        protected virtual void SetVertexBuffer()
-        {
-
-        }
-
-        protected virtual void SetIndexBuffer()
-        {
-
-        }
-
+        protected abstract void SetVertexBuffer();
+        protected abstract void SetIndexBuffer();
 
         public override void Draw(GameTime gameTime)
         {
+
+
             Game.GraphicsDevice.SetVertexBuffer(vertexBuffer);
             Game.GraphicsDevice.Indices = indexBuffer;
             basicEffect.World = Transform.Matrix;
@@ -65,7 +63,7 @@ namespace ECS.Primitives
                 pass.Apply();
 
                 GraphicsDevice.DrawUserIndexedPrimitives<VertexPositionColor>(PrimitiveType.TriangleList,
-                    verts, 0, verts.Length, index, 0, index.Length /3 );
+                    verts, 0, verts.Length, indexData, 0, indexData.Length /3 );
             }
 
             base.Draw(gameTime);
@@ -82,6 +80,9 @@ namespace ECS.Primitives
             GraphicsDevice.RasterizerState = rs;
 
         }
+
+
+
 
 
     }

@@ -26,21 +26,22 @@ namespace ECS.Components.Cam
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Left))
             {
-                Camera.Transform.Translate(Vector3.Left);
+                Camera.Transform.Translate(Camera.Transform.Matrix.Left);
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Right))
             {
-                Camera.Transform.Translate(Vector3.Right);
+                Camera.Transform.Translate(Camera.Transform.Matrix.Right);
             }
 
             if (Keyboard.GetState().IsKeyDown(Keys.Up))
             {
-                Camera.Transform.Translate(Vector3.Forward);
+                Camera.Transform.Translate(Camera.Transform.Matrix.Up);
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Down))
             {
-                Camera.Transform.Translate(Vector3.Backward);
+                Camera.Transform.Translate(Camera.Transform.Matrix.Down);
             }
+
 
         }
 

@@ -18,6 +18,7 @@ namespace ECS.BaseObject
         {
             shape = new Cuboid(game, perspective);
             shape.Transform = this.Transform;
+            Transform.Translate(Vector3.Up);
 
         }
 

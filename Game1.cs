@@ -17,8 +17,8 @@ namespace ECS
         //private PatoSprite patoSprite;
         //private TextBase newText;
         //private BoxSprite Box;
+        
         private Cube cube;
-
         private Plane plane;
         private Camera camera;
         private CameraController cameraController;
@@ -38,7 +38,7 @@ namespace ECS
 
         protected override void Initialize()
         {
-            plane = new Plane(this, Vector3.Zero, camera);
+            plane = new Plane(this, camera);
             cube = new Cube(this, camera);
 
             //patoSprite = new PatoSprite(this, "pato", new Vector3(100,0,0), Vector3.Zero, Vector3.One/2);
