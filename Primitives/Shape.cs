@@ -23,6 +23,7 @@ namespace ECS.Primitives
         protected short[] indexData;
         protected IndexBuffer indexBuffer;
 
+        public Color Color { get; set; } = Color.Gray;
 
         BoundingBox boundingBox;
 
@@ -49,8 +50,6 @@ namespace ECS.Primitives
 
         public override void Draw(GameTime gameTime)
         {
-
-
             Game.GraphicsDevice.SetVertexBuffer(vertexBuffer);
             Game.GraphicsDevice.Indices = indexBuffer;
             basicEffect.World = Transform.Matrix;

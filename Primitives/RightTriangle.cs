@@ -1,77 +1,59 @@
-﻿//using Microsoft.Xna.Framework.Graphics;
-//using Microsoft.Xna.Framework;
-//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
+﻿using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ECS.Components.Cam;
 
-//namespace ECS.Primitives
-//{
-//    internal class RightTriangle : DrawableGameComponent
-//    {
-//        VertexPositionColor[] verts;
-//        VertexBuffer vertexBuffer;
-//        Matrix world;
-//        Matrix view;
-//        Matrix projection;
-//        BasicEffect basicEffect;
+namespace ECS.Primitives
+{
+    internal class RightTriangle : Shape
+    {
+        public RightTriangle(Game game, ICamPerspective iCameraProperties) : base(game, iCameraProperties)
+        {
+            Transform.Scale = Vector3.One *10;
+            Transform.Translate(Vector3.Up);
+            Color = Color.Gold;
 
+            SetVertexBuffer();
+            SetIndexBuffer();
 
-//        public Vector3 Position { get; set; }
-//        public float Scale { get; set; }
-//        public Color Color { get; set; }
+            //GraphicsDevice.RasterizerState = new RasterizerState()
+            //{
+            //    CullMode = CullMode.None,
+            //};
+        }
 
+        protected override void SetVertexBuffer()
+        {
+            verts = new VertexPositionColor[]
+            {
+                new VertexPositionColor(new Vector3( 0*Transform.Scale.X, 0,  0*Transform.Scale.Z), Color),
+                new VertexPositionColor(new Vector3( 1*Transform.Scale.X, 0, 0.5f*Transform.Scale.Z), Color),
+                new VertexPositionColor(new Vector3( 1*Transform.Scale.X, 0, -0.5f*Transform.Scale.Z), Color),
+            };
 
-//        public RightTriangle(Game game, Vector3 position,float scale, Color color)
-//            : base(game)
-//        {
-//            Position = position;
-//            Scale = scale;
-//            Color = color;
+            vertexBuffer = new VertexBuffer(GraphicsDevice,typeof(VertexPositionColor), verts.Length,BufferUsage.None);
+            vertexBuffer.SetData<VertexPositionColor>(verts);
+        }
 
-//        }
+        protected override void SetIndexBuffer()
+        {
+            indexData = new short[]
+            {
+                0, 1, 2,
+            };
 
-//        public override void Initialize()
-//        {
-//            base.Initialize();
+            indexBuffer = new IndexBuffer(GraphicsDevice, IndexElementSize.SixteenBits, indexData.Length, BufferUsage.None);
+            indexBuffer.SetData<short>(indexData);
 
-//            world = Matrix.Identity;
-//            view = Matrix.CreateLookAt(new Vector3(0, 0, 5), Vector3.Zero, Vector3.Up);
-//            projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4, Game.Window.ClientBounds.Width / (float)Game.Window.ClientBounds.Height, 1, 100);
+        }
 
-//            //GraphicsDevice.RasterizerState = RasterizerState.CullNone; //(permite ver o plano de costas também)
-//            verts = new VertexPositionColor[3];
-//            verts[0] = new VertexPositionColor(new Vector3(Position.X - 1 * Scale, Position.Y + 1 * Scale, Position.Z + 1 * Scale), Color);
-//            verts[1] = new VertexPositionColor(new Vector3(Position.X + 1 * Scale, Position.Y + 1 * Scale, Position.Z + 1 * Scale), Color);
-//            verts[2] = new VertexPositionColor(new Vector3(Position.X - 1 * Scale, Position.Y -1 * Scale, Position.Z + 1 * Scale), Color);
-
-//            vertexBuffer = new VertexBuffer(GraphicsDevice, typeof(VertexPositionColor), verts.Length, BufferUsage.None);
-//            vertexBuffer.SetData<VertexPositionColor>(verts);
-
-//            basicEffect = new BasicEffect(GraphicsDevice);
-
-
-//        }
-
-
-//        public override void Draw(GameTime gameTime)
-//        {
-//            GraphicsDevice.SetVertexBuffer(vertexBuffer);
-
-//            basicEffect.World = world;
-//            basicEffect.View = this.view;
-//            basicEffect.Projection = this.projection;
-//            basicEffect.VertexColorEnabled = true;
-
-//            foreach (EffectPass pass in basicEffect.CurrentTechnique.Passes)
-//            {
-//                pass.Apply();
-//                GraphicsDevice.DrawUserPrimitives<VertexPositionColor>(PrimitiveType.TriangleStrip, verts, 0, 1);
-
-//            }
-//            base.Draw(gameTime);
-//        }
-
-//    }
-//}
+        public override void Draw(GameTime gameTime)
+        {
+            base.Draw(gameTime);
+        }
+    }
+}

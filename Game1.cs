@@ -17,7 +17,8 @@ namespace ECS
         //private PatoSprite patoSprite;
         //private TextBase newText;
         //private BoxSprite Box;
-        
+
+        private RightTriangle rightTriangle;
         private Cube cube;
         private Plane plane;
         private Camera camera;
@@ -40,6 +41,7 @@ namespace ECS
         {
             plane = new Plane(this, camera);
             cube = new Cube(this, camera);
+            rightTriangle = new RightTriangle(this, camera);
 
             //patoSprite = new PatoSprite(this, "pato", new Vector3(100,0,0), Vector3.Zero, Vector3.One/2);
             //Boxj = new BoxSprite(this, "Images/Boxes/box1", new Vector3(15, 15, 0), Vector3.Zero, Vector3.One);
@@ -52,6 +54,7 @@ namespace ECS
             //Components.Add(Box);
             Components.Add(plane);
             Components.Add(cube);
+            Components.Add(rightTriangle);
             Components.Add(cameraController);
             //Components.Add(camera);
 

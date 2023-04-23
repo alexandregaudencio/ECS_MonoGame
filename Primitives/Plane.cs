@@ -28,22 +28,14 @@ namespace ECS.Primitives
         }
 
 
-        protected Color Color { get; set; } = Color.AntiqueWhite;
-
-        public override void Draw(GameTime gameTime)
-        {
-
-            base.Draw(gameTime);
-        }
-
         protected override void SetVertexBuffer()
         {
             verts = new VertexPositionColor[]
             {
-                new VertexPositionColor(new Vector3( 1*Transform.Scale.X,0,1*Transform.Scale.Z), Color),
-                new VertexPositionColor(new Vector3(1*Transform.Scale.X,0, -1*Transform.Scale.Z), Color), 
-                new VertexPositionColor(new Vector3( -1*Transform.Scale.X,0,-1*Transform.Scale.Z), Color), 
-                new VertexPositionColor(new Vector3(-1*Transform.Scale.X,0,1*Transform.Scale.Z), Color), 
+                new VertexPositionColor(new Vector3( 1*Transform.Scale.X, 0, 1*Transform.Scale.Z), Color),
+                new VertexPositionColor(new Vector3( 1*Transform.Scale.X, 0,-1*Transform.Scale.Z), Color), 
+                new VertexPositionColor(new Vector3(-1*Transform.Scale.X, 0,-1*Transform.Scale.Z), Color), 
+                new VertexPositionColor(new Vector3(-1*Transform.Scale.X, 0, 1*Transform.Scale.Z), Color), 
             };
 
             vertexBuffer = new VertexBuffer(GraphicsDevice,
@@ -72,6 +64,11 @@ namespace ECS.Primitives
 
         }
 
+
+        public override void Draw(GameTime gameTime)
+        {
+            base.Draw(gameTime);
+        }
 
 
 

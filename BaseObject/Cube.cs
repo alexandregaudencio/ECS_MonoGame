@@ -28,6 +28,11 @@ namespace ECS.BaseObject
             base.Initialize();
         }
 
+        public override void Draw(GameTime gameTime)
+        {
+            base.Draw(gameTime);
+        }
+
         public override void Update(GameTime gameTime)
         {
             if (Keyboard.GetState().IsKeyDown(Keys.A))
