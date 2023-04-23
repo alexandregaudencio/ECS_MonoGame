@@ -16,7 +16,7 @@ namespace ECS.Primitives
         VertexPositionColor[] verts;
         VertexBuffer vertexBuffer;
         BasicEffect basicEffect;
-        ICamPerspective cameraProperties;
+        readonly ICamPerspective cameraProperties;
         Transform transform;
 
         public Vector3 Position { get; set; }
@@ -27,11 +27,11 @@ namespace ECS.Primitives
 
         public Plane(Game game, Vector3 position, ICamPerspective cameraProperties) : base(game)
         {
-            transform = new Transform(position, Vector3.Zero, Vector3.One);
+            transform = new Transform(position);
 
             this.cameraProperties = cameraProperties;
             Position = position;
-            Scale = 2;
+            Scale = 5;
 
         }
 

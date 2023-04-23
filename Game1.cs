@@ -5,6 +5,7 @@ using ECS.Components.Cam;
 using Microsoft.Xna.Framework;
 using Plane = ECS.Primitives.Plane;
 using ECS.Components;
+using ECS.BaseObject;
 
 namespace ECS
 {
@@ -16,7 +17,7 @@ namespace ECS
         //private PatoSprite patoSprite;
         //private TextBase newText;
         //private BoxSprite Box;
-        private Cuboid cube;
+        private Cube cube;
 
         private Plane plane;
         private Camera camera;
@@ -38,7 +39,7 @@ namespace ECS
         protected override void Initialize()
         {
             plane = new Plane(this, Vector3.Zero, camera);
-            cube = new Cuboid(this, Vector3.Zero, camera);
+            cube = new Cube(this, camera);
 
             //patoSprite = new PatoSprite(this, "pato", new Vector3(100,0,0), Vector3.Zero, Vector3.One/2);
             //Boxj = new BoxSprite(this, "Images/Boxes/box1", new Vector3(15, 15, 0), Vector3.Zero, Vector3.One);

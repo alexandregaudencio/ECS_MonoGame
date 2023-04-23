@@ -23,21 +23,21 @@ namespace ECS.Components.Cam
         public Vector3 CameraUpVector { get; set; }
 
         //CAMERA PROPERTIES
-        public Matrix View => Matrix.CreateLookAt(transform.Matrix.Translation, CameraTarget, CameraUpVector);
+        public Matrix View => Matrix.CreateLookAt(Transform.Matrix.Translation, CameraTarget, CameraUpVector);
         public Matrix Projection => Matrix.CreatePerspectiveFieldOfView(FieldOfView, AspectRatio, NearPlaneDistance, FarPlaneDistance);
 
 
         public Camera(Game game, Transform transform) : base(game)
         {
-            base.transform = transform;
+            Transform = transform;
             CameraTarget = Vector3.Zero;
             CameraUpVector = Vector3.Up;
 
             NearPlaneDistance = 1;
-            FarPlaneDistance = 100;
+            FarPlaneDistance = 200;
             FieldOfView = MathHelper.PiOver4;
 
-            transform.SetPosition(new Vector3(10, 15, 15));
+            transform.SetPosition(new Vector3(15, 10, 15));
 
         }
 

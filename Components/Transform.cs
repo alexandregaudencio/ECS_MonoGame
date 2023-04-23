@@ -9,9 +9,9 @@ namespace ECS.Components
     public class Transform : Component
     {
         private Matrix matrix = Matrix.Identity;
-        public Vector3 Scale { get; set; }
-        public Vector3 GetPosition => matrix.Translation;
-        public Vector3 Rotation => matrix.Forward;
+        public Vector3 Scale { get; set; } = Vector3.One;
+        public Vector3 Position { get; set; } = Vector3.Zero;
+        public Vector3 Rotation { get; set; } = Vector3.Zero;
 
         public Matrix Matrix => matrix;
 
@@ -20,6 +20,9 @@ namespace ECS.Components
         public float AngleRadians => (float)Math.Atan2(Rotation.Y, Rotation.X);
         public float AngleDegrees => (float)(AngleRadians *180.0/Math.PI);
 
+        public Transform()
+        {
+        }
         public Transform(Vector3 Position)
         {
             SetPosition(Position);
@@ -31,52 +34,68 @@ namespace ECS.Components
             SetRotation(rotation);
             Scale = scale; 
         }
+
+
         public void SetPosition(Vector3 position)
         {
+            Position = position;
             matrix = Matrix.Identity;
             matrix *= Matrix.CreateTranslation(position);
         }
 
-        public void IncreasePosition(Vector3 position)
+        public void Translate(Vector3 position)
         {
+            Position += position;
             matrix *= Matrix.CreateTranslation(position);
         }
 
-
-        public Vector2 Vect2Position()
+        public void Rotate(Vector3 rotation)
         {
-            return new Vector2(GetPosition.X, GetPosition.Y);
+            Rotation += rotation;
+            matrix = Matrix.Identity;
+            matrix *= Matrix.CreateRotationX(Rotation.X);
+            matrix *= Matrix.CreateRotationY(Rotation.Y);
+            matrix *= Matrix.CreateRotationZ(Rotation.Z);
+            matrix *= Matrix.CreateTranslation(Position);
+        }
+        public void SetRotation(Vector3 rotation)
+        {
+            Rotation = rotation;
+            matrix = Matrix.Identity;
+            matrix *= Matrix.CreateRotationX(Rotation.X);
+            matrix *= Matrix.CreateRotationY(Rotation.Y);
+            matrix *= Matrix.CreateRotationZ(Rotation.Z);
+            matrix *= Matrix.CreateTranslation(Position);
+        }
+        public void RotateX(float value)
+        {
+            Rotate(Vector3.Right * value);
+        }
+        public void RotateY(float value)
+        {
+            Rotate(Vector3.Up * value);
+        }
+        public void RotateZ(float value)
+        {
+            Rotate(Vector3.Forward * value);
         }
 
-        public Vector2 Vect2Rotation()
-        {
-            return new Vector2(Rotation.X, Rotation.Y);
-        }
 
-        public Vector2 Vect2Scale()
-        {
-            return new Vector2(Scale.X, Scale.Y);
-        }
 
-        public void SetRotationX(float value)
-        {
-            matrix *= Matrix.CreateRotationX(value);
-        }
-        public void SetRotationY(float value)
-        {
-            matrix *= Matrix.CreateRotationY(value);
-        }
-        public void SetRotationZ(float value)
-        {
-            matrix *= Matrix.CreateRotationZ(value);
-        }
+        //public Vector2 Vect2Position()
+        //{
+        //    return new Vector2(GetPosition.X, GetPosition.Y);
+        //}
 
-        internal void SetRotation(Vector3 rotation)
-        {
-            SetRotationX(rotation.X);
-            SetRotationY(rotation.Y);
-            SetRotationZ(rotation.Z);
-            
-        }
+        //public Vector2 Vect2Rotation()
+        //{
+        //    return new Vector2(GetRotation.X, GetRotation.Y);
+        //}
+
+        //public Vector2 Vect2Scale()
+        //{
+        //    return new Vector2(Scale.X, Scale.Y);
+        //}
+
     }
 }

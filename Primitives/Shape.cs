@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace ECS.Primitives
 {
-    public class Shape : EntityBase
+    public abstract class Shape : EntityBase
     {
 
         protected VertexPositionColor[] verts;
@@ -23,32 +23,18 @@ namespace ECS.Primitives
         protected short[] index;
         protected IndexBuffer indexBuffer;
 
-        //protected Matrix world;
-        //protected Vector3 position;
-
-        protected float angle;
 
         BoundingBox boundingBox;
 
         bool wireframe = true;
 
-        protected ICamPerspective iCameraProperties;
+        private ICamPerspective iCameraProperties;
 
-        public Shape(Game game, Vector3 position, ICamPerspective iCameraProperties) : base(game)
+        public Shape(Game game, ICamPerspective iCameraProperties) : base(game)
         {
-            
+            Transform = new Transform();
             this.iCameraProperties = iCameraProperties;
             basicEffect = new BasicEffect(GraphicsDevice);
-            this.transform = new Transform(position);
-
-
-            //world = Matrix.Identity;
-
-
-
-            //this.position = position;
-
-            this.angle = 0;
 
 
 
@@ -64,18 +50,12 @@ namespace ECS.Primitives
 
         }
 
-        public override void Initialize()
-        {
-            SetVertexBuffer();
-            SetIndexBuffer();
-            base.Initialize();
-        }
 
         public override void Draw(GameTime gameTime)
         {
             Game.GraphicsDevice.SetVertexBuffer(vertexBuffer);
             Game.GraphicsDevice.Indices = indexBuffer;
-            basicEffect.World = transform.Matrix;
+            basicEffect.World = Transform.Matrix;
             basicEffect.View = iCameraProperties.View;
             basicEffect.Projection = iCameraProperties.Projection;
             basicEffect.VertexColorEnabled = true;
@@ -85,7 +65,7 @@ namespace ECS.Primitives
                 pass.Apply();
 
                 GraphicsDevice.DrawUserIndexedPrimitives<VertexPositionColor>(PrimitiveType.TriangleList,
-                    verts, 0, verts.Length, index, 0, index.Length / 3);
+                    verts, 0, verts.Length, index, 0, index.Length /3 );
             }
 
             base.Draw(gameTime);
@@ -96,26 +76,11 @@ namespace ECS.Primitives
         {
             RasterizerState rs = new RasterizerState 
             { 
-
                 FillMode = fillMode
             };
 
             GraphicsDevice.RasterizerState = rs;
 
-
-        }
-
-        public override void Update(GameTime gameTime)
-        {
-            //if (Keyboard.GetState().IsKeyDown(Keys.S))
-            //{
-            //    fillMode = FillMode.Solid;
-            //}
-            //if (Keyboard.GetState().IsKeyDown(Keys.W))
-            //{
-            //    fillMode = FillMode.WireFrame;
-            //        }
-            base.Update(gameTime);
         }
 
 

@@ -9,10 +9,11 @@ namespace ECS.BaseObject
     public class EntityBase : DrawableGameComponent
     {
         public readonly Guid guid;
-        public Transform transform { get; set; }
+        public Transform Transform { get; set; } = new Transform();
 
-        public EntityBase(Game game) : base(game)
+        public EntityBase(Game game ) : base(game)
         {
+            Transform = new Transform();
 
             guid = Guid.NewGuid();
             Console.WriteLine(guid);
