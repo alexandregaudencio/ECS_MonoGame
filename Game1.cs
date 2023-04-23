@@ -1,13 +1,10 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using ECS.BaseObject;
-using ECS.Entities;
-using System;
-using Microsoft.Xna.Framework.Content;
 using ECS.Primitives;
-using System.Collections.Generic;
 using ECS.Components.Cam;
+using Microsoft.Xna.Framework;
+using Plane = ECS.Primitives.Plane;
+using ECS.Components;
 
 namespace ECS
 {
@@ -16,15 +13,14 @@ namespace ECS
         readonly GraphicsDeviceManager _graphics;
         SpriteBatch _spriteBatch;
         //private EquilateralTriangle tr;
-        private PatoSprite patoSprite;
-        private TextBase newText;
-        private BoxSprite Box;
+        //private PatoSprite patoSprite;
+        //private TextBase newText;
+        //private BoxSprite Box;
         private Cuboid cube;
-        private WireCuboid wireCuboid;
-        private WirePlane wirePlane;
 
-        private Primitives.Plane plane;
+        private Plane plane;
         private Camera camera;
+        private CameraController cameraController;
 
         public Game1()
         {
@@ -32,34 +28,31 @@ namespace ECS
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
 
-            camera = new Camera(this);
+            camera = new Camera(this, new Transform(Vector3.Zero));
+            cameraController = new CameraController(this, camera);
+
 
 
         }
 
         protected override void Initialize()
         {
+            plane = new Plane(this, Vector3.Zero, camera);
+            cube = new Cuboid(this, Vector3.Zero, camera);
 
+            //patoSprite = new PatoSprite(this, "pato", new Vector3(100,0,0), Vector3.Zero, Vector3.One/2);
+            //Boxj = new BoxSprite(this, "Images/Boxes/box1", new Vector3(15, 15, 0), Vector3.Zero, Vector3.One);
 
-            patoSprite = new PatoSprite(this, "pato", new Vector3(100,0,0), Vector3.Zero, Vector3.One/2);
-            Box = new BoxSprite(this, "Images/Boxes/box1", new Vector3(15, 15, 0), Vector3.Zero, Vector3.One);
-            newText = new TextBase(this, "string", Vector3.One, Vector3.Zero, Vector3.One);
-            //tr = new EquilateralTriangle(this, Vector3.Zero, 1, Color.Aqua);
-            plane = new Primitives.Plane(this, camera, Vector3.Zero, 5, Color.ForestGreen);
-            cube = new Cuboid(this, camera, Vector3.Zero, 1, Color.Green);
-            wireCuboid = new WireCuboid(this, camera, Vector3.Zero, 2, Color.Black);
-            wirePlane = new WirePlane(this, camera, Vector3.Zero, 10, Color.Black);
 
 
             //Components.Add(tr);
-            Components.Add(patoSprite);
-            Components.Add(newText);
-            Components.Add(Box);
+            //Components.Add(patoSprite);
+            //Components.Add(newText);
+            //Components.Add(Box);
             Components.Add(plane);
             Components.Add(cube);
-            Components.Add(wireCuboid);
-            Components.Add(wirePlane);
-            Components.Add(camera);
+            Components.Add(cameraController);
+            //Components.Add(camera);
 
             base.Initialize();
         }
@@ -83,7 +76,7 @@ namespace ECS
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Back))
                 Exit();
 
-            newText.SetText(Box.animator2D.CurrentAnimation.CurrentFrame.ToString());
+            //newText.SetText(/*Box.animator2D.CurrentAnimation.CurrentFrame.ToString()*/ "HiH");
 
 
             base.Update(gameTime);

@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ECS.Components.Cam;
+using System.Transactions;
+using ECS.Components;
 
 namespace ECS.Primitives
 {
@@ -14,7 +16,8 @@ namespace ECS.Primitives
         VertexPositionColor[] verts;
         VertexBuffer vertexBuffer;
         BasicEffect basicEffect;
-        ICameraProperties cameraProperties;
+        ICamPerspective cameraProperties;
+        Transform transform;
 
         public Vector3 Position { get; set; }
         public float Scale { get; set; }
@@ -22,12 +25,13 @@ namespace ECS.Primitives
 
 
 
-        public Plane(Game game, ICameraProperties cameraProperties, Vector3 position, float scale,  Color color) : base(game)
+        public Plane(Game game, Vector3 position, ICamPerspective cameraProperties) : base(game)
         {
-            this.cameraProperties = cameraProperties; 
+            transform = new Transform(position, Vector3.Zero, Vector3.One);
+
+            this.cameraProperties = cameraProperties;
             Position = position;
-            Scale = scale;
-            Color = color;
+            Scale = 2;
 
         }
 
@@ -36,12 +40,12 @@ namespace ECS.Primitives
             base.Initialize();
 
             verts = new VertexPositionColor[6];
-            verts[0] = new VertexPositionColor(new Vector3(Position.X -1 * Scale, Position.Y -0 , Position.Z -1 * Scale), Color);
-            verts[1] = new VertexPositionColor(new Vector3(Position.X +1 * Scale, Position.Y -0 , Position.Z -1 * Scale), Color);
-            verts[2] = new VertexPositionColor(new Vector3(Position.X +1 * Scale, Position.Y -0 , Position.Z +1 * Scale), Color);
-            verts[3] = new VertexPositionColor(new Vector3(Position.X -1 * Scale, Position.Y - 0 , Position.Z -1 * Scale), Color);
-            verts[4] = new VertexPositionColor(new Vector3(Position.X +1 * Scale, Position.Y - 0 , Position.Z +1 * Scale), Color);
-            verts[5] = new VertexPositionColor(new Vector3(Position.X -1 * Scale, Position.Y - 0 , Position.Z +1 * Scale), Color);
+            verts[0] = new VertexPositionColor(new Vector3( - 1 * Scale,  - 1,  - 1 * Scale), Color);
+            verts[1] = new VertexPositionColor(new Vector3( + 1 * Scale,  - 1,  - 1 * Scale), Color);
+            verts[2] = new VertexPositionColor(new Vector3(+ 1 * Scale,  - 1,  + 1 * Scale), Color);
+            verts[3] = new VertexPositionColor(new Vector3( - 1 * Scale, - 1,  - 1 * Scale), Color);
+            verts[4] = new VertexPositionColor(new Vector3( + 1 * Scale,  - 1,  + 1 * Scale), Color);
+            verts[5] = new VertexPositionColor(new Vector3( - 1 * Scale, - 1,  + 1 * Scale), Color);
 
             vertexBuffer = new VertexBuffer(GraphicsDevice, typeof(VertexPositionColor), verts.Length, BufferUsage.None);
             vertexBuffer.SetData(verts);
@@ -58,8 +62,9 @@ namespace ECS.Primitives
         public override void Draw(GameTime gameTime)
         {
             GraphicsDevice.SetVertexBuffer(vertexBuffer);
+            GraphicsDevice.RasterizerState = RasterizerState.CullNone;
 
-            basicEffect.World = cameraProperties.World;
+            basicEffect.World = /*cameraProperties.World;*/ transform.Matrix;
             basicEffect.View = cameraProperties.View;
             basicEffect.Projection = cameraProperties.Projection;
             basicEffect.VertexColorEnabled = true;

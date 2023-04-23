@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace ECS.Components.Cam
 {
-    public interface ICameraProperties
+    public interface ICamPerspective
     {
-        Matrix World { get; }
-        Matrix View { get;  }
+        Matrix View { get; }
         Matrix Projection { get; }
 
     }
