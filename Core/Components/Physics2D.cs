@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ECS.Components
+namespace ECS.Core.Components
 {
     public class Physics2D : GameComponent
     {
@@ -28,7 +28,7 @@ namespace ECS.Components
             this.gravity = gravity;
         }
 
-        public Physics2D(Game game,Transform transform) : base(game)
+        public Physics2D(Game game, Transform transform) : base(game)
         {
             this.transform = transform;
         }

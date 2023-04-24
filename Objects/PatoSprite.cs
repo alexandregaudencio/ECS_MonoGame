@@ -9,7 +9,7 @@
 //using Microsoft.Xna.Framework.Graphics;
 //using Microsoft.Xna.Framework.Input;
 
-//namespace ECS.Entities
+//namespace ECS
 //{
 //    public class PatoSprite : SpriteBase
 //    {

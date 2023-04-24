@@ -9,7 +9,7 @@
 //using System.Threading.Tasks;
 //using System.Xml.Schema;
 
-//namespace ECS.Entities
+//namespace ECS
 //{
 //    public class BoxSprite : SpriteBase
 //    {

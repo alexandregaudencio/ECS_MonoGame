@@ -1,17 +1,25 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using ECS.Components.Cam;
+using ECS.Core.Components.Cam;
+using ECS.Core.Components;
+using ECS.Core.Entities;
+using System.Collections.Generic;
 
-namespace ECS.Primitives
+namespace ECS.Core.Primitives
 {
-    public class Cuboid : Shape 
+    public class Cuboid : Shape
     {
 
+        public Cuboid(Game game, ICamPerspective iCamPerspective) : base(game, iCamPerspective)
+        {
+            
+        }
 
-        public Cuboid(Game game,ICamPerspective iCamPerspective) : base(game, iCamPerspective)
+        public override void Initialize()
         {
             SetVertexBuffer();
             SetIndexBuffer();
+            base.Initialize();
         }
 
         protected override void SetVertexBuffer()
@@ -33,7 +41,7 @@ namespace ECS.Primitives
                                      verts.Length,
                                      BufferUsage.None);
 
-            vertexBuffer.SetData<VertexPositionColor>(verts);
+            vertexBuffer.SetData(verts);
 
         }
 
@@ -60,7 +68,7 @@ namespace ECS.Primitives
                                                indexData.Length,
                                                BufferUsage.None);
 
-            indexBuffer.SetData<short>(indexData);
+            indexBuffer.SetData(indexData);
 
         }
 

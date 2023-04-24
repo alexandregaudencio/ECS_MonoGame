@@ -5,25 +5,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ECS.Components.Cam;
+using ECS.Core.Components.Cam;
+using ECS.Core.Components;
 
-namespace ECS.Primitives
+namespace ECS.Core.Primitives
 {
     internal class RightTriangle : Shape
     {
         public RightTriangle(Game game, ICamPerspective iCameraProperties) : base(game, iCameraProperties)
         {
-            Transform.Scale = Vector3.One *10;
+            Transform.SetScale(Vector3.One * 10);
             Transform.Translate(Vector3.Up);
             Color = Color.Gold;
 
+
+
+
+        }
+
+        public override void Initialize()
+        {
             SetVertexBuffer();
             SetIndexBuffer();
 
-            //GraphicsDevice.RasterizerState = new RasterizerState()
-            //{
-            //    CullMode = CullMode.None,
-            //};
+            GraphicsDevice.RasterizerState = new RasterizerState()
+            {
+                CullMode = CullMode.None,
+            };
+
+            base.Initialize();
         }
 
         protected override void SetVertexBuffer()
@@ -35,8 +45,8 @@ namespace ECS.Primitives
                 new VertexPositionColor(new Vector3( 1*Transform.Scale.X, 0, -0.5f*Transform.Scale.Z), Color),
             };
 
-            vertexBuffer = new VertexBuffer(GraphicsDevice,typeof(VertexPositionColor), verts.Length,BufferUsage.None);
-            vertexBuffer.SetData<VertexPositionColor>(verts);
+            vertexBuffer = new VertexBuffer(GraphicsDevice, typeof(VertexPositionColor), verts.Length, BufferUsage.None);
+            vertexBuffer.SetData(verts);
         }
 
         protected override void SetIndexBuffer()
@@ -47,7 +57,7 @@ namespace ECS.Primitives
             };
 
             indexBuffer = new IndexBuffer(GraphicsDevice, IndexElementSize.SixteenBits, indexData.Length, BufferUsage.None);
-            indexBuffer.SetData<short>(indexData);
+            indexBuffer.SetData(indexData);
 
         }
 

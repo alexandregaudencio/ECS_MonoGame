@@ -1,18 +1,20 @@
-﻿using ECS.BaseObject;
+﻿using ECS.Core.Entities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 using System.Threading.Tasks.Dataflow;
 
-namespace ECS.Components.Cam
+namespace ECS.Core.Components.Cam
 {
-    public class Camera : EntityBase, ICamPerspective, ICameraProjectionProperties, ICameraViewProperties
+    public class Camera : Entity, ICamPerspective, ICameraProjectionProperties, ICameraViewProperties
     {
-        
+
         //PROJECTION PROPERTIES
         public float FieldOfView { get; set; }
-        public float AspectRatio { 
-            get => Game.Window.ClientBounds.Width / (float)Game.Window.ClientBounds.Height; 
-            set => AspectRatio = value; 
+        public float AspectRatio
+        {
+            get => Game.Window.ClientBounds.Width / (float)Game.Window.ClientBounds.Height;
+            set => AspectRatio = value;
         }
         public float NearPlaneDistance { get; set; }
         public float FarPlaneDistance { get; set; }
@@ -34,10 +36,9 @@ namespace ECS.Components.Cam
             CameraUpVector = Vector3.Up;
 
             NearPlaneDistance = 1;
-            FarPlaneDistance = 200;
+            FarPlaneDistance = 600;
             FieldOfView = MathHelper.PiOver4;
 
-            transform.SetPosition(new Vector3(15, 10, 15));
 
         }
 

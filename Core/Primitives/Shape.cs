@@ -1,18 +1,13 @@
-﻿using ECS.BaseObject;
-using ECS.Components;
-using ECS.Components.Cam;
+﻿using ECS.Core.Components;
+using ECS.Core.Components.Cam;
+using ECS.Core.Entities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ECS.Primitives
+namespace ECS.Core.Primitives
 {
-    public abstract class Shape : EntityBase
+    public abstract class Shape : Entity
     {
 
         protected VertexPositionColor[] verts;
@@ -35,14 +30,14 @@ namespace ECS.Primitives
         {
             Transform = new Transform();
             this.iCameraProperties = iCameraProperties;
-            basicEffect = new BasicEffect(GraphicsDevice);
 
-            //GraphicsDevice.RasterizerState = new RasterizerState()
-            //{
-            //    CullMode = CullMode.None,
-            //};
+        }
 
+        public override void Initialize()
+        {
+            basicEffect = new BasicEffect(Game.GraphicsDevice);
 
+            base.Initialize();
         }
 
         protected abstract void SetVertexBuffer();
@@ -62,7 +57,7 @@ namespace ECS.Primitives
                 pass.Apply();
 
                 GraphicsDevice.DrawUserIndexedPrimitives<VertexPositionColor>(PrimitiveType.TriangleList,
-                    verts, 0, verts.Length, indexData, 0, indexData.Length /3 );
+                    verts, 0, verts.Length, indexData, 0, indexData.Length / 3);
             }
 
             base.Draw(gameTime);
@@ -71,8 +66,8 @@ namespace ECS.Primitives
 
         public void SetFillMode(FillMode fillMode)
         {
-            RasterizerState rs = new RasterizerState 
-            { 
+            RasterizerState rs = new RasterizerState
+            {
                 FillMode = fillMode
             };
 

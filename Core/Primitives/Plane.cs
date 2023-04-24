@@ -1,22 +1,19 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using System;
+using ECS.Core.Components;
+using ECS.Core.Components.Cam;
+using ECS.Core.Entities;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ECS.Components.Cam;
-using System.Transactions;
-using ECS.Components;
 
-namespace ECS.Primitives
+namespace ECS.Core.Primitives
 {
     public class Plane : Shape
     {
+
         public Plane(Game game, ICamPerspective iCameraProperties) : base(game, iCameraProperties)
         {
             Color = Color.Black;
-            Transform.Scale = Vector3.One*5;
+            Transform.SetScale(Vector3.One * 10);
             SetVertexBuffer();
             SetIndexBuffer();
             SetFillMode(FillMode.Solid);
@@ -33,9 +30,9 @@ namespace ECS.Primitives
             verts = new VertexPositionColor[]
             {
                 new VertexPositionColor(new Vector3( 1*Transform.Scale.X, 0, 1*Transform.Scale.Z), Color),
-                new VertexPositionColor(new Vector3( 1*Transform.Scale.X, 0,-1*Transform.Scale.Z), Color), 
-                new VertexPositionColor(new Vector3(-1*Transform.Scale.X, 0,-1*Transform.Scale.Z), Color), 
-                new VertexPositionColor(new Vector3(-1*Transform.Scale.X, 0, 1*Transform.Scale.Z), Color), 
+                new VertexPositionColor(new Vector3( 1*Transform.Scale.X, 0,-1*Transform.Scale.Z), Color),
+                new VertexPositionColor(new Vector3(-1*Transform.Scale.X, 0,-1*Transform.Scale.Z), Color),
+                new VertexPositionColor(new Vector3(-1*Transform.Scale.X, 0, 1*Transform.Scale.Z), Color),
             };
 
             vertexBuffer = new VertexBuffer(GraphicsDevice,
@@ -43,7 +40,7 @@ namespace ECS.Primitives
                                      verts.Length,
                                      BufferUsage.None);
 
-            vertexBuffer.SetData<VertexPositionColor>(verts);
+            vertexBuffer.SetData(verts);
 
         }
 
@@ -51,24 +48,15 @@ namespace ECS.Primitives
         {
             indexData = new short[]
             {
-                0, 1, 2, 
+                0, 1, 2,
                 0, 2, 3,
             };
 
-            indexBuffer = new IndexBuffer(GraphicsDevice,
-                                               IndexElementSize.SixteenBits,
-                                               indexData.Length,
-                                               BufferUsage.None);
-
-            indexBuffer.SetData<short>(indexData);
+            indexBuffer = new IndexBuffer(GraphicsDevice, IndexElementSize.SixteenBits, indexData.Length, BufferUsage.None);
+            indexBuffer.SetData(indexData);
 
         }
 
-
-        public override void Draw(GameTime gameTime)
-        {
-            base.Draw(gameTime);
-        }
 
 
 

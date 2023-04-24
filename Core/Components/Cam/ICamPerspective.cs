@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ECS.Components.Cam
+namespace ECS.Core.Components.Cam
 {
     public interface ICamPerspective
     {
