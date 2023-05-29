@@ -18,7 +18,7 @@ namespace ECS.Core.Components.Cam
 
 
         //View properties
-        public Vector3 CameraTarget { get; set; }
+        public Vector3 CameraTarget { get; set; } 
         public Vector3 CameraUpVector { get; set; }
 
         //CAMERA PROPERTIES
@@ -30,9 +30,7 @@ namespace ECS.Core.Components.Cam
         {
             Transform.Translate(position);
 
-            CameraTarget = Vector3.Zero;
             CameraUpVector = Vector3.Up;
-
             NearPlaneDistance = 1;
             FarPlaneDistance = 600;
             FieldOfView = MathHelper.PiOver4;

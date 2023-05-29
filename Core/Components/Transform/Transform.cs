@@ -68,9 +68,8 @@ namespace ECS.Core.Components
 
         private void UpdateTransform()
         {
-            //SRT
+            Matrix = Matrix.Invert(Matrix);
 
-            //Matrix = Matrix.Invert(Matrix);
             Matrix = Matrix.Identity;
             Matrix *= Matrix.CreateScale(Scale); //ok
             Matrix *= Matrix.CreateRotationX(Rotation.X);
@@ -80,42 +79,33 @@ namespace ECS.Core.Components
 
             Matrix *= (parent != null) ? parent.Matrix : Matrix.Identity;
 
-            //Debug.WriteLine(Matrix.Translation);
-
         }
 
-        public Matrix GetWorldMatrix()
-        {
-            return  Matrix.CreateWorld(Vector3.Zero, Vector3.Forward, Vector3.Up);
-        }
+        //public Matrix GetWorldMatrix()
+        //{
+        //    return  Matrix.CreateWorld(Vector3.Zero, Vector3.Forward, Vector3.Up);
+        //}
 
 
         public void SetTranslation(Vector3 position)
         {
 
             Translation = position;
-            //TransformChanged?.Invoke(Translation, Rotation);
-
-
         }
 
         public void Translate(Vector3 position)
         {
             Translation += position;
-            //TransformChanged?.Invoke(Translation, Rotation);
-
         }
 
         public void SetRotation(Vector3 rotation)
         {
             Rotation = rotation;
-            //TransformChanged?.Invoke(Translation, Rotation);
         }
 
         public void Rotate(Vector3 rotation)
         {
             Rotation += rotation;
-            //TransformChanged?.Invoke(Translation, Rotation);
         }
 
         public void RotateX(float value)
@@ -145,28 +135,6 @@ namespace ECS.Core.Components
 
 
 
-
-
-        //public Vector2 Vect2Position()
-        //{
-        //    return new Vector2(GetPosition.X, GetPosition.Y);
-        //}
-
-        //public Vector2 Vect2Rotation()
-        //{
-        //    return new Vector2(GetRotation.X, GetRotation.Y);
-        //}
-
-        //public Vector2 Vect2Scale()
-        //{
-        //    return new Vector2(Scale.X, Scale.Y);
-        //}
-
-
-        //public void SendTransformChanges(Transform transform)
-        //{
-        //    TransformChanged?.Invoke(transform);
-        //}
 
     }
 

@@ -24,7 +24,6 @@ namespace ECS.Core.Components.Cam
         public override void Update(GameTime gameTime)
         {
             UpdateCameraMovement(gameTime);
-
             Camera.CameraTarget = target.Translation;
         }
 
