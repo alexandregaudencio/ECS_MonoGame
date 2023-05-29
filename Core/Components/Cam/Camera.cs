@@ -26,9 +26,10 @@ namespace ECS.Core.Components.Cam
         public Matrix Projection => Matrix.CreatePerspectiveFieldOfView(FieldOfView, AspectRatio, NearPlaneDistance, FarPlaneDistance);
 
 
-        public Camera(Game game, Transform transform) : base(game)
+        public Camera(Game game, Vector3 position) : base(game)
         {
-            Transform = transform;
+            Transform.Translate(position);
+
             CameraTarget = Vector3.Zero;
             CameraUpVector = Vector3.Up;
 
@@ -38,6 +39,7 @@ namespace ECS.Core.Components.Cam
 
 
         }
+
 
 
 

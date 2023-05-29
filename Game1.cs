@@ -27,11 +27,11 @@ namespace ECS
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
 
-            camera = new Camera(this, new Transform(this, Vector3.One * 50));
+            camera = new Camera(this, new Vector3(100, 50,0));
             cameraController = new CameraController(this, camera);
 
-            windMill = new WindMill(this, camera, new Vector3(20, 0, 0));
-            windMill2 = new WindMill(this, camera, new Vector3(-20, 0, 0));
+            windMill = new WindMill(this, camera, new Vector3(0,0,30 ));
+            windMill2 = new WindMill(this, camera, new Vector3(0,0,-30));
 
         }
 
@@ -40,22 +40,10 @@ namespace ECS
             floor = new Plane(this, camera);
             floor.Transform.SetScale(Vector3.One * 100);
             floor.Color = Color.DarkGreen;
-            //plane.Transform.Scale = Vector3.One*15;
 
-            //cube = new Cube(this, camera);
-            //rightTriangle = new RightTriangle(this, camera);
-
-            //patoSprite = new PatoSprite(this, "pato", new Vector3(100,0,0), Vector3.Zero, Vector3.One/2);
-            //Boxj = new BoxSprite(this, "Images/Boxes/box1", new Vector3(15, 15, 0), Vector3.Zero, Vector3.One);
-            //Components.Add(tr);
-            //Components.Add(patoSprite);
-            //Components.Add(newText);
-            //Components.Add(Box);
+            Components.Add(camera);
             Components.Add(cameraController);
             Components.Add(floor);
-            //Components.Add(cube);
-            //Components.Add(rightTriangle);
-
             Components.Add(windMill);
             Components.Add(windMill2);
 

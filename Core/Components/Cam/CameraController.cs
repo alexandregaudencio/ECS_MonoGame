@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using System.Diagnostics;
 
 namespace ECS.Core.Components.Cam
 {
@@ -21,20 +22,20 @@ namespace ECS.Core.Components.Cam
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Left))
             {
-                Camera.Transform.Translate(Vector3.Left*10);
+                Camera.Transform.Translate(Camera.Transform.Matrix.Forward);
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Right))
             {
-                Camera.Transform.Translate(Camera.Transform.Matrix.Right);
+                Camera.Transform.Translate(Camera.Transform.Matrix.Backward);
             }
 
             if (Keyboard.GetState().IsKeyDown(Keys.Up))
             {
-                Camera.Transform.Translate(Camera.Transform.Matrix.Up);
+                Camera.Transform.Translate(Camera.Transform.Matrix.Left);
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Down))
             {
-                Camera.Transform.Translate(Camera.Transform.Matrix.Down);
+                Camera.Transform.Translate(Camera.Transform.Matrix.Right);
             }
 
 
