@@ -1,9 +1,7 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
+﻿using ECS.Core.Components;
 using ECS.Core.Components.Cam;
-using ECS.Core.Components;
-using ECS.Core.Entities;
-using System.Collections.Generic;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace ECS.Core.Primitives
 {
@@ -12,7 +10,7 @@ namespace ECS.Core.Primitives
 
         public Cuboid(Game game, ICamPerspective iCamPerspective) : base(game, iCamPerspective)
         {
-            
+
         }
 
         public override void Initialize()

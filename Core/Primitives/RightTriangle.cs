@@ -1,12 +1,7 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ECS.Core.Components;
 using ECS.Core.Components.Cam;
-using ECS.Core.Components;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace ECS.Core.Primitives
 {
@@ -28,7 +23,7 @@ namespace ECS.Core.Primitives
             SetVertexBuffer();
             SetIndexBuffer();
 
-            GraphicsDevice.RasterizerState = new RasterizerState()
+            Game.GraphicsDevice.RasterizerState = new RasterizerState()
             {
                 CullMode = CullMode.None,
             };

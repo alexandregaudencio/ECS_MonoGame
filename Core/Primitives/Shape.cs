@@ -3,7 +3,6 @@ using ECS.Core.Components.Cam;
 using ECS.Core.Entities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
 
 namespace ECS.Core.Primitives
 {
@@ -28,7 +27,7 @@ namespace ECS.Core.Primitives
 
         public Shape(Game game, ICamPerspective iCameraProperties) : base(game)
         {
-            Transform = new Transform();
+            Transform = new Transform(game);
             this.iCameraProperties = iCameraProperties;
 
         }

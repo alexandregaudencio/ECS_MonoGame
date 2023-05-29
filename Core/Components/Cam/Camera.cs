@@ -1,8 +1,5 @@
 ﻿using ECS.Core.Entities;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
-using System.Collections.Generic;
-using System.Threading.Tasks.Dataflow;
 
 namespace ECS.Core.Components.Cam
 {

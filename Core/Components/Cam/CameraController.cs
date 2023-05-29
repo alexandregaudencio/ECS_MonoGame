@@ -1,10 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ECS.Core.Components.Cam
 {
@@ -26,7 +21,7 @@ namespace ECS.Core.Components.Cam
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Left))
             {
-                Camera.Transform.Translate(Camera.Transform.Matrix.Left);
+                Camera.Transform.Translate(Vector3.Left*10);
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Right))
             {

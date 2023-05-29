@@ -1,10 +1,11 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework;
-using Plane = ECS.Core.Primitives.Plane;
-using ECS.Core.Components.Cam;
-using ECS.Core.BaseObject;
+﻿using ECS.Core.BaseObject;
 using ECS.Core.Components;
+using ECS.Core.Components.Cam;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using System;
+using Plane = ECS.Core.Primitives.Plane;
 
 namespace ECS
 {
@@ -31,11 +32,10 @@ namespace ECS
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
 
-            camera = new Camera(this, new Transform(Vector3.One*50));
+            camera = new Camera(this, new Transform(this, Vector3.One * 50));
             cameraController = new CameraController(this, camera);
 
             windMill = new WindMill(this, camera);
-
 
         }
 
@@ -53,13 +53,12 @@ namespace ECS
             //Components.Add(patoSprite);
             //Components.Add(newText);
             //Components.Add(Box);
-
+            Components.Add(cameraController);
             Components.Add(plane);
             //Components.Add(cube);
             //Components.Add(rightTriangle);
 
             Components.Add(windMill);
-            Components.Add(cameraController);
 
             base.Initialize();
         }
@@ -83,8 +82,7 @@ namespace ECS
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Back))
                 Exit();
 
-            //newText.SetText(/*Box.animator2D.CurrentAnimation.CurrentFrame.ToString()*/ "HiH");
-
+            //plane.Transform.RotateY(MathHelper.ToRadians(1)) ;
 
             base.Update(gameTime);
 

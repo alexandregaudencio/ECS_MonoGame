@@ -11,7 +11,7 @@
 //{
 //    internal class WireCuboid : Cuboid
 //    {
-        
+
 //        public WireCuboid(Game game, ICameraProperties cameraProperties, Vector3 position, float scale, Color color) : base(game, cameraProperties, position, scale, color)
 //        {
 

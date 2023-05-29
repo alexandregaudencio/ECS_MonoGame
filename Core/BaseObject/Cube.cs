@@ -3,12 +3,6 @@ using ECS.Core.Components.Cam;
 using ECS.Core.Entities;
 using ECS.Core.Primitives;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ECS.Core.BaseObject
 {

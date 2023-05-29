@@ -49,7 +49,7 @@
 //            FrameCount = frameCount;
 //            Looping = looping;
 //            FrameDuration = frameDuration;
-            
+
 //            LoadTextures(FrameCount);
 //        }
 
@@ -59,7 +59,7 @@
 //            for (int i = 0; i < frameCount; i++)
 //            {
 //                Textures2D[i] = game.Content.Load<Texture2D>(string.Concat(Path,i));
-                
+
 //            }
 //        }
 

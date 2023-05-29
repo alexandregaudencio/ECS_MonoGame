@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Camera&#xD;&#xA;">
+    <Position X="20.758" Y="0.5" Height="0.291" Width="0.892" />
+  </Comment>
+  <Class Name="ECS.Game1" Collapsed="true">
+    <Position X="18.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQIEAAAAgAAAwAAAAAAAAAAAAAAAgAKAIAAAAAAAAQ=</HashCode>
+      <FileName>Game1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECS.Core.BaseObject.WindBaldes" Collapsed="true">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Core\BaseObject\WindMill\WindBaldes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECS.Core.BaseObject.WindMill">
+    <Position X="7.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAEAACAA=</HashCode>
+      <FileName>Core\BaseObject\WindMill\WindMill.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="cuboid" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ECS.Core.BaseObject.Cube">
+    <Position X="9.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>Core\BaseObject\Cube.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECS.Core.Components.Cam.Camera" Collapsed="true">
+    <Position X="11.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAwAAAAAAAAABAAACAAQAAAAQAgA=</HashCode>
+      <FileName>Core\Components\Cam\Camera.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ECS.Core.Components.Cam.CameraController" Collapsed="true">
+    <Position X="16.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Components\Cam\CameraController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECS.Core.Components.Transform" Collapsed="true">
+    <Position X="18.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAWAAAAAAAAIBCIAIAAAAAECAgAAgAAEIEAgAAAAA=</HashCode>
+      <FileName>Core\Components\Transform\Transform.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECS.Core.Components.Physics2D" Collapsed="true">
+    <Position X="16.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQBAAiAAAAAAAAAAABAAAQAAAgEAAQAAAQEAACEAAE=</HashCode>
+      <FileName>Core\Components\Physics2D.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECS.Core.Entities.Entity" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEYAAAAAAAAQEAQIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Entities\Entity.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ECS.Core.Primitives.Cuboid" Collapsed="true">
+    <Position X="3.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAQAAABAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Primitives\Cuboid.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECS.Core.Primitives.Plane" Collapsed="true">
+    <Position X="5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAABAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Primitives\Plane.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECS.Core.Primitives.RightTriangle" Collapsed="true">
+    <Position X="1.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAwAAABAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Primitives\RightTriangle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECS.Core.Primitives.Shape" Collapsed="true">
+    <Position X="3.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAEAAJAwAAABAAAAAAABAACAAgABAAgEAAAAI=</HashCode>
+      <FileName>Core\Primitives\Shape.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="ECS.Core.Components.Cam.ICameraProjectionProperties" Collapsed="true">
+    <Position X="20.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAwAAAAAAAAAAAAACAAQAAAAAAAA=</HashCode>
+      <FileName>Core\Components\Cam\ICameraProjectionProperties.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ECS.Core.Components.Cam.ICameraViewProperties" Collapsed="true">
+    <Position X="20.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Core\Components\Cam\ICameraViewProperties.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ECS.Core.Components.Cam.ICamPerspective" Collapsed="true">
+    <Position X="20.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Core\Components\Cam\ICamPerspective.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ECS.Core.Entities.IComposite&lt;T&gt;" Collapsed="true">
+    <Position X="20.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEIAAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Entities\IComposite.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

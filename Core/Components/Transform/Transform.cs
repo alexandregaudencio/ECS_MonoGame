@@ -1,73 +1,89 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
-using System.ComponentModel;
+using System.Diagnostics;
 
 namespace ECS.Core.Components
 {
 
-    //TODO: Criar transform default que renderiza por padrão no centro da tela
-    public class Transform : Component
+    public class Transform : DrawableGameComponent/*, INotifyPropertyChanged*/
     {
+        public Transform parent { get; set; }
         public Matrix Matrix { get; private set; } = Matrix.Identity;
         public Vector3 Scale { get; private set; } = Vector3.One;
+
         public Vector3 Translation { get; private set; } = Vector3.Zero;
         public Vector3 Rotation { get; private set; } = Vector3.Zero;
-        //public Matrix Matrix => matrix;
 
-        //used to notify childs transform
-        public event Action<Transform> TransformChanged;
+        //public event PropertyChangedEventHandler PropertyChanged;
+
+        //used to notify childs transform: position, rotation, scale;
+        //public event Action<Vector3, Vector3> TransformChanged;
 
         //TODO: for 2D (sprites and text GUI)
         //public float AngleRadians => (float)Math.Atan2(Rotation.Y, Rotation.X);
         //public float AngleDegrees => (float)(AngleRadians * 180.0 / Math.PI);
 
-
-
-
-
-        public void Transformate(Transform transform)
+        public void SetParent(Transform transform)
         {
-            Translate(transform.Translation);
-
-            Rotate(transform.Rotation);
-            IncreaseScale(transform.Scale);
-
-            TransformChanged?.Invoke(transform);
+            parent = transform;
         }
 
 
 
 
-        public Transform()
+        public Transform(Game game) : base(game)
         {
+
+            //TransformChanged += Transformate;
+            //Transformate(Translation, Rotation);
         }
 
-        public Transform(Vector3 Position)
+        public Transform(Game game, Vector3 Position) : base(game)
         {
             SetTranslation(Position);
+            Transformate();
+
+
         }
 
 
-        public Transform(Vector3 position, Vector3 rotation, Vector3 scale)
+        public Transform(Game game, Vector3 position, Vector3 rotation, Vector3 scale) : base(game)
         {
             SetTranslation(position);
             SetRotation(rotation);
             SetScale(scale);
+            Transformate();
+
         }
 
-        public Transform _InstanceTransform(Vector3 position, Vector3 rotation, Vector3 scale)
+
+        public override void Update(GameTime gameTime)
         {
-            return new Transform(position, rotation, scale);
+            Transformate();
+
+            base.Update(gameTime);
         }
 
+
+        private void Transformate()
+        {
+            Matrix = (parent != null) ? parent.Matrix : Matrix.Identity;
+
+            Matrix *= Matrix.CreateTranslation(Translation);
+
+            Matrix *= Matrix.CreateRotationX(Rotation.X);
+            Matrix *= Matrix.CreateRotationY(Rotation.Y);
+            Matrix *= Matrix.CreateRotationZ(Rotation.Z);
+            Matrix = Matrix.Invert(Matrix);
+            //Debug.WriteLine(Matrix.Translation);
+
+        }
 
         public void SetTranslation(Vector3 position)
         {
-            Translation = position;
-            Matrix = Matrix.Identity;
-            Matrix *= Matrix.CreateTranslation(position);
 
-            TransformChanged?.Invoke(_InstanceTransform(position, Vector3.Zero, Vector3.One));
+            Translation = position;
+            //TransformChanged?.Invoke(Translation, Rotation);
 
 
         }
@@ -75,61 +91,47 @@ namespace ECS.Core.Components
         public void Translate(Vector3 position)
         {
             Translation += position;
-            Matrix = Matrix.Identity;
-            Matrix *= Matrix.CreateTranslation(position);
+            //TransformChanged?.Invoke(Translation, Rotation);
 
-            TransformChanged?.Invoke(_InstanceTransform(position, Vector3.Zero, Vector3.One));
+        }
 
+        public void SetRotation(Vector3 rotation)
+        {
+            Rotation = rotation;
+            //TransformChanged?.Invoke(Translation, Rotation);
         }
 
         public void Rotate(Vector3 rotation)
         {
             Rotation += rotation;
-            Matrix = Matrix.Identity;
-            Matrix *= Matrix.CreateRotationX(Rotation.X);
-            Matrix *= Matrix.CreateRotationY(Rotation.Y);
-            Matrix *= Matrix.CreateRotationZ(Rotation.Z);
-            Matrix *= Matrix.CreateTranslation(Translation);
-
-            TransformChanged?.Invoke(_InstanceTransform(Vector3.Zero, rotation, Vector3.One));
+            //TransformChanged?.Invoke(Translation, Rotation);
         }
-        public void SetRotation(Vector3 rotation)
-        {
-            Rotation = rotation;
-            Matrix = Matrix.Identity;
-            Matrix *= Matrix.CreateRotationX(Rotation.X);
-            Matrix *= Matrix.CreateRotationY(Rotation.Y);
-            Matrix *= Matrix.CreateRotationZ(Rotation.Z);
-            Matrix *= Matrix.CreateTranslation(Translation);
 
-            TransformChanged?.Invoke(_InstanceTransform(Vector3.Zero, rotation, Vector3.One));
-        }
         public void RotateX(float value)
         {
-            Rotate(Vector3.Right * value);
+            Rotate(new Vector3(value, 0, 0));
         }
         public void RotateY(float value)
         {
-            Rotate(Vector3.Up * value);
+            Rotate(new Vector3(0, value, 0));
         }
         public void RotateZ(float value)
         {
-            Rotate(Vector3.Forward * value);
-
+            Rotate(new Vector3(0, 0, value));
         }
 
 
 
-        public void IncreaseScale(Vector3 scale) {
-            Scale += scale;
-           // Scale *= scale;
 
-
-        }
         public void SetScale(Vector3 scale)
         {
             Scale = scale;
+        }
 
+        public void IncreaseScale(Vector3 scale)
+        {
+            Scale += scale;
+            // Scale *= scale;
         }
 
 
@@ -158,4 +160,8 @@ namespace ECS.Core.Components
         //}
 
     }
+
+
+
 }
+

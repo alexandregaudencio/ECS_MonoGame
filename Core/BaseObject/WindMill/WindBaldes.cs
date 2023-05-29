@@ -1,15 +1,9 @@
-﻿using ECS.Core.Components;
-using ECS.Core.Components.Cam;
+﻿using ECS.Core.Components.Cam;
 using ECS.Core.Entities;
 using ECS.Core.Primitives;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ECS.Core.BaseObject
 {
@@ -17,38 +11,39 @@ namespace ECS.Core.BaseObject
     {
 
         private List<Shape> blades = new List<Shape>();
-        private Vector3 bladeScale = new Vector3(1, 0, -0.4f);
+        private Vector3 bladeScale = new Vector3(14, 0, -0.4f);
         public WindBaldes(Game game, ICamPerspective camPerspective) : base(game)
         {
 
             GenerateBlades(game, camPerspective);
             AddChild(blades);
 
-
         }
 
         public override void Initialize()
         {
             Transform.RotateZ(MathF.PI / 2);
+            Transform.Translate(Transform.Matrix.Up * 2.1f);
+            Transform.RotateZ(-MathF.PI / 2);
 
-            foreach (Shape blades in blades)
+            foreach (Shape blade in blades)
             {
-                Game.Components.Add(blades);
-                
+                Game.Components.Add(blade);
             }
-            
+            SetBladesLocation();
 
             base.Initialize();
         }
 
         public override void Update(GameTime gameTime)
         {
-            //Transform.RotateX(0.000001f * gameTime.ElapsedGameTime.Milliseconds);
+            Transform.RotateY(0.001f * gameTime.ElapsedGameTime.Milliseconds);
 
             base.Update(gameTime);
         }
 
 
+        int randomColorIndex => new Random().Next(255);
 
         private void GenerateBlades(Game game, ICamPerspective camPerspective)
         {
@@ -56,12 +51,22 @@ namespace ECS.Core.BaseObject
             {
                 Shape blade = new RightTriangle(game, camPerspective);
                 blade.Transform.IncreaseScale(bladeScale);
-                blade.Transform.RotateY(i * (float)Math.PI / 2);
-                blade.Transform.RotateZ(Transform.Rotation.Z);
+                blade.Color = new Color(randomColorIndex, randomColorIndex, randomColorIndex);
+                blade.Transform.RotateX(i * (float)(MathF.PI / 2));
 
                 blades.Add(blade);
             }
         }
+
+        private void SetBladesLocation()
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                blades[i].Transform.RotateZ(i * MathF.PI / 2);
+
+            }
+        }
+
 
     }
 }

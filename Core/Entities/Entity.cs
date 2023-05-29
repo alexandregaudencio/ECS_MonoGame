@@ -2,24 +2,24 @@
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Transactions;
 
 namespace ECS.Core.Entities
 {
     public abstract class Entity : DrawableGameComponent, IComposite<Entity>
     {
         public readonly Guid guid;
-        public Transform Transform { get; set; } = new Transform();
+        public Transform Transform { get; set; }
         public List<Entity> Childs { get; set; } = new List<Entity>();
 
 
         public Entity(Game game) : base(game)
         {
+            Transform = new Transform(game);
             guid = Guid.NewGuid();
-            Transform.TransformChanged += ParentTransformChilds;
+            PassTransformToChilds();
+            //Transform.TransformChanged += TransformationToChilds;
         }
+
 
         public void AddChild(params Entity[] objs)
         {
@@ -28,6 +28,9 @@ namespace ECS.Core.Entities
                 Childs.Add(item);
 
             }
+           
+            PassTransformToChilds();
+
 
         }
 
@@ -36,9 +39,13 @@ namespace ECS.Core.Entities
             foreach (Entity item in objs)
             {
                 Childs.Add(item);
-
             }
+
+            PassTransformToChilds();
+
+
         }
+
         public void RemoveChild(int indexOf)
         {
             if (Childs == null)
@@ -46,20 +53,27 @@ namespace ECS.Core.Entities
             Childs.RemoveAt(indexOf);
         }
 
-
         public override void Initialize()
         {
+            Game.Components.Add(Transform);
             base.Initialize();
         }
 
-        private void ParentTransformChilds(Transform transform)
-        {
-            if (Childs == null) return;
+        //private void TransformationToChilds()
+        //{
+        //    if (Childs == null) return;
 
+        //    foreach (Entity entity in Childs)
+        //    {
+        //        entity.Transform?.SetParent(Transform);
+        //    }
+        //}
+        private void PassTransformToChilds()
+        {
+            if (Childs.Count == 0) return;
             foreach (Entity entity in Childs)
             {
-
-                entity.Transform?.Transformate(transform);
+                entity.Transform.SetParent(Transform);
             }
         }
 
