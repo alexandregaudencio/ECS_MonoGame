@@ -71,6 +71,8 @@ namespace ECS
 
             //plane.Transform.RotateY(MathHelper.ToRadians(1)) ;
 
+            if (Keyboard.GetState().IsKeyDown(Keys.NumPad1)) cameraController.SetCameraTarget(windMill);
+            if (Keyboard.GetState().IsKeyDown(Keys.NumPad2)) cameraController.SetCameraTarget(windMill2);
             base.Update(gameTime);
 
         }
