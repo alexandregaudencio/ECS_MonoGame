@@ -13,26 +13,19 @@
   <Class Name="ECS.Core.BaseObject.WindBaldes" Collapsed="true">
     <Position X="0.5" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAEAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <HashCode>AgQAAEAAAAAEAQAAAAAAAAAAAAAAAAAAAAAAAAAACCA=</HashCode>
       <FileName>Core\BaseObject\WindMill\WindBaldes.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ECS.Core.BaseObject.WindMill">
     <Position X="7.75" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAEAACAA=</HashCode>
+      <HashCode>AgQAAAgAAAAAAQAAAAAAAAAAAAAAAAAAAAQAAEAACAA=</HashCode>
       <FileName>Core\BaseObject\WindMill\WindMill.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Field Name="cuboid" />
     </ShowAsAssociation>
-  </Class>
-  <Class Name="ECS.Core.BaseObject.Cube">
-    <Position X="9.75" Y="2" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAABAA=</HashCode>
-      <FileName>Core\BaseObject\Cube.cs</FileName>
-    </TypeIdentifier>
   </Class>
   <Class Name="ECS.Core.Components.Cam.Camera" Collapsed="true">
     <Position X="11.75" Y="2" Width="1.5" />

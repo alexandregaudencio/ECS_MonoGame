@@ -9,19 +9,12 @@ namespace ECS.Core.Primitives
     {
         public RightTriangle(Game game, ICamPerspective iCameraProperties) : base(game, iCameraProperties)
         {
-            Transform.SetScale(Vector3.One * 10);
-            Transform.Translate(Vector3.Up);
-            Color = Color.Gold;
-
-
-
-
         }
 
         public override void Initialize()
         {
-            SetVertexBuffer();
-            SetIndexBuffer();
+            //SetVertexBuffer();
+            //SetIndexBuffer();
 
             Game.GraphicsDevice.RasterizerState = new RasterizerState()
             {
@@ -35,9 +28,9 @@ namespace ECS.Core.Primitives
         {
             verts = new VertexPositionColor[]
             {
-                new VertexPositionColor(new Vector3( 0*Transform.Scale.X, 0,  0*Transform.Scale.Z), Color),
-                new VertexPositionColor(new Vector3( 1*Transform.Scale.X, 0, 0.5f*Transform.Scale.Z), Color),
-                new VertexPositionColor(new Vector3( 1*Transform.Scale.X, 0, -0.5f*Transform.Scale.Z), Color),
+                new VertexPositionColor(new Vector3( 0, 0,     0), Color),
+                new VertexPositionColor(new Vector3( 1, 0,  0.5f), Color),
+                new VertexPositionColor(new Vector3( 1, 0, -0.5f), Color),
             };
 
             vertexBuffer = new VertexBuffer(GraphicsDevice, typeof(VertexPositionColor), verts.Length, BufferUsage.None);

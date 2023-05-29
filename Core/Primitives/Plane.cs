@@ -27,10 +27,10 @@ namespace ECS.Core.Primitives
         {
             verts = new VertexPositionColor[]
             {
-                new VertexPositionColor(new Vector3( 1*Transform.Scale.X, 0, 1*Transform.Scale.Z), Color),
-                new VertexPositionColor(new Vector3( 1*Transform.Scale.X, 0,-1*Transform.Scale.Z), Color),
-                new VertexPositionColor(new Vector3(-1*Transform.Scale.X, 0,-1*Transform.Scale.Z), Color),
-                new VertexPositionColor(new Vector3(-1*Transform.Scale.X, 0, 1*Transform.Scale.Z), Color),
+                new VertexPositionColor(new Vector3( 1, 0, 1), Color),
+                new VertexPositionColor(new Vector3( 1, 0,-1), Color),
+                new VertexPositionColor(new Vector3(-1, 0,-1), Color),
+                new VertexPositionColor(new Vector3(-1, 0, 1), Color),
             };
 
             vertexBuffer = new VertexBuffer(GraphicsDevice,

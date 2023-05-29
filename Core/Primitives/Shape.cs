@@ -35,7 +35,8 @@ namespace ECS.Core.Primitives
         public override void Initialize()
         {
             basicEffect = new BasicEffect(Game.GraphicsDevice);
-
+            SetVertexBuffer();
+            SetIndexBuffer();
             base.Initialize();
         }
 
@@ -73,7 +74,6 @@ namespace ECS.Core.Primitives
             GraphicsDevice.RasterizerState = rs;
 
         }
-
 
 
 

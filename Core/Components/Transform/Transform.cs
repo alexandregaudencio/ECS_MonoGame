@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Diagnostics;
 
@@ -41,7 +42,7 @@ namespace ECS.Core.Components
         public Transform(Game game, Vector3 Position) : base(game)
         {
             SetTranslation(Position);
-            Transformate();
+            UpdateTransform();
 
 
         }
@@ -52,32 +53,42 @@ namespace ECS.Core.Components
             SetTranslation(position);
             SetRotation(rotation);
             SetScale(scale);
-            Transformate();
+            UpdateTransform();
 
         }
 
 
         public override void Update(GameTime gameTime)
         {
-            Transformate();
+           /* if (Keyboard.GetState().IsKeyDown(Keys.Space)) */UpdateTransform();
 
             base.Update(gameTime);
         }
 
 
-        private void Transformate()
+        private void UpdateTransform()
         {
-            Matrix = (parent != null) ? parent.Matrix : Matrix.Identity;
+            //SRT
 
-            Matrix *= Matrix.CreateTranslation(Translation);
-
+            //Matrix = Matrix.Invert(Matrix);
+            Matrix = Matrix.Identity;
+            Matrix *= Matrix.CreateScale(Scale); //ok
             Matrix *= Matrix.CreateRotationX(Rotation.X);
             Matrix *= Matrix.CreateRotationY(Rotation.Y);
             Matrix *= Matrix.CreateRotationZ(Rotation.Z);
-            Matrix = Matrix.Invert(Matrix);
+            Matrix *= Matrix.CreateTranslation(Translation);
+
+            Matrix *= (parent != null) ? parent.Matrix : Matrix.Identity;
+
             //Debug.WriteLine(Matrix.Translation);
 
         }
+
+        public Matrix GetWorldMatrix()
+        {
+            return  Matrix.CreateWorld(Vector3.Zero, Vector3.Forward, Vector3.Up);
+        }
+
 
         public void SetTranslation(Vector3 position)
         {
@@ -121,8 +132,6 @@ namespace ECS.Core.Components
         }
 
 
-
-
         public void SetScale(Vector3 scale)
         {
             Scale = scale;
@@ -131,8 +140,8 @@ namespace ECS.Core.Components
         public void IncreaseScale(Vector3 scale)
         {
             Scale += scale;
-            // Scale *= scale;
         }
+
 
 
 

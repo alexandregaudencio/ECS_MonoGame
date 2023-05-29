@@ -13,16 +13,11 @@ namespace ECS
     {
         readonly GraphicsDeviceManager _graphics;
         SpriteBatch _spriteBatch;
-        //private EquilateralTriangle tr;
-        //private PatoSprite patoSprite;
-        //private TextBase newText;
-        //private BoxSprite Box;
 
-        //private RightTriangle rightTriangle;
-        //private Cube cube;
-        private Plane plane;
+        private Plane floor;
 
         private WindMill windMill;
+        private WindMill windMill2;
         private Camera camera;
         private CameraController cameraController;
 
@@ -35,13 +30,16 @@ namespace ECS
             camera = new Camera(this, new Transform(this, Vector3.One * 50));
             cameraController = new CameraController(this, camera);
 
-            windMill = new WindMill(this, camera);
+            windMill = new WindMill(this, camera, new Vector3(20, 0, 0));
+            windMill2 = new WindMill(this, camera, new Vector3(-20, 0, 0));
 
         }
 
         protected override void Initialize()
         {
-            plane = new Plane(this, camera);
+            floor = new Plane(this, camera);
+            floor.Transform.SetScale(Vector3.One * 100);
+            floor.Color = Color.DarkGreen;
             //plane.Transform.Scale = Vector3.One*15;
 
             //cube = new Cube(this, camera);
@@ -54,11 +52,12 @@ namespace ECS
             //Components.Add(newText);
             //Components.Add(Box);
             Components.Add(cameraController);
-            Components.Add(plane);
+            Components.Add(floor);
             //Components.Add(cube);
             //Components.Add(rightTriangle);
 
             Components.Add(windMill);
+            Components.Add(windMill2);
 
             base.Initialize();
         }

@@ -11,7 +11,7 @@ namespace ECS.Core.BaseObject
     {
 
         private List<Shape> blades = new List<Shape>();
-        private Vector3 bladeScale = new Vector3(14, 0, -0.4f);
+        private Vector3 bladeScale = new Vector3(3, 0, 1.5f)*5;
         public WindBaldes(Game game, ICamPerspective camPerspective) : base(game)
         {
 
@@ -22,25 +22,17 @@ namespace ECS.Core.BaseObject
 
         public override void Initialize()
         {
-            Transform.RotateZ(MathF.PI / 2);
-            Transform.Translate(Transform.Matrix.Up * 2.1f);
-            Transform.RotateZ(-MathF.PI / 2);
 
             foreach (Shape blade in blades)
             {
                 Game.Components.Add(blade);
             }
+
             SetBladesLocation();
 
             base.Initialize();
         }
 
-        public override void Update(GameTime gameTime)
-        {
-            Transform.RotateY(0.001f * gameTime.ElapsedGameTime.Milliseconds);
-
-            base.Update(gameTime);
-        }
 
 
         int randomColorIndex => new Random().Next(255);
@@ -50,9 +42,8 @@ namespace ECS.Core.BaseObject
             for (int i = 0; i < 4; i++)
             {
                 Shape blade = new RightTriangle(game, camPerspective);
-                blade.Transform.IncreaseScale(bladeScale);
+                blade.Transform.SetScale(bladeScale);
                 blade.Color = new Color(randomColorIndex, randomColorIndex, randomColorIndex);
-                blade.Transform.RotateX(i * (float)(MathF.PI / 2));
 
                 blades.Add(blade);
             }
@@ -62,10 +53,20 @@ namespace ECS.Core.BaseObject
         {
             for (int i = 0; i < 4; i++)
             {
-                blades[i].Transform.RotateZ(i * MathF.PI / 2);
+                blades[i].Transform.RotateY(i*MathF.PI / 2);
+                blades[i].Transform.RotateZ(MathF.PI / 2);
 
             }
+
         }
+
+        public override void Update(GameTime gameTime)
+        {
+
+            base.Update(gameTime);
+        }
+
+
 
 
     }

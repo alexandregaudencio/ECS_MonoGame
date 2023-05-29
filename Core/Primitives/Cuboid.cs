@@ -12,7 +12,10 @@ namespace ECS.Core.Primitives
         {
 
         }
-
+        public Cuboid(Game game, ICamPerspective iCamPerspective, Color color) : base(game, iCamPerspective)
+        {
+            Color = color;
+        }
         public override void Initialize()
         {
             SetVertexBuffer();
@@ -24,14 +27,14 @@ namespace ECS.Core.Primitives
         {
             verts = new VertexPositionColor[]
             {
-                new VertexPositionColor(new Vector3(-1*Transform.Scale.X, 1*Transform.Scale.Y, 1*Transform.Scale.Z), Color), // 0
-                new VertexPositionColor(new Vector3( 1*Transform.Scale.X, 1*Transform.Scale.Y, 1*Transform.Scale.Z), Color), // 1
-                new VertexPositionColor(new Vector3( 1*Transform.Scale.X,-1*Transform.Scale.Y, 1*Transform.Scale.Z), Color), // 2
-                new VertexPositionColor(new Vector3(-1*Transform.Scale.X,-1*Transform.Scale.Y, 1*Transform.Scale.Z), Color), // 3
-                new VertexPositionColor(new Vector3(-1*Transform.Scale.X, 1*Transform.Scale.Y,-1*Transform.Scale.Z), Color), // 4
-                new VertexPositionColor(new Vector3( 1*Transform.Scale.X, 1*Transform.Scale.Y,-1*Transform.Scale.Z), Color), // 5
-                new VertexPositionColor(new Vector3( 1*Transform.Scale.X,-1*Transform.Scale.Y,-1*Transform.Scale.Z), Color), // 6
-                new VertexPositionColor(new Vector3(-1*Transform.Scale.X,-1*Transform.Scale.Y,-1*Transform.Scale.Z), Color), // 7
+                new VertexPositionColor(new Vector3(-1, 1, 1), Color), // 0
+                new VertexPositionColor(new Vector3( 1, 1, 1), Color), // 1
+                new VertexPositionColor(new Vector3( 1,-1, 1), Color), // 2
+                new VertexPositionColor(new Vector3(-1,-1, 1), Color), // 3
+                new VertexPositionColor(new Vector3(-1, 1,-1), Color), // 4
+                new VertexPositionColor(new Vector3( 1, 1,-1), Color), // 5
+                new VertexPositionColor(new Vector3( 1,-1,-1), Color), // 6
+                new VertexPositionColor(new Vector3(-1,-1,-1), Color), // 7
             };
 
             vertexBuffer = new VertexBuffer(GraphicsDevice,
