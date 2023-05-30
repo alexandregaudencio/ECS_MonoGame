@@ -44,7 +44,7 @@ namespace ECS.Core.BaseObject
         {
             for (int i = 0; i < 4; i++)
             {
-                Shape blade = new RightTriangle(game, camPerspective, new Color().RandomColor(), "madeira");
+                Shape blade = new RightTriangle(game, camPerspective, new Color().Random(), "madeira");
                 blade.Transform.SetScale(bladeScale);
 
                 blades.Add(blade);

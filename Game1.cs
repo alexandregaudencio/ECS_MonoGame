@@ -1,6 +1,8 @@
 ﻿using ECS.Core.BaseObject;
+using ECS.Core.BaseObject.House;
 using ECS.Core.Components;
 using ECS.Core.Components.Cam;
+using ECS.Core.Entities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -16,8 +18,9 @@ namespace ECS
 
         private Plane floor;
 
-        private WindMill windMill;
-        private WindMill windMill2;
+        //private WindMill windMill;
+        //private WindMill windMill2;
+        private House house;
         private Camera camera;
         private CameraController cameraController;
 
@@ -30,21 +33,21 @@ namespace ECS
             camera = new Camera(this, new Vector3(100, 50,0));
             cameraController = new CameraController(this, camera);
 
-            windMill = new WindMill(this, camera, new Vector3(0,0,30 ));
-            windMill2 = new WindMill(this, camera, new Vector3(0,0,-30));
+            floor = new Plane(this, camera, Color.DarkGreen);
+            floor.Transform.SetScale(Vector3.One * 1000);
 
+            //house = new House(this, camera);
+            //windMill = new WindMill(this, camera, new Vector3(0,0,30 ));
         }
 
         protected override void Initialize()
         {
-            floor = new Plane(this, camera, Color.White, "madeira" );
-            floor.Transform.SetScale(Vector3.One * 100);
 
             Components.Add(camera);
             Components.Add(cameraController);
             Components.Add(floor);
-            Components.Add(windMill);
-            Components.Add(windMill2);
+            //Components.Add(house);
+            //Components.Add(windMill);
 
             base.Initialize();
         }
@@ -69,9 +72,11 @@ namespace ECS
 
             //plane.Transform.RotateY(MathHelper.ToRadians(1)) ;
 
-            if (Keyboard.GetState().IsKeyDown(Keys.NumPad1)) cameraController.SetCameraTarget(windMill);
-            if (Keyboard.GetState().IsKeyDown(Keys.NumPad2)) cameraController.SetCameraTarget(windMill2);
+            if (Keyboard.GetState().IsKeyDown(Keys.NumPad1)) cameraController.SetCameraTarget(house.Transform);
+            if (Keyboard.GetState().IsKeyDown(Keys.NumPad0)) cameraController.SetCameraTarget(new Transform(this));
             base.Update(gameTime);
+
+
 
         }
 

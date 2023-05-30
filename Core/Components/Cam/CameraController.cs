@@ -28,9 +28,9 @@ namespace ECS.Core.Components.Cam
         }
 
 
-        public void SetCameraTarget(Entity entity)
+        public void SetCameraTarget(Transform transform)
         {
-            target = entity.Transform;
+            target = transform;
         }
 
 

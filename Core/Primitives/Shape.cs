@@ -23,15 +23,10 @@ namespace ECS.Core.Primitives
 
         private ICamPerspective iCameraProperties;
 
-        //public Shape(Game game, ICamPerspective iCameraProperties, string texturePath = "") : base(game)
-        //{
-        //    Transform = new Transform(game);
-        //    this.iCameraProperties = iCameraProperties;
-        //    this.texturePath = texturePath;
 
-        //}
-        public Shape(Game game, ICamPerspective iCameraProperties, Color color, string texturePath = "") : base(game)
+        public Shape(Game game, ICamPerspective iCameraProperties, Color color, string texturePath) : base(game)
         {
+
             Transform = new Transform(game);
             this.iCameraProperties = iCameraProperties;
             this.texturePath = texturePath;
@@ -45,9 +40,7 @@ namespace ECS.Core.Primitives
                 texture = Game.Content.Load<Texture2D>("default");
                 return;
             }
-            texture = Game.Content.Load<Texture2D>("madeira");
-
-
+            texture = Game.Content.Load<Texture2D>(texturePath);
 
             base.LoadContent();
         }
@@ -60,7 +53,11 @@ namespace ECS.Core.Primitives
             SetVertexTexture();
             SetIndexBuffer();
             SetVertexBuffer();
-            
+
+            Game.GraphicsDevice.RasterizerState = new RasterizerState()
+            {
+                CullMode = CullMode.None,
+            };
             base.Initialize();
         }
 
@@ -116,6 +113,12 @@ namespace ECS.Core.Primitives
 
         }
 
+
+        //public void SetWireActive(bool wireActive)
+        //{
+        //    if(wireActive) SetFillMode(FillMode.WireFrame);
+        //    else SetFillMode(FillMode.Solid);
+        //}
 
 
     }

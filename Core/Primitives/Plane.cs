@@ -9,36 +9,8 @@ namespace ECS.Core.Primitives
     {
 
 
-        //public Plane(Game game, ICamPerspective iCameraProperties) : base(game, iCameraProperties)
-        //{
-
-        //}
-
-        //public Plane(Game game, ICamPerspective iCameraProperties, Color color) : base(game, iCameraProperties, color)
-        //{
-        //    SetFillMode(FillMode.Solid);
-        //    Transform.SetScale(Vector3.One * 10);
-        //    SetFillMode(FillMode.Solid);
-        //    Color = color;
-        //    //para ver  de costas também
-        //    //Game.GraphicsDevice.RasterizerState = new RasterizerState()
-        //    //{
-        //    //    CullMode = CullMode.None,
-        //    //};
-
-        //}
-        public Plane(Game game, ICamPerspective iCameraProperties, Color color, string texturePath = "") : base(game, iCameraProperties, color)
+        public Plane(Game game, ICamPerspective iCameraProperties, Color color, string texturePath = "") : base(game, iCameraProperties, color, texturePath)
         {
-            SetFillMode(FillMode.Solid);
-            Transform.SetScale(Vector3.One * 10);
-            SetFillMode(FillMode.Solid);
-            Color = color;
-            this.texturePath = texturePath;
-            //para ver  de costas também
-            //Game.GraphicsDevice.RasterizerState = new RasterizerState()
-            //{
-            //    CullMode = CullMode.None,
-            //};
 
         }
 

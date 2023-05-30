@@ -8,16 +8,13 @@ namespace ECS.Core.Primitives
     public class Cuboid : Shape
     {
 
-        public Cuboid(Game game, ICamPerspective iCamPerspective, Color color, string texturePath = "") : base(game, iCamPerspective, color)
+        public Cuboid(Game game, ICamPerspective iCamPerspective, Color color, string texturePath = "") : base(game, iCamPerspective, color, texturePath)
         {
-            this.texturePath = texturePath;
-            this.Color = color;
+
         }
 
         public override void Initialize()
         {
-            //SetVertexBuffer();
-            //SetIndexBuffer();
             base.Initialize();
         }
 
@@ -25,10 +22,10 @@ namespace ECS.Core.Primitives
         {
             vertsTexture = new VertexPositionColorTexture[]
             {
-                new VertexPositionColorTexture(new Vector3(-1, 1, 1), Color, new Vector2(0,0)), // 0
-                new VertexPositionColorTexture(new Vector3( 1, 1, 1), Color, new Vector2(1,0)), // 1
-                new VertexPositionColorTexture(new Vector3( 1,-1, 1), Color, new Vector2(1,1)), // 2
-                new VertexPositionColorTexture(new Vector3(-1,-1, 1), Color, new Vector2(0,1)), // 3
+                new VertexPositionColorTexture(new Vector3(-1, 1, 1), Color, new Vector2(1,0)), // 0
+                new VertexPositionColorTexture(new Vector3( 1, 1, 1), Color, new Vector2(0,0)), // 1
+                new VertexPositionColorTexture(new Vector3( 1,-1, 1), Color, new Vector2(0,1)), // 2
+                new VertexPositionColorTexture(new Vector3(-1,-1, 1), Color, new Vector2(1,1)), // 3
                 new VertexPositionColorTexture(new Vector3(-1, 1,-1), Color, new Vector2(0,1)), // 4
                 new VertexPositionColorTexture(new Vector3( 1, 1,-1), Color, new Vector2(1,1)), // 5
                 new VertexPositionColorTexture(new Vector3( 1,-1,-1), Color, new Vector2(1,0)), // 6

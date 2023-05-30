@@ -7,18 +7,13 @@ namespace ECS.Core.Primitives
 {
     internal class RightTriangle : Shape
     {
-        public RightTriangle(Game game, ICamPerspective iCameraProperties, Color color = default, string texturePath = "") : base(game, iCameraProperties, color)
+        public RightTriangle(Game game, ICamPerspective iCameraProperties, Color color = default, string texturePath = "") : base(game, iCameraProperties, color, texturePath)
         {
-            this.texturePath = texturePath;
-            this.Color = color;
         }
 
         public override void Initialize()
         {
-            Game.GraphicsDevice.RasterizerState = new RasterizerState()
-            {
-                CullMode = CullMode.None,
-            };
+
 
             base.Initialize();
         }
