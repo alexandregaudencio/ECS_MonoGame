@@ -23,7 +23,7 @@ namespace ECS.Core.BaseObject
         {
             Transform.Translate(position);
 
-            cuboid = new Cuboid(game, camPerspective, RandomColor);
+            cuboid = new Cuboid(game, camPerspective, Color.White, "madeira");
             cuboid.Transform.SetScale(new Vector3(5, 10, 5));
             cuboid.Transform.Translate(Vector3.UnitY*10);
 

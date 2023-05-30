@@ -17,7 +17,6 @@ namespace ECS.Core.Entities
             Transform = new Transform(game);
             guid = Guid.NewGuid();
             PassTransformToChilds();
-            //Transform.TransformChanged += TransformationToChilds;
         }
 
 
@@ -33,6 +32,7 @@ namespace ECS.Core.Entities
 
 
         }
+        
 
         public void AddChild(IEnumerable<Entity> objs)
         {
@@ -42,7 +42,6 @@ namespace ECS.Core.Entities
             }
 
             PassTransformToChilds();
-
 
         }
 
@@ -59,15 +58,6 @@ namespace ECS.Core.Entities
             base.Initialize();
         }
 
-        //private void TransformationToChilds()
-        //{
-        //    if (Childs == null) return;
-
-        //    foreach (Entity entity in Childs)
-        //    {
-        //        entity.Transform?.SetParent(Transform);
-        //    }
-        //}
         private void PassTransformToChilds()
         {
             if (Childs.Count == 0) return;
@@ -76,6 +66,7 @@ namespace ECS.Core.Entities
                 entity.Transform.SetParent(Transform);
             }
         }
+
 
 
     }

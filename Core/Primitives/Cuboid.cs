@@ -8,41 +8,33 @@ namespace ECS.Core.Primitives
     public class Cuboid : Shape
     {
 
-        public Cuboid(Game game, ICamPerspective iCamPerspective) : base(game, iCamPerspective)
+        public Cuboid(Game game, ICamPerspective iCamPerspective, Color color, string texturePath = "") : base(game, iCamPerspective, color)
         {
+            this.texturePath = texturePath;
+            this.Color = color;
+        }
 
-        }
-        public Cuboid(Game game, ICamPerspective iCamPerspective, Color color) : base(game, iCamPerspective)
-        {
-            Color = color;
-        }
         public override void Initialize()
         {
-            SetVertexBuffer();
-            SetIndexBuffer();
+            //SetVertexBuffer();
+            //SetIndexBuffer();
             base.Initialize();
         }
 
-        protected override void SetVertexBuffer()
+        protected override void SetVertexTexture()
         {
-            verts = new VertexPositionColor[]
+            vertsTexture = new VertexPositionColorTexture[]
             {
-                new VertexPositionColor(new Vector3(-1, 1, 1), Color), // 0
-                new VertexPositionColor(new Vector3( 1, 1, 1), Color), // 1
-                new VertexPositionColor(new Vector3( 1,-1, 1), Color), // 2
-                new VertexPositionColor(new Vector3(-1,-1, 1), Color), // 3
-                new VertexPositionColor(new Vector3(-1, 1,-1), Color), // 4
-                new VertexPositionColor(new Vector3( 1, 1,-1), Color), // 5
-                new VertexPositionColor(new Vector3( 1,-1,-1), Color), // 6
-                new VertexPositionColor(new Vector3(-1,-1,-1), Color), // 7
+                new VertexPositionColorTexture(new Vector3(-1, 1, 1), Color, new Vector2(0,0)), // 0
+                new VertexPositionColorTexture(new Vector3( 1, 1, 1), Color, new Vector2(1,0)), // 1
+                new VertexPositionColorTexture(new Vector3( 1,-1, 1), Color, new Vector2(1,1)), // 2
+                new VertexPositionColorTexture(new Vector3(-1,-1, 1), Color, new Vector2(0,1)), // 3
+                new VertexPositionColorTexture(new Vector3(-1, 1,-1), Color, new Vector2(0,1)), // 4
+                new VertexPositionColorTexture(new Vector3( 1, 1,-1), Color, new Vector2(1,1)), // 5
+                new VertexPositionColorTexture(new Vector3( 1,-1,-1), Color, new Vector2(1,0)), // 6
+                new VertexPositionColorTexture(new Vector3(-1,-1,-1), Color, new Vector2(1,1)) // 7
             };
 
-            vertexBuffer = new VertexBuffer(GraphicsDevice,
-                                     typeof(VertexPositionColor),
-                                     verts.Length,
-                                     BufferUsage.None);
-
-            vertexBuffer.SetData(verts);
 
         }
 
@@ -73,121 +65,6 @@ namespace ECS.Core.Primitives
 
         }
 
-
-
-        #region methodo anterior
-
-
-
-        //{
-        //    VertexPositionColor[] verts;
-        //    VertexBuffer vertexBuffer;
-        //    BasicEffect basicEffect;
-        //    Transform transform = new Transform(Vector3.Zero, Vector3.Zero, Vector3.One);
-
-        //    //Matrix world = Matrix.Identity;
-        //    public float Scale { get; set; }
-        //    public Color Color { get; set; }
-        //    private ICameraProperties cameraProperties;
-
-
-        //    public Cuboid(Game game, ICameraProperties cameraProperties, Vector3 position, float scale, Color color) : base(game)
-        //    {
-        //        transform.SetPosition(position);
-        //        Scale = scale;
-        //        Color = color;
-        //        this.cameraProperties = cameraProperties;
-        //        transform.SetPosition(Vector3.One);
-        //    }
-
-
-        //    public override void Initialize()
-        //    {
-        //        base.Initialize();
-
-        //        verts = new VertexPositionColor[36];
-        //        verts[0] = new VertexPositionColor(new Vector3(transform.Position.X - 1 * Scale, transform.Position.Y - 1 * Scale, transform.Position.Z - 1 * Scale), Color);
-        //        verts[1] = new VertexPositionColor(new Vector3(transform.Position.X + 1 * Scale, transform.Position.Y - 1 * Scale, transform.Position.Z - 1 * Scale), Color);
-        //        verts[2] = new VertexPositionColor(new Vector3(transform.Position.X + 1 * Scale, transform.Position.Y - 1 * Scale, transform.Position.Z + 1 * Scale), Color);
-        //        verts[3] = new VertexPositionColor(new Vector3(transform.Position.X - 1 * Scale, transform.Position.Y - 1 * Scale, transform.Position.Z - 1 * Scale), Color);
-        //        verts[4] = new VertexPositionColor(new Vector3(transform.Position.X + 1 * Scale, transform.Position.Y - 1 * Scale, transform.Position.Z + 1 * Scale), Color);
-        //        verts[5] = new VertexPositionColor(new Vector3(transform.Position.X - 1 * Scale, transform.Position.Y - 1 * Scale, transform.Position.Z + 1 * Scale), Color);
-
-        //        verts[6] = new VertexPositionColor(new Vector3(transform.Position.X - 1 * Scale, transform.Position.Y - 1 * Scale, transform.Position.Z - 1 * Scale), Color);
-        //        verts[7] = new VertexPositionColor(new Vector3(transform.Position.X + 1 * Scale, transform.Position.Y + 1 * Scale, transform.Position.Z - 1 * Scale), Color);
-        //        verts[8] = new VertexPositionColor(new Vector3(transform.Position.X + 1 * Scale, transform.Position.Y - 1 * Scale, transform.Position.Z - 1 * Scale), Color);
-        //        verts[9] = new VertexPositionColor(new Vector3(transform.Position.X - 1 * Scale, transform.Position.Y - 1 * Scale, transform.Position.Z - 1 * Scale), Color);
-        //        verts[10] = new VertexPositionColor(new Vector3(transform.Position.X - 1 * Scale, transform.Position.Y + 1 * Scale, transform.Position.Z - 1 * Scale), Color);
-        //        verts[11] = new VertexPositionColor(new Vector3(transform.Position.X + 1 * Scale, transform.Position.Y + 1 * Scale, transform.Position.Z - 1 * Scale), Color);
-
-        //        verts[12] = new VertexPositionColor(new Vector3(transform.Position.X - 1 * Scale, transform.Position.Y - 1 * Scale, transform.Position.Z - 1 * Scale), Color) ;
-        //        verts[13] = new VertexPositionColor(new Vector3(transform.Position.X - 1 * Scale, transform.Position.Y + 1 * Scale, transform.Position.Z + 1 * Scale), Color);
-        //        verts[14] = new VertexPositionColor(new Vector3(transform.Position.X - 1 * Scale, transform.Position.Y + 1 * Scale, transform.Position.Z - 1 * Scale), Color);
-        //        verts[15] = new VertexPositionColor(new Vector3(transform.Position.X - 1 * Scale, transform.Position.Y - 1 * Scale, transform.Position.Z - 1 * Scale), Color);
-        //        verts[16] = new VertexPositionColor(new Vector3(transform.Position.X - 1 * Scale, transform.Position.Y - 1 * Scale, transform.Position.Z + 1 * Scale), Color);
-        //        verts[17] = new VertexPositionColor(new Vector3(transform.Position.X - 1 * Scale, transform.Position.Y + 1 * Scale, transform.Position.Z + 1 * Scale), Color);
-
-        //        verts[18] = new VertexPositionColor(new Vector3(transform.Position.X + 1 * Scale, transform.Position.Y - 1 * Scale, transform.Position.Z - 1 * Scale), Color);
-        //        verts[19] = new VertexPositionColor(new Vector3(transform.Position.X + 1 * Scale, transform.Position.Y - 1 * Scale, transform.Position.Z + 1 * Scale), Color);
-        //        verts[20] = new VertexPositionColor(new Vector3(transform.Position.X + 1 * Scale, transform.Position.Y + 1 * Scale, transform.Position.Z + 1 * Scale), Color);
-        //        verts[21] = new VertexPositionColor(new Vector3(transform.Position.X + 1 * Scale, transform.Position.Y - 1 * Scale, transform.Position.Z - 1 * Scale), Color);
-        //        verts[22] = new VertexPositionColor(new Vector3(transform.Position.X + 1 * Scale, transform.Position.Y + 1 * Scale, transform.Position.Z + 1 * Scale), Color);
-        //        verts[23] = new VertexPositionColor(new Vector3(transform.Position.X + 1 * Scale, transform.Position.Y + 1 * Scale, transform.Position.Z - 1 * Scale), Color);
-
-        //        verts[24] = new VertexPositionColor(new Vector3(transform.Position.X - 1 * Scale, transform.Position.Y - 1 * Scale, transform.Position.Z + 1 * Scale), Color);
-        //        verts[25] = new VertexPositionColor(new Vector3(transform.Position.X - 1 * Scale, transform.Position.Y + 1 * Scale, transform.Position.Z + 1 * Scale), Color);
-        //        verts[26] = new VertexPositionColor(new Vector3(transform.Position.X + 1 * Scale, transform.Position.Y - 1 * Scale, transform.Position.Z + 1 * Scale), Color);
-        //        verts[27] = new VertexPositionColor(new Vector3(transform.Position.X + 1 * Scale, transform.Position.Y - 1 * Scale, transform.Position.Z + 1 * Scale), Color);
-        //        verts[28] = new VertexPositionColor(new Vector3(transform.Position.X - 1 * Scale, transform.Position.Y + 1 * Scale, transform.Position.Z + 1 * Scale), Color);
-        //        verts[29] = new VertexPositionColor(new Vector3(transform.Position.X + 1 * Scale, transform.Position.Y + 1 * Scale, transform.Position.Z + 1 * Scale), Color);
-
-        //        verts[30] = new VertexPositionColor(new Vector3(transform.Position.X - 1 * Scale, transform.Position.Y + 1 * Scale, transform.Position.Z + 1 * Scale), Color);
-        //        verts[31] = new VertexPositionColor(new Vector3(transform.Position.X - 1 * Scale, transform.Position.Y + 1 * Scale, transform.Position.Z - 1 * Scale), Color);
-        //        verts[32] = new VertexPositionColor(new Vector3(transform.Position.X + 1 * Scale, transform.Position.Y + 1 * Scale, transform.Position.Z + 1 * Scale), Color);
-        //        verts[33] = new VertexPositionColor(new Vector3(transform.Position.X + 1 * Scale, transform.Position.Y + 1 * Scale, transform.Position.Z + 1 * Scale), Color);
-        //        verts[34] = new VertexPositionColor(new Vector3(transform.Position.X - 1 * Scale, transform.Position.Y + 1 * Scale, transform.Position.Z - 1 * Scale), Color);
-        //        verts[35] = new VertexPositionColor(new Vector3(transform.Position.X + 1 * Scale, transform.Position.Y + 1 * Scale, transform.Position.Z - 1 * Scale), Color);
-
-
-
-        //        vertexBuffer = new VertexBuffer(GraphicsDevice, typeof(VertexPositionColor), verts.Length, BufferUsage.None);
-        //        vertexBuffer.SetData(verts);
-
-        //        basicEffect = new BasicEffect(GraphicsDevice);
-
-
-        //    }
-
-
-        //    public override void Draw(GameTime gameTime)
-        //    {
-        //        GraphicsDevice.SetVertexBuffer(vertexBuffer);
-        //        //GraphicsDevice.RasterizerState = RasterizerState.CullNone;
-        //        basicEffect.World =  transform.Matrix;
-        //        basicEffect.View = cameraProperties.View;
-        //        basicEffect.Projection = cameraProperties.Projection;
-        //        basicEffect.VertexColorEnabled = true;
-
-        //        foreach (EffectPass pass in basicEffect.CurrentTechnique.Passes)
-        //        {
-        //            pass.Apply();
-        //            GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, verts, 0, 12);
-
-        //        }
-        //        base.Draw(gameTime);
-        //    }
-
-        //    public override void Update(GameTime gameTime)
-        //    {
-        //        base.Update(gameTime);
-        //        //world = Matrix.Identity;
-        //        //x += 0.00001f;
-        //        transform.SetRotationY(0.01f);
-
-
-        //    }
-
-        #endregion
 
 
     }

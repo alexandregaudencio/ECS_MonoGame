@@ -6,7 +6,7 @@
   <Class Name="ECS.Game1" Collapsed="true">
     <Position X="18.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQIEAAAAgAAAwAAAAAAAAAAAAAAAgAKAIAAAAAAAAQ=</HashCode>
+      <HashCode>AAQIEAAAAgAAAwAAAAAIAAAAAAAAAAAKAIAAAAAAAAQ=</HashCode>
       <FileName>Game1.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -20,7 +20,7 @@
   <Class Name="ECS.Core.BaseObject.WindMill">
     <Position X="7.75" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AgQAAAgAAAAAAQAAAAAAAAAAAAAAAAAAAAQAAEAACAA=</HashCode>
+      <HashCode>IAQIAAgAAAAAAQAAAAAAAAAAAAAAAAAAAAQAAEAAAAA=</HashCode>
       <FileName>Core\BaseObject\WindMill\WindMill.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -38,14 +38,14 @@
   <Class Name="ECS.Core.Components.Cam.CameraController" Collapsed="true">
     <Position X="16.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQCAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQCAAAAAAAAAQAAIAAACAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
       <FileName>Core\Components\Cam\CameraController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ECS.Core.Components.Transform" Collapsed="true">
     <Position X="18.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAWAAAAAAAAIBCIAIAAAAAECAgAAgAAEIEAgAAAAA=</HashCode>
+      <HashCode>AAQAWAAAAAAAAIBCAAIAAAAAECAkAAgAAEIEAgAAAAA=</HashCode>
       <FileName>Core\Components\Transform\Transform.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -71,13 +71,6 @@
       <FileName>Core\Primitives\Cuboid.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ECS.Core.Primitives.Plane" Collapsed="true">
-    <Position X="5" Y="3.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAABAAAAABAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Core\Primitives\Plane.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="ECS.Core.Primitives.RightTriangle" Collapsed="true">
     <Position X="1.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
@@ -88,7 +81,7 @@
   <Class Name="ECS.Core.Primitives.Shape" Collapsed="true">
     <Position X="3.75" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAQAAAAEAAJAwAAABAAAAAAABAACAAgABAAgEAAAAI=</HashCode>
+      <HashCode>AAAQAAAAEAAJAyAAABAAAAAAIBAACgAgABBAgAAAEAI=</HashCode>
       <FileName>Core\Primitives\Shape.cs</FileName>
     </TypeIdentifier>
   </Class>

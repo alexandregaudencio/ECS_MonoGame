@@ -7,15 +7,14 @@ namespace ECS.Core.Primitives
 {
     internal class RightTriangle : Shape
     {
-        public RightTriangle(Game game, ICamPerspective iCameraProperties) : base(game, iCameraProperties)
+        public RightTriangle(Game game, ICamPerspective iCameraProperties, Color color = default, string texturePath = "") : base(game, iCameraProperties, color)
         {
+            this.texturePath = texturePath;
+            this.Color = color;
         }
 
         public override void Initialize()
         {
-            //SetVertexBuffer();
-            //SetIndexBuffer();
-
             Game.GraphicsDevice.RasterizerState = new RasterizerState()
             {
                 CullMode = CullMode.None,
@@ -24,17 +23,15 @@ namespace ECS.Core.Primitives
             base.Initialize();
         }
 
-        protected override void SetVertexBuffer()
+        protected override void SetVertexTexture()
         {
-            verts = new VertexPositionColor[]
+            vertsTexture = new VertexPositionColorTexture[]
             {
-                new VertexPositionColor(new Vector3( 0, 0,     0), Color),
-                new VertexPositionColor(new Vector3( 1, 0,  0.5f), Color),
-                new VertexPositionColor(new Vector3( 1, 0, -0.5f), Color),
+                new VertexPositionColorTexture(new Vector3( 0, 0,     0), Color, new Vector2(0.5f,0.5f)),
+                new VertexPositionColorTexture(new Vector3( 1, 0,  0.5f), Color, new Vector2(0,0)),
+                new VertexPositionColorTexture(new Vector3( 1, 0, -0.5f), Color, new Vector2(1,0)),
             };
 
-            vertexBuffer = new VertexBuffer(GraphicsDevice, typeof(VertexPositionColor), verts.Length, BufferUsage.None);
-            vertexBuffer.SetData(verts);
         }
 
         protected override void SetIndexBuffer()
@@ -48,6 +45,7 @@ namespace ECS.Core.Primitives
             indexBuffer.SetData(indexData);
 
         }
+
 
         public override void Draw(GameTime gameTime)
         {

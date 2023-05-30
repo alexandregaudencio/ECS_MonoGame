@@ -37,9 +37,8 @@ namespace ECS
 
         protected override void Initialize()
         {
-            floor = new Plane(this, camera);
+            floor = new Plane(this, camera, Color.White, "madeira" );
             floor.Transform.SetScale(Vector3.One * 100);
-            floor.Color = Color.DarkGreen;
 
             Components.Add(camera);
             Components.Add(cameraController);
@@ -53,7 +52,6 @@ namespace ECS
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-
             base.LoadContent();
 
         }
