@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 
 namespace ECS.Core.Components.Cam
 {
-    public class Camera : Entity, ICamPerspective, ICameraProjectionProperties, ICameraViewProperties
+    public class Camera : Entity, ICameraPerspective, ICameraProjectionProperties, ICameraViewProperties
     {
 
         //PROJECTION PROPERTIES

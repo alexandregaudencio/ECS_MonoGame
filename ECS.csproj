@@ -28,6 +28,7 @@
   <ItemGroup>
     <Folder Include="Core\Components\Renderer\" />
     <Folder Include="Content\Images\Boxes\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <Target Name="RestoreDotnetTools" BeforeTargets="Restore">
     <Message Text="Restoring dotnet tools" Importance="High" />

@@ -15,7 +15,7 @@ namespace ECS.Core.BaseObject
         private List<Shape> blades = new List<Shape>();
         private Vector3 bladeScale = new Vector3(3, 0, 1.5f)*5;
 
-        public WindBaldes(Game game, ICamPerspective camPerspective) : base(game)
+        public WindBaldes(Game game, ICameraPerspective camPerspective) : base(game)
         {
 
             GenerateBlades(game, camPerspective);
@@ -40,7 +40,7 @@ namespace ECS.Core.BaseObject
 
 
 
-        private void GenerateBlades(Game game, ICamPerspective camPerspective)
+        private void GenerateBlades(Game game, ICameraPerspective camPerspective)
         {
             for (int i = 0; i < 4; i++)
             {

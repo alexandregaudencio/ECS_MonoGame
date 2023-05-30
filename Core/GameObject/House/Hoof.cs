@@ -14,7 +14,7 @@ namespace ECS.Core.BaseObject.House
     {
         HoofTriangle[] triangles = new HoofTriangle[4];
 
-        public Hoof(Game game, ICamPerspective iCamPerspective, string texturePath, float size) : base(game)
+        public Hoof(Game game, ICameraPerspective iCamPerspective, string texturePath, float size) : base(game)
         {
             Transform.IncreaseScale(Vector3.One * size);
 

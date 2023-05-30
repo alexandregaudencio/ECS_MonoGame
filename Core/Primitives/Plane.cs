@@ -9,7 +9,7 @@ namespace ECS.Core.Primitives
     {
 
 
-        public Plane(Game game, ICamPerspective iCameraProperties, Color color, string texturePath = "") : base(game, iCameraProperties, color, texturePath)
+        public Plane(Game game, ICameraPerspective iCameraProperties, Color color, string texturePath = "") : base(game, iCameraProperties, color, texturePath)
         {
 
         }

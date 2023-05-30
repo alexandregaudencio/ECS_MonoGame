@@ -2,7 +2,7 @@
 
 namespace ECS.Core.Components.Cam
 {
-    public interface ICamPerspective
+    public interface ICameraPerspective
     {
         Matrix View { get; }
         Matrix Projection { get; }

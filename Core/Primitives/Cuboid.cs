@@ -8,7 +8,7 @@ namespace ECS.Core.Primitives
     public class Cuboid : Shape
     {
 
-        public Cuboid(Game game, ICamPerspective iCamPerspective, Color color, string texturePath = "") : base(game, iCamPerspective, color, texturePath)
+        public Cuboid(Game game, ICameraPerspective iCamPerspective, Color color, string texturePath = "") : base(game, iCamPerspective, color, texturePath)
         {
 
         }

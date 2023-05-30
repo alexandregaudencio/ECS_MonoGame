@@ -19,7 +19,7 @@ namespace ECS.Core.BaseObject
         
         private Color RandomColor => new Color(RandomColorIndex, RandomColorIndex, RandomColorIndex);
 
-        public WindMill(Game game, ICamPerspective camPerspective, Vector3 position) : base(game)
+        public WindMill(Game game, ICameraPerspective camPerspective, Vector3 position) : base(game)
         {
             Transform.Translate(position);
 

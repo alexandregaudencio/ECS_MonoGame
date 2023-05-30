@@ -7,7 +7,7 @@ namespace ECS.Core.Primitives
 {
     internal class RightTriangle : Shape
     {
-        public RightTriangle(Game game, ICamPerspective iCameraProperties, Color color = default, string texturePath = "") : base(game, iCameraProperties, color, texturePath)
+        public RightTriangle(Game game, ICameraPerspective iCameraProperties, Color color = default, string texturePath = "") : base(game, iCameraProperties, color, texturePath)
         {
         }
 

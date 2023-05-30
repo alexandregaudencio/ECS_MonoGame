@@ -16,7 +16,7 @@ namespace ECS.Core.BaseObject.House
         private Hoof hoof;
         private Cuboid cuboid;
         private float size = 1;
-        public House(Game game, ICamPerspective iCamPerspective, float size = 10) : base(game)
+        public House(Game game, ICameraPerspective iCamPerspective, float size = 10) : base(game)
         {
             this.size = size;
             cuboid = new Cuboid(game, iCamPerspective, new Color().Random());

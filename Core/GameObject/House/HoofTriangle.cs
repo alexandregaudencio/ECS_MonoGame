@@ -13,7 +13,7 @@ namespace ECS.Core.BaseObject.House
 {
     internal class HoofTriangle : Shape
     {
-        public HoofTriangle(Game game, ICamPerspective iCameraProperties, Color color, string texturePath) : base(game, iCameraProperties, color, texturePath)
+        public HoofTriangle(Game game, ICameraPerspective iCameraProperties, Color color, string texturePath) : base(game, iCameraProperties, color, texturePath)
         {
         }
 

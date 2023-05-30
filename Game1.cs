@@ -2,7 +2,7 @@
 using ECS.Core.BaseObject.House;
 using ECS.Core.Components;
 using ECS.Core.Components.Cam;
-using ECS.Core.Entities;
+using ECS.Core.GameObject;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -21,9 +21,12 @@ namespace ECS
         //private WindMill windMill;
         //private WindMill windMill2;
         private House house;
+        private GameObject gameObject;
+
+
         private Camera camera;
         private CameraController cameraController;
-
+        
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -36,6 +39,8 @@ namespace ECS
             floor = new Plane(this, camera, Color.DarkGreen);
             floor.Transform.SetScale(Vector3.One * 1000);
 
+            gameObject = new GameObject(this, camera, "spaceship");
+            gameObject.Transform.Translate(Vector3.UnitY * 5);
             //house = new House(this, camera);
             //windMill = new WindMill(this, camera, new Vector3(0,0,30 ));
         }
@@ -46,6 +51,7 @@ namespace ECS
             Components.Add(camera);
             Components.Add(cameraController);
             Components.Add(floor);
+            Components.Add(gameObject);
             //Components.Add(house);
             //Components.Add(windMill);
 
@@ -72,7 +78,7 @@ namespace ECS
 
             //plane.Transform.RotateY(MathHelper.ToRadians(1)) ;
 
-            if (Keyboard.GetState().IsKeyDown(Keys.NumPad1)) cameraController.SetCameraTarget(house.Transform);
+            if (Keyboard.GetState().IsKeyDown(Keys.NumPad1)) cameraController.SetCameraTarget(gameObject.Transform);
             if (Keyboard.GetState().IsKeyDown(Keys.NumPad0)) cameraController.SetCameraTarget(new Transform(this));
             base.Update(gameTime);
 

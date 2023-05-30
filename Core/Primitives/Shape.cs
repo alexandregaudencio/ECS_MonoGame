@@ -21,10 +21,10 @@ namespace ECS.Core.Primitives
         protected string texturePath = "";
 
 
-        private ICamPerspective iCameraProperties;
+        private ICameraPerspective iCameraProperties;
 
 
-        public Shape(Game game, ICamPerspective iCameraProperties, Color color, string texturePath) : base(game)
+        public Shape(Game game, ICameraPerspective iCameraProperties, Color color, string texturePath) : base(game)
         {
 
             Transform = new Transform(game);
