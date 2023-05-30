@@ -102,23 +102,21 @@ namespace ECS.Core.Primitives
         }
 
 
-        public void SetFillMode(FillMode fillMode)
-        {
-            RasterizerState rs = new RasterizerState
-            {
-                FillMode = fillMode
-            };
-
-            GraphicsDevice.RasterizerState = rs;
-
-        }
-
-
-        //public void SetWireActive(bool wireActive)
+        //public void SetFillMode(FillMode fillMode)
         //{
-        //    if(wireActive) SetFillMode(FillMode.WireFrame);
-        //    else SetFillMode(FillMode.Solid);
+        //    //GraphicsDevice.RasterizerState.FillMode = fillMode;
+
+        //    RasterizerState rs = new RasterizerState
+        //    {
+        //        CullMode = CullMode.None,
+        //        FillMode = fillMode
+        //    };
+
+
+        //    GraphicsDevice.RasterizerState = rs;
         //}
+
+
 
 
     }

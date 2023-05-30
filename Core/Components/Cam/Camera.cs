@@ -32,7 +32,7 @@ namespace ECS.Core.Components.Cam
 
             CameraUpVector = Vector3.Up;
             NearPlaneDistance = 1;
-            FarPlaneDistance = 600;
+            FarPlaneDistance = 2000;
             FieldOfView = MathHelper.PiOver4;
 
 
