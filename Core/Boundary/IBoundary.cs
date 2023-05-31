@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ECS.Core.Components;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -13,8 +14,9 @@ namespace ECS.Core.Boundary
         OBB,
         //SPHERE
     }
-    internal interface IBoundary
+    public interface IBoundary
     {
+        Transform Transform { get; }
         BoundType Type { get; }
 
         float MinX { get;  }
@@ -27,10 +29,9 @@ namespace ECS.Core.Boundary
         Vector3 Max { get; }
         Vector3 Min { get; }
 
+        bool Intersects(IBoundary other);
 
-
-        bool Intersect(IBoundary other);
-
-
+        void UpdateTransform(Transform transform);
+        //void UpdateTransform(Transform transform);
     }
 }

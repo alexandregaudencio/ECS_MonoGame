@@ -1,4 +1,5 @@
-﻿using ECS.Core.Components.Cam;
+﻿using ECS.Core.Boundary;
+using ECS.Core.Components.Cam;
 using ECS.Core.Entities;
 using ECS.Core.Object;
 using ECS.Core.Primitives;
@@ -19,24 +20,26 @@ namespace ECS.Core.Components.Collision
 
         private readonly GameObject gameObject;
         public GameObject GameObject => gameObject;
+
+        private OBB boundary;
+        public IBoundary Boundary => boundary;
+
         public event EventHandler<ICollider> CollisionStay;
         public Collider(Game game, ICameraPerspective iCameraPerspective, GameObject gameObject, bool isVisible = true) : base(game)
         {
             this.gameObject = gameObject;
             wireframe = new Cuboid(game, iCameraPerspective, Color.Green);
+            boundary = new OBB(Transform);
             
-            wireframe = new Cuboid(game, iCameraPerspective, Color.Green);
             SetVisible(isVisible);
-            UpdateBoundingBox();
         }
 
 
         public override void Initialize()
         {
-
             AddChild(wireframe);
             Game.Components.Add(wireframe);
-            
+
             wireframe.SetPrimitiveType(PrimitiveType.LineList);
             CollisionManager.Instance.AddColliders(this);
 
@@ -45,24 +48,18 @@ namespace ECS.Core.Components.Collision
 
         public override void Update(GameTime gameTime)
         {
+            boundary.UpdateTransform(gameObject.Transform);
+            //Debug.WriteLine(boundary.Transform.Translation);
             
-            UpdateBoundingBox();
-            //Debug.WriteLine(guid.ToString() + Transform.Translation + Transform.Scale);
-            //Debug.WriteLine(guid.ToString() + BoundingBox.Min);
-            //Debug.WriteLine(guid.ToString() + BoundingBox.Max);
+
 
             base.Update(gameTime);
         }
 
-        private void UpdateBoundingBox()
-        {
-            BoundingBox = new BoundingBox(
-                GameObject.Transform.Translation - GameObject.Transform.Scale,
-                GameObject.Transform.Translation + GameObject.Transform.Scale);
-        }
 
 
         public bool Intersects(BoundingBox box) => BoundingBox.Intersects(box);
+        public bool Intersects(IBoundary bound) => Boundary.Intersects(bound);
 
         public void SetVisible(bool value)
         {
@@ -97,7 +94,6 @@ namespace ECS.Core.Components.Collision
         {
             //Debug.WriteLine(other.GameObject.GetTypeInfo());
             CollisionStay?.Invoke(this, other);
-            Debug.WriteLine(" On collision STAY");
 
         }
     }

@@ -71,7 +71,7 @@ namespace ECS.Core.Components
             World = Matrix.Invert(World);
 
             World = Matrix.Identity;
-            World *= Matrix.CreateScale(Scale); //ok
+            World *= Matrix.CreateScale(Scale); 
             World *= Matrix.CreateRotationX(Rotation.X);
             World *= Matrix.CreateRotationY(Rotation.Y);
             World *= Matrix.CreateRotationZ(Rotation.Z);

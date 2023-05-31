@@ -52,7 +52,7 @@ namespace ECS.Core.Components.Collision
                     //if (j == colliders.Count - 1) continue;
                     // i interset j
 
-                    if (!colliders[i].IsColliding && !colliders[i].BoundingBox.Intersects(colliders[j].BoundingBox))
+                    if (!colliders[i].IsColliding && !colliders[i].Boundary.Intersects(colliders[j].Boundary))
                     {
                         continue;
                     }
@@ -63,7 +63,7 @@ namespace ECS.Core.Components.Collision
                     //    colliders[j].OnCollisionEnter(colliders[i]);
                     //    continue;
                     //}
-                    if (/*colliders[i].IsColliding &&*/ colliders[i].BoundingBox.Intersects(colliders[j].BoundingBox))
+                    if (/*colliders[i].IsColliding &&*/ colliders[i].Boundary.Intersects(colliders[j].Boundary))
                     {
 
                         colliders[i].OnCollisionStay(colliders[j]);

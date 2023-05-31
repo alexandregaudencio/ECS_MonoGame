@@ -1,84 +1,52 @@
 ﻿using ECS.Core.Components;
-using ECS.Core.Object;
+using ECS.Core.Entities;
+using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Diagnostics;
+using System.Drawing;
 using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
+using Vector3 = System.Numerics.Vector3;
 
 namespace ECS.Core.Boundary
 {
     public class OBB : IBoundary
     {
-        private BoundType _type;
         private Transform transform;
-        public OBB(Transform transform) 
-        { 
+        private BoundType _type;        
+
+        public OBB(Transform transform)
+        {
             this.transform = transform;
         }
 
         public BoundType Type => _type;
 
-        public float MinX => transform.Translation.X + transform.Scale.X;
+        public float MinX => Transform.Translation.X - Transform.Scale.X;
 
-        public float MinY => transform.Translation.X - transform.Scale.X;
+        public float MinY => Transform.Translation.Y - Transform.Scale.Y;
 
-        public float MinZ => transform.Translation.Y + transform.Scale.Y;
+        public float MinZ => Transform.Translation.Z - Transform.Scale.Z;
 
-        public float MaxX => transform.Translation.Y - transform.Scale.Y;
+        public float MaxX => Transform.Translation.X + Transform.Scale.X;
 
-        public float MaxY => transform.Translation.Z + transform.Scale.Z;
+        public float MaxY => Transform.Translation.Y + Transform.Scale.Y;
 
-        public float MaxZ => transform.Translation.Z - transform.Scale.Z;
+        public float MaxZ => Transform.Translation.Z + Transform.Scale.Z;
 
         public Vector3 Max => new Vector3(MaxX, MaxY, MaxZ);
 
         public Vector3 Min => new Vector3(MinX, MinY, MinZ);
 
-        BoundType IBoundary.Type => throw new NotImplementedException();
+        public Transform Transform => transform;
 
-        float IBoundary.MinX => throw new NotImplementedException();
-
-        float IBoundary.MinY => throw new NotImplementedException();
-
-        float IBoundary.MinZ => throw new NotImplementedException();
-
-        float IBoundary.MaxX => throw new NotImplementedException();
-
-        float IBoundary.MaxY => throw new NotImplementedException();
-
-        float IBoundary.MaxZ => throw new NotImplementedException();
-
-        Vector3 IBoundary.Max => throw new NotImplementedException();
-
-        Vector3 IBoundary.Min => throw new NotImplementedException();
-
-        //bool Intersect(IBoundary other)
-        //{
-        //    if(other == null) return false;
-
-        //    if (Max.X >= other.Min.X && Min.X <= other.Max.X)
-        //    {
-        //        if (Max.Y < other.Min.Y || Min.Y > other.Max.Y)
-        //        {
-        //            return  false;
-        //        }
-        //        else
-        //        {
-        //            return Max.Z >= other.Min.Z && Min.Z <= other.Max.Z;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        return  false;
-        //    }
-        //}
-
-        bool IBoundary.Intersect(IBoundary other)
+        public bool Intersects(IBoundary other)
         {
             if (other == null) return false;
 
+
+
+
+            #region AABB
             if (Max.X >= other.Min.X && Min.X <= other.Max.X)
             {
                 if (Max.Y < other.Min.Y || Min.Y > other.Max.Y)
@@ -94,6 +62,24 @@ namespace ECS.Core.Boundary
             {
                 return false;
             }
+
+
+            ////second method (alternative)
+            //bool intersectsX = Math.Abs(Transform.Translation.X - other.Transform.Translation.X) < (Transform.Scale.X + other.Transform.Scale.X) / 2;
+            //bool intersectsY = Math.Abs(Transform.Translation.Y - other.Transform.Translation.Y) < (Transform.Scale.Y + other.Transform.Scale.Y) / 2;
+            //bool intersectsZ = Math.Abs(Transform.Translation.Z - other.Transform.Translation.Z) < (Transform.Scale.Z + other.Transform.Scale.Z) / 2;
+
+            //return intersectsX && intersectsY && intersectsZ;
+            #endregion
+
         }
+
+
+        public void UpdateTransform(Transform transform) 
+        {
+
+            this.transform = transform;
+        }
+
     }
 }
