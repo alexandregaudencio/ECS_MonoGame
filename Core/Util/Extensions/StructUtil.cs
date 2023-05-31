@@ -5,7 +5,7 @@ using System.Numerics;
 
 
 
-namespace ECS.Core.Util
+namespace ECS.Core.Util.Extensions
 {
     internal static class StructUtil
     {
@@ -17,7 +17,7 @@ namespace ECS.Core.Util
             float gUnit = (float)(color.G / 255.0f);
             float bUnit = (float)(color.G / 255.0f);
             //Debug.WriteLine(tofloat);
-            return new Microsoft.Xna.Framework.Vector3(rUnit, gUnit, bUnit);  
+            return new Microsoft.Xna.Framework.Vector3(rUnit, gUnit, bUnit);
 
         }
 

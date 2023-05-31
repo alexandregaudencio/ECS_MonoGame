@@ -1,7 +1,7 @@
 ﻿using ECS.Core.Components.Cam;
 using ECS.Core.Entities;
 using ECS.Core.Primitives;
-using ECS.Core.Util;
+using ECS.Core.Util.Extensions;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;

@@ -1,7 +1,7 @@
 ﻿using ECS.Core.Components.Cam;
 using ECS.Core.Entities;
 using ECS.Core.Primitives;
-using ECS.Core.Util;
+using ECS.Core.Util.Extensions;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -13,9 +13,9 @@ namespace ECS.Core.BaseObject.House
 {
     public class House : Entity
     {
-        private Hoof hoof;
-        private Cuboid cuboid;
-        private float size = 1;
+        private readonly Hoof hoof;
+        private readonly Cuboid cuboid;
+        private readonly float size = 1;
         public House(Game game, ICameraPerspective iCamPerspective, float size = 10) : base(game)
         {
             this.size = size;

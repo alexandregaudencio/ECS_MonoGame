@@ -59,11 +59,11 @@ namespace ECS.Core.BaseObject
 
             if (Keyboard.GetState().IsKeyDown(Keys.W))
             {
-                Transform.Translate(Transform.Matrix.Right);
+                Transform.Translate(Transform.World.Right);
             }
             if (Keyboard.GetState().IsKeyDown(Keys.S))
             {
-                Transform.Translate(Transform.Matrix.Left);
+                Transform.Translate(Transform.World.Left);
             }
 
 

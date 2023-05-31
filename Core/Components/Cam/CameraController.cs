@@ -40,36 +40,36 @@ namespace ECS.Core.Components.Cam
             //LEFT
             if (Keyboard.GetState().IsKeyDown(Keys.NumPad4))
             {
-                Camera.Transform.Translate(Camera.Transform.Matrix.Backward*gameTime.ElapsedGameTime.Milliseconds*0.1f);
+                Camera.Transform.Translate(Camera.Transform.World.Backward*gameTime.ElapsedGameTime.Milliseconds*0.1f);
             }
 
             //RIGHT
             if (Keyboard.GetState().IsKeyDown(Keys.NumPad6))
             {
-                Camera.Transform.Translate(Camera.Transform.Matrix.Forward * gameTime.ElapsedGameTime.Milliseconds * 0.1f);
+                Camera.Transform.Translate(Camera.Transform.World.Forward * gameTime.ElapsedGameTime.Milliseconds * 0.1f);
 
             }
             //FORWARD
             if (Keyboard.GetState().IsKeyDown(Keys.NumPad8))
             {
-                Camera.Transform.Translate(Camera.Transform.Matrix.Left * gameTime.ElapsedGameTime.Milliseconds * 0.1f);
+                Camera.Transform.Translate(Camera.Transform.World.Left * gameTime.ElapsedGameTime.Milliseconds * 0.1f);
             }
 
             //BACKWARD
             if (Keyboard.GetState().IsKeyDown(Keys.NumPad5))
             {
-                Camera.Transform.Translate(Camera.Transform.Matrix.Right * gameTime.ElapsedGameTime.Milliseconds * 0.1f);
+                Camera.Transform.Translate(Camera.Transform.World.Right * gameTime.ElapsedGameTime.Milliseconds * 0.1f);
             }
 
             //DOWN
             if (Keyboard.GetState().IsKeyDown(Keys.NumPad1))
             {
-                Camera.Transform.Translate(Camera.Transform.Matrix.Down * gameTime.ElapsedGameTime.Milliseconds * 0.1f);
+                Camera.Transform.Translate(Camera.Transform.World.Down * gameTime.ElapsedGameTime.Milliseconds * 0.1f);
             }
             //UP
             if (Keyboard.GetState().IsKeyDown(Keys.NumPad9))
             {
-                Camera.Transform.Translate(Camera.Transform.Matrix.Up * gameTime.ElapsedGameTime.Milliseconds * 0.1f);
+                Camera.Transform.Translate(Camera.Transform.World.Up * gameTime.ElapsedGameTime.Milliseconds * 0.1f);
             }
         }
     }

@@ -1,26 +1,39 @@
-﻿using ECS.Core.Entities;
-using Microsoft.Xna.Framework;
-using System;
+﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ECS.Core.Components.Collision
 {
     public class CollisionManager : GameComponent
     {
-        private List<ICollider> colliders;
+        private static CollisionManager instance;
+        public static CollisionManager Instance => instance;
+
+        private readonly List<ICollider> colliders;
 
         public CollisionManager(Game game) : base(game)
         {
+            instance  = this;
             colliders = new List<ICollider>();
         }
+
+        //public override void Initialize()
+        //{
+        //    Game.Components.Add(this);
+        //    base.Initialize();
+        //}
+        public override void Update(GameTime gameTime)
+        {
+            ProcessCollisions();
+            base.Update(gameTime);
+        }
+
 
         public void AddColliders(params ICollider[] colliders)
         {
             if (colliders == null) return;
+            Debug.WriteLine(colliders.Length);
             foreach(ICollider collider in colliders)
                 this.colliders.Add(collider);
         }
@@ -65,36 +78,12 @@ namespace ECS.Core.Components.Collision
                     //}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 }
             }
         }
 
 
-        public override void Update(GameTime gameTime)
-        {
-            ProcessCollisions();
-            base.Update(gameTime);
-        }
+
+
     }
 }

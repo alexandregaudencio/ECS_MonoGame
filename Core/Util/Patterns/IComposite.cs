@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ECS.Core.Entities
+namespace ECS.Core.Util.Patterns
 {
 
     //Generic composite Pattern

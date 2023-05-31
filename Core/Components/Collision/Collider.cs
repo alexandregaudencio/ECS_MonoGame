@@ -1,105 +1,79 @@
 ﻿using ECS.Core.Components.Cam;
 using ECS.Core.Entities;
+using ECS.Core.Object;
+using ECS.Core.Primitives;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Graphics;
 using System.Diagnostics;
 
 namespace ECS.Core.Components.Collision
 {
     public class Collider : Entity, ICollider
     {
-        //private Transform Transform;
-        LineBox lineBox;
+        private readonly Cuboid wireframe;
         public BoundingBox BoundingBox { get; set; }
-
-        public bool Intersects(BoundingBox box) => BoundingBox.Intersects(box);
+        
         private bool isColliding;
         public bool IsColliding => isColliding;
-        public bool movivel = true;
-        public Collider(Game game, ICameraPerspective iCameraPerspective, bool movivel) : base(game)
-        {
-            //this.iCameraPerspective = iCameraPerspective;
-            //this.transform = transform;
-            this.lineBox = new LineBox(game, iCameraPerspective, Transform);
 
+        private readonly GameObject gameObject;
+        public GameObject GameObject => gameObject;
+
+        public Collider(Game game, ICameraPerspective iCameraPerspective, GameObject gameObject, bool isVisible = true) : base(game)
+        {
+            this.gameObject = gameObject;
+            this.wireframe = new Cuboid(game, iCameraPerspective, Color.Green);
+            
+            wireframe = new Cuboid(game, iCameraPerspective, Color.Green);
+            SetVisible(isVisible);
             UpdateBoundingBox();
-            this.movivel = movivel;
         }
+
 
         public override void Initialize()
         {
-            Game.Components.Add(lineBox);
+
+            AddChild(wireframe);
+            Game.Components.Add(wireframe);
+            
+            wireframe.SetPrimitiveType(PrimitiveType.LineList);
+            CollisionManager.Instance.AddColliders(this);
+
             base.Initialize();
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+
+            //wireCollider.SetTransform(gameObject.Transform);
+            
+            UpdateBoundingBox();
+            //Debug.WriteLine(guid.ToString() + Transform.Translation + Transform.Scale);
+            //Debug.WriteLine(guid.ToString() + BoundingBox.Min);
+            //Debug.WriteLine(guid.ToString() + BoundingBox.Max);
+
+            base.Update(gameTime);
         }
 
         private void UpdateBoundingBox()
         {
             BoundingBox = new BoundingBox(
-                Transform.Translation - Transform.Scale,
-                Transform.Translation + Transform.Scale);
+                GameObject.Transform.Translation - GameObject.Transform.Scale,
+                GameObject.Transform.Translation + GameObject.Transform.Scale);
         }
 
 
-        public override void Update(GameTime gameTime)
-        {
-            lineBox.SetTransform(Transform);
-            UpdateBoundingBox();
-            ProcessInputCommands();
-
-            //Debug.WriteLine(string.Concat(BoundingBox.Min.Z,BoundingBox.Max.Z));
-
-            base.Update(gameTime);
-
-        }
+        public bool Intersects(BoundingBox box) => BoundingBox.Intersects(box);
 
         public void SetVisible(bool value)
         {
-            lineBox.Visible  = value;
+            wireframe.Visible  = value;
         }
 
-        private void ProcessInputCommands()
+        public void SetColor(Color color)
         {
-            //if (Keyboard.GetState().IsKeyDown(Keys.Space))
-            //{
-            //    isColliding = false;
-            //    OnCollisionExit(null);
-            //}
-
-            if (!movivel) return;
-
-            float speed = 0.05f;
-            if (Keyboard.GetState().IsKeyDown(Keys.E))
-            {
-                Transform.RotateY(-0.01f);
-            }
-            if (Keyboard.GetState().IsKeyDown(Keys.Q))
-            {
-                Transform.RotateY(0.01f);
-            }
-
-            if (Keyboard.GetState().IsKeyDown(Keys.W))
-            {
-                Transform.Translate(-Vector3.UnitX*speed);
-            }
-            if (Keyboard.GetState().IsKeyDown(Keys.S))
-            {
-                this.Transform.Translate(Vector3.UnitX * speed);
-            }
-            if (Keyboard.GetState().IsKeyDown(Keys.A))
-            {
-                this.Transform.Translate(Vector3.UnitZ * speed);
-            }
-            if (Keyboard.GetState().IsKeyDown(Keys.D))
-            {
-                this.Transform.Translate(-Vector3.UnitZ * speed);
-            }
-
-
-            
-
-
+            wireframe.SetColor(color);
         }
-
 
 
         public  void OnCollisionEnter(ICollider other)
@@ -107,21 +81,24 @@ namespace ECS.Core.Components.Collision
             isColliding = true;
 
             Debug.WriteLine(guid+ " On collision Enter");
-            lineBox.SetColor(Color.Red);
+            wireframe.SetColor(Color.Red);
         }
 
         public  void OnCollisionExit(ICollider other)
         {
-            isColliding = false;
-            lineBox.SetColor(Color.Black);
 
-            Debug.WriteLine(guid + " On collision exit");
+            isColliding = false;
+            wireframe.SetColor(Color.Green);
+
+            Debug.WriteLine(" On collision exit");
 
         }
 
         public  void OnCollisionStay(ICollider other)
         {
-            Debug.WriteLine(guid + " On collision STAY");
+            //Debug.WriteLine(other.GameObject.GetTypeInfo());
+
+            Debug.WriteLine(" On collision STAY");
 
         }
     }

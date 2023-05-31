@@ -10,7 +10,7 @@ namespace ECS.Core.Primitives
 
         public Cuboid(Game game, ICameraPerspective iCamPerspective, Color color, string texturePath = "") : base(game, iCamPerspective, color, texturePath)
         {
-
+            
         }
 
         public override void Initialize()

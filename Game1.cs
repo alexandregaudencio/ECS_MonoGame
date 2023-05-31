@@ -4,7 +4,7 @@ using ECS.Core.Components;
 using ECS.Core.Components.Cam;
 using ECS.Core.Components.Collision;
 using ECS.Core.Components.Renderer;
-using ECS.Core.GameObject;
+using ECS.Core.Object;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -15,49 +15,49 @@ namespace ECS
 {
     public class Game1 : Game
     {
-        readonly GraphicsDeviceManager _graphics;
-        SpriteBatch _spriteBatch;
-
-        private Plane floor;
-
-        private WindMill windMill;
-        //private WindMill windMill2;
-        //private House house;
-        private  Box box;
-        private Camera camera;
-        private CameraController cameraController;
+        private readonly GraphicsDeviceManager _graphics;
+        private SpriteBatch _spriteBatch;
 
         private readonly CollisionManager collisionManager;
-        private Collider collider;
-        Collider collider1;
-        Collider collider2;
-        Collider collider3;
+        private readonly Camera camera;
+        private readonly CameraController cameraController;
+
+        #region Objects
+        private readonly Plane floor;
+        //private WindMill windMill;
+        //private WindMill windMill2;
+        //private House house;
+        private readonly Box box;
+        private readonly Box box2;
+
+        #endregion
+
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
 
-            camera = new Camera(this, new Vector3(30, 10,0));
+            collisionManager = new CollisionManager(this);
+
+            camera = new Camera(this, new Vector3(5, 10, 0));
             cameraController = new CameraController(this, camera);
 
-            floor = new Plane(this, camera, Color.DarkGreen);
+            floor = new Plane(this, camera, Color.DarkBlue);
             floor.Transform.SetScale(Vector3.One * 1000);
+            box = new Box(this, camera);
+            box2 = new Box(this, camera);
+            box2.SetObjectOnFloorY();
+            box.SetObjectOnFloorY();
+            box2.Transform.Translate(Vector3.UnitX * 4);
+            box.movivel = false;
+            //box.Transform.IncreaseScale(Vector3.One * 2);
 
-            box = new Box(this, camera, "");
-
-            collider = new Collider(this, camera, true);
-            collider1 = new Collider(this, camera, false);
-            collider2 = new Collider(this, camera, false);
-            collider3 = new Collider(this, camera, false);
-            collider1.Transform.Translate(Vector3.UnitZ * 10);
-            collider2.Transform.Translate(-Vector3.UnitZ * 5);
-            collider3.Transform.Translate(-Vector3.UnitX * 10);
-            
-            collisionManager = new CollisionManager(this);
-            collisionManager.AddColliders(collider, collider1, collider2, collider3);
+            //collisionManager.AddColliders(collider, collider1, collider2, collider3);
+            //collisionManager.AddColliders(box.collider);
             //house = new House(this, camera);
-            windMill = new WindMill(this, camera, new Vector3(0,0,30 ));
+            //windMill = new WindMill(this, camera, new Vector3(0,0,30 ));
         }
 
         protected override void Initialize()
@@ -65,16 +65,14 @@ namespace ECS
 
             Components.Add(camera);
             Components.Add(cameraController);
-            Components.Add(floor);
-            //Components.Add(box);
             Components.Add(collisionManager);
-            Components.Add(collider);
-            Components.Add(collider1);
-            Components.Add(collider2);
-            Components.Add(collider3);
+            Components.Add(floor);
+            Components.Add(box);
+            Components.Add(box2);
+            //Components.Add(collisionManager);
 
             //Components.Add(house);
-            Components.Add(windMill);
+            //Components.Add(windMill);
 
             base.Initialize();
         }
@@ -100,7 +98,7 @@ namespace ECS
             //plane.Transform.RotateY(MathHelper.ToRadians(1)) ;
 
             //if (Keyboard.GetState().IsKeyDown(Keys.NumPad1)) cameraController.SetCameraTarget(modelRenderer.Transform);
-            if (Keyboard.GetState().IsKeyDown(Keys.NumPad0)) cameraController.SetCameraTarget(collider.Transform);
+            if (Keyboard.GetState().IsKeyDown(Keys.NumPad0)) cameraController.SetCameraTarget(box.Transform);
             base.Update(gameTime);
 
 

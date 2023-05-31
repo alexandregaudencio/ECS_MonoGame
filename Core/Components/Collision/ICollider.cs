@@ -1,15 +1,12 @@
-﻿using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ECS.Core.Object;
+using Microsoft.Xna.Framework;
+
 
 namespace ECS.Core.Components.Collision
 {
     public interface ICollider
     {
-
+        public Object.GameObject GameObject { get; }
         bool IsColliding { get; }
         public BoundingBox BoundingBox { get; set; }
 

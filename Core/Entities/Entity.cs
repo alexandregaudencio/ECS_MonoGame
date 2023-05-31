@@ -1,4 +1,5 @@
 ﻿using ECS.Core.Components;
+using ECS.Core.Util.Patterns;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;

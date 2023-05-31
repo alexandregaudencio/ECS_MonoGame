@@ -22,7 +22,7 @@ namespace ECS.Core.Components.Cam
         public Vector3 CameraUpVector { get; set; }
 
         //CAMERA PROPERTIES
-        public Matrix View => Matrix.CreateLookAt(Transform.Matrix.Translation, CameraTarget, CameraUpVector);
+        public Matrix View => Matrix.CreateLookAt(Transform.World.Translation, CameraTarget, CameraUpVector);
         public Matrix Projection => Matrix.CreatePerspectiveFieldOfView(FieldOfView, AspectRatio, NearPlaneDistance, FarPlaneDistance);
 
 

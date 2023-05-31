@@ -3,7 +3,6 @@ using ECS.Core.Components.Cam;
 using ECS.Core.Entities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using ECS.Core.Util;
 
 namespace ECS.Core.Primitives
 {
@@ -16,21 +15,19 @@ namespace ECS.Core.Primitives
         protected short[] indexData;
         protected IndexBuffer indexBuffer;
         public Color Color { get; set; } = Color.Gray;
-
         protected Texture2D texture;
         protected string texturePath = "";
-
-
-        private ICameraPerspective iCameraProperties;
-
+        private readonly ICameraPerspective iCameraProperties;
+        public PrimitiveType PrimitiveType { get; private set; } = PrimitiveType.TriangleList;
 
         public Shape(Game game, ICameraPerspective iCameraProperties, Color color, string texturePath) : base(game)
         {
-
             Transform = new Transform(game);
             this.iCameraProperties = iCameraProperties;
             this.texturePath = texturePath;
-            Color = color;
+            SetColor(color);
+
+
         }
 
         protected override void LoadContent()
@@ -79,7 +76,7 @@ namespace ECS.Core.Primitives
             Game.GraphicsDevice.SetVertexBuffer(vertexBuffer);
             Game.GraphicsDevice.Indices = indexBuffer;
             
-            basicEffect.World = Transform.Matrix;
+            basicEffect.World = Transform.World;
             basicEffect.View = iCameraProperties.View;
             basicEffect.Projection = iCameraProperties.Projection;
             basicEffect.Texture = texture;
@@ -92,7 +89,7 @@ namespace ECS.Core.Primitives
             {
                 pass.Apply();
 
-                GraphicsDevice.DrawUserIndexedPrimitives<VertexPositionColorTexture>(PrimitiveType.TriangleList,
+                GraphicsDevice.DrawUserIndexedPrimitives<VertexPositionColorTexture>(PrimitiveType,
                  vertsTexture, 0, vertsTexture.Length, indexData, 0, indexData.Length / 3);
 
             }
@@ -101,20 +98,35 @@ namespace ECS.Core.Primitives
 
         }
 
+        public void SetColor(Color color)
+        {
+            Color = color;
+            if (vertsTexture == null) return;
+            for (int i = 0; i < vertsTexture?.Length; i++)
+            {
+                vertsTexture[i].Color = Color;
+            }
+        }
 
-        //public void SetFillMode(FillMode fillMode)
-        //{
-        //    //GraphicsDevice.RasterizerState.FillMode = fillMode;
+        public void SetPrimitiveType(PrimitiveType type)
+        {
+            PrimitiveType = type;
+            SetFillMode(FillMode.WireFrame);
 
-        //    RasterizerState rs = new RasterizerState
-        //    {
-        //        CullMode = CullMode.None,
-        //        FillMode = fillMode
-        //    };
+        }
 
 
-        //    GraphicsDevice.RasterizerState = rs;
-        //}
+
+        public void SetFillMode(FillMode fillMode)
+        {
+            RasterizerState rs = new RasterizerState
+            {
+                CullMode = CullMode.None,
+                FillMode = fillMode
+            };
+
+            GraphicsDevice.RasterizerState = rs;
+        }
 
 
 

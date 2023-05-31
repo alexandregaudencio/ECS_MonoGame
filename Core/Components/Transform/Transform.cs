@@ -8,8 +8,8 @@ namespace ECS.Core.Components
 
     public class Transform : DrawableGameComponent /*, INotifyPropertyChanged*/
     {
-        public Transform parent { get; set; }
-        public Matrix Matrix { get; private set; } = Matrix.Identity;
+        public Transform Parent { get; set; }
+        public Matrix World { get; private set; } = Matrix.Identity;
         public Vector3 Scale { get; private set; } = Vector3.One;
 
         public Vector3 Translation { get; private set; } = Vector3.Zero;
@@ -26,7 +26,7 @@ namespace ECS.Core.Components
 
         public void SetParent(Transform transform)
         {
-            parent = transform;
+            Parent = transform;
         }
 
 
@@ -68,16 +68,16 @@ namespace ECS.Core.Components
 
         private void UpdateTransform()
         {
-            Matrix = Matrix.Invert(Matrix);
+            World = Matrix.Invert(World);
 
-            Matrix = Matrix.Identity;
-            Matrix *= Matrix.CreateScale(Scale); //ok
-            Matrix *= Matrix.CreateRotationX(Rotation.X);
-            Matrix *= Matrix.CreateRotationY(Rotation.Y);
-            Matrix *= Matrix.CreateRotationZ(Rotation.Z);
-            Matrix *= Matrix.CreateTranslation(Translation);
+            World = Matrix.Identity;
+            World *= Matrix.CreateScale(Scale); //ok
+            World *= Matrix.CreateRotationX(Rotation.X);
+            World *= Matrix.CreateRotationY(Rotation.Y);
+            World *= Matrix.CreateRotationZ(Rotation.Z);
+            World *= Matrix.CreateTranslation(Translation);
 
-            Matrix *= (parent != null) ? parent.Matrix : Matrix.Identity;
+            World *= (Parent != null) ? Parent.World : Matrix.Identity;
 
         }
 

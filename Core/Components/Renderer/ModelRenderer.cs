@@ -1,25 +1,18 @@
-﻿using ECS.Core.Components;
-using ECS.Core.Components.Cam;
+﻿using ECS.Core.Components.Cam;
 using ECS.Core.Entities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ECS.Core.Components.Renderer
 {
-    internal class ModelRenderer : DrawableGameComponent
+    public class ModelRenderer : Entity
     {
-        private ICameraPerspective icameraPerspective;
-        Model model;
-        private Transform transform;
-        private string modelPath = "";
-        private static string defaultModelPath = "cube";
+        private readonly ICameraPerspective icameraPerspective;
+        private Model model;
+        private readonly Transform transform;
+        private readonly string modelPath = "";
+        private static readonly string defaultModelPath = "cube";
 
         public ModelRenderer(Game game, ICameraPerspective icameraPerspective, Transform transform, string modelPath = "") : base(game)
         {
@@ -46,8 +39,8 @@ namespace ECS.Core.Components.Renderer
                 foreach (BasicEffect effect in mesh.Effects.Cast<BasicEffect>())
                 {
 
-                    //effect.EnableDefaultLighting();
-                    effect.World = transform.Matrix * mesh.ParentBone.Transform;
+                    effect.EnableDefaultLighting();
+                    effect.World = transform.World /** mesh.ParentBone.Transform*/;
                     effect.View = icameraPerspective.View;
                     effect.Projection = icameraPerspective.Projection;
                 }
