@@ -14,7 +14,6 @@ namespace ECS.Core.GameObject
         public Box(Game game, ICameraPerspective cameraPerspective, string modelPath = "") : base(game, cameraPerspective, modelPath)
         {
             //Transform.SetScale(Vector3.One * 0.1f);
-            //Transform.SetScale(Vector3.One * 0.1f);
             Transform.Translate(Vector3.UnitZ );
         }
 

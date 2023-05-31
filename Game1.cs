@@ -2,6 +2,7 @@
 using ECS.Core.BaseObject.House;
 using ECS.Core.Components;
 using ECS.Core.Components.Cam;
+using ECS.Core.Components.Collision;
 using ECS.Core.Components.Renderer;
 using ECS.Core.GameObject;
 using Microsoft.Xna.Framework;
@@ -19,20 +20,23 @@ namespace ECS
 
         private Plane floor;
 
-        //private WindMill windMill;
+        private WindMill windMill;
         //private WindMill windMill2;
         //private House house;
-        private Box box;
+        private  Box box;
         private Camera camera;
         private CameraController cameraController;
-        
+
+        private readonly CollisionManager collisionManager;
+        private Collider collider;
+        Collider collider1;
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
 
-            camera = new Camera(this, new Vector3(100, 50,0));
+            camera = new Camera(this, new Vector3(30, 10,0));
             cameraController = new CameraController(this, camera);
 
             floor = new Plane(this, camera, Color.DarkGreen);
@@ -40,8 +44,14 @@ namespace ECS
 
             box = new Box(this, camera, "");
 
+            collider = new Collider(this, camera, true);
+            collider1 = new Collider(this, camera, false);
+            collider1.Transform.Translate(Vector3.UnitZ * 10);
+            collisionManager = new CollisionManager(this);
+            collisionManager.AddCollider(collider);
+            collisionManager.AddCollider(collider1);
             //house = new House(this, camera);
-            //windMill = new WindMill(this, camera, new Vector3(0,0,30 ));
+            windMill = new WindMill(this, camera, new Vector3(0,0,30 ));
         }
 
         protected override void Initialize()
@@ -50,9 +60,13 @@ namespace ECS
             Components.Add(camera);
             Components.Add(cameraController);
             Components.Add(floor);
-            Components.Add(box);
+            //Components.Add(box);
+            Components.Add(collisionManager);
+            Components.Add(collider);
+            Components.Add(collider1);
+
             //Components.Add(house);
-            //Components.Add(windMill);
+            Components.Add(windMill);
 
             base.Initialize();
         }
@@ -78,7 +92,7 @@ namespace ECS
             //plane.Transform.RotateY(MathHelper.ToRadians(1)) ;
 
             //if (Keyboard.GetState().IsKeyDown(Keys.NumPad1)) cameraController.SetCameraTarget(modelRenderer.Transform);
-            if (Keyboard.GetState().IsKeyDown(Keys.NumPad0)) cameraController.SetCameraTarget(new Transform(this));
+            if (Keyboard.GetState().IsKeyDown(Keys.NumPad0)) cameraController.SetCameraTarget(collider.Transform);
             base.Update(gameTime);
 
 
@@ -92,5 +106,9 @@ namespace ECS
 
             base.Draw(gameTime);
         }
+
+
+
+
     }
 }

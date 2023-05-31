@@ -30,8 +30,7 @@ namespace ECS.Core.BaseObject
             windBaldes = new WindBaldes(game, camPerspective);
             windBaldes.Transform.Translate(new Vector3(5.1f,15,0));
 
-            AddChild(windBaldes);
-            AddChild(cuboid);
+            AddChild(windBaldes,cuboid);
         }
 
         public override void Initialize()

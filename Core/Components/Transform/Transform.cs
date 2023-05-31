@@ -6,7 +6,7 @@ using System.Diagnostics;
 namespace ECS.Core.Components
 {
 
-    public class Transform : DrawableGameComponent/*, INotifyPropertyChanged*/
+    public class Transform : DrawableGameComponent /*, INotifyPropertyChanged*/
     {
         public Transform parent { get; set; }
         public Matrix Matrix { get; private set; } = Matrix.Identity;
@@ -34,7 +34,7 @@ namespace ECS.Core.Components
 
         public Transform(Game game) : base(game)
         {
-
+            UpdateTransform();
             //TransformChanged += Transformate;
             //Transformate(Translation, Rotation);
         }
@@ -60,7 +60,7 @@ namespace ECS.Core.Components
 
         public override void Update(GameTime gameTime)
         {
-           /* if (Keyboard.GetState().IsKeyDown(Keys.Space)) */UpdateTransform();
+           UpdateTransform();
 
             base.Update(gameTime);
         }

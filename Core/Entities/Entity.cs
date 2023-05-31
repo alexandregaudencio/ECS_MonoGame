@@ -11,14 +11,12 @@ namespace ECS.Core.Entities
         public Transform Transform { get; set; }
         public List<Entity> Childs { get; set; } = new List<Entity>();
 
-
         public Entity(Game game) : base(game)
         {
             Transform = new Transform(game);
             guid = Guid.NewGuid();
             PassTransformToChilds();
         }
-
 
         public void AddChild(params Entity[] objs)
         {
@@ -32,8 +30,6 @@ namespace ECS.Core.Entities
 
 
         }
-        
-
         public void AddChild(IEnumerable<Entity> objs)
         {
             foreach (Entity item in objs)

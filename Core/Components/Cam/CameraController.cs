@@ -37,25 +37,40 @@ namespace ECS.Core.Components.Cam
 
         private void UpdateCameraMovement(GameTime gameTime)
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.Left))
+            //LEFT
+            if (Keyboard.GetState().IsKeyDown(Keys.NumPad4))
             {
                 Camera.Transform.Translate(Camera.Transform.Matrix.Backward*gameTime.ElapsedGameTime.Milliseconds*0.1f);
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.Right))
+
+            //RIGHT
+            if (Keyboard.GetState().IsKeyDown(Keys.NumPad6))
             {
                 Camera.Transform.Translate(Camera.Transform.Matrix.Forward * gameTime.ElapsedGameTime.Milliseconds * 0.1f);
 
             }
-
-            if (Keyboard.GetState().IsKeyDown(Keys.Up))
+            //FORWARD
+            if (Keyboard.GetState().IsKeyDown(Keys.NumPad8))
             {
                 Camera.Transform.Translate(Camera.Transform.Matrix.Left * gameTime.ElapsedGameTime.Milliseconds * 0.1f);
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.Down))
+
+            //BACKWARD
+            if (Keyboard.GetState().IsKeyDown(Keys.NumPad5))
             {
                 Camera.Transform.Translate(Camera.Transform.Matrix.Right * gameTime.ElapsedGameTime.Milliseconds * 0.1f);
             }
 
+            //DOWN
+            if (Keyboard.GetState().IsKeyDown(Keys.NumPad1))
+            {
+                Camera.Transform.Translate(Camera.Transform.Matrix.Down * gameTime.ElapsedGameTime.Milliseconds * 0.1f);
+            }
+            //UP
+            if (Keyboard.GetState().IsKeyDown(Keys.NumPad9))
+            {
+                Camera.Transform.Translate(Camera.Transform.Matrix.Up * gameTime.ElapsedGameTime.Milliseconds * 0.1f);
+            }
         }
     }
 }

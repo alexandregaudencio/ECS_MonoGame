@@ -43,7 +43,7 @@ namespace ECS.Core.Components.Renderer
         {
             foreach (ModelMesh mesh in model.Meshes)
             {
-                foreach (BasicEffect effect in mesh.Effects)
+                foreach (BasicEffect effect in mesh.Effects.Cast<BasicEffect>())
                 {
 
                     //effect.EnableDefaultLighting();
