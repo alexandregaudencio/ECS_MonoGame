@@ -1,4 +1,5 @@
 ﻿using ECS.Core.Components.Cam;
+using ECS.Core.Components.Collision;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -49,6 +50,7 @@ namespace ECS.Core.Object
             }
             base.Update(gameTime);
         }
+
 
 
     }

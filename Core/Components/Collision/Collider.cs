@@ -4,6 +4,7 @@ using ECS.Core.Object;
 using ECS.Core.Primitives;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Diagnostics;
 
 namespace ECS.Core.Components.Collision
@@ -18,11 +19,11 @@ namespace ECS.Core.Components.Collision
 
         private readonly GameObject gameObject;
         public GameObject GameObject => gameObject;
-
+        public event EventHandler<ICollider> CollisionStay;
         public Collider(Game game, ICameraPerspective iCameraPerspective, GameObject gameObject, bool isVisible = true) : base(game)
         {
             this.gameObject = gameObject;
-            this.wireframe = new Cuboid(game, iCameraPerspective, Color.Green);
+            wireframe = new Cuboid(game, iCameraPerspective, Color.Green);
             
             wireframe = new Cuboid(game, iCameraPerspective, Color.Green);
             SetVisible(isVisible);
@@ -44,8 +45,6 @@ namespace ECS.Core.Components.Collision
 
         public override void Update(GameTime gameTime)
         {
-
-            //wireCollider.SetTransform(gameObject.Transform);
             
             UpdateBoundingBox();
             //Debug.WriteLine(guid.ToString() + Transform.Translation + Transform.Scale);
@@ -97,7 +96,7 @@ namespace ECS.Core.Components.Collision
         public  void OnCollisionStay(ICollider other)
         {
             //Debug.WriteLine(other.GameObject.GetTypeInfo());
-
+            CollisionStay?.Invoke(this, other);
             Debug.WriteLine(" On collision STAY");
 
         }
