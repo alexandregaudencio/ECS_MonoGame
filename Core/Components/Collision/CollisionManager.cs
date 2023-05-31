@@ -11,41 +11,89 @@ namespace ECS.Core.Components.Collision
 {
     public class CollisionManager : GameComponent
     {
-        private List<Collider> colliders;
+        private List<ICollider> colliders;
 
         public CollisionManager(Game game) : base(game)
         {
-            colliders = new List<Collider>();
+            colliders = new List<ICollider>();
         }
 
-        public void AddCollider(Collider collider)
+        public void AddColliders(params ICollider[] colliders)
         {
-            colliders.Add(collider);
+            if (colliders == null) return;
+            foreach(ICollider collider in colliders)
+                this.colliders.Add(collider);
         }
 
 
-        public void processCollisions()
+        public void ProcessCollisions()
         {
 
-            for (int i = 0;i < colliders.Count; i++)
+            //from the first one to previous last.
+            for (int i = 0;i < colliders.Count-1; i++)
             {
-                for (int j = i; j < colliders.Count; j++)
+                //from the next to fist to last 
+                for (int j = i+1; j < colliders.Count; j++)
+                
                 {
-                    if (j == colliders.Count - 1) continue;
-                    if (colliders[j].BoundingBox.Intersects(colliders[j+1].BoundingBox)) {
-                        colliders[j].isColliding = true;
-                        colliders[j+1].isColliding = true;
-                        Debug.WriteLine("Collidiu");
+                    //if (j == colliders.Count - 1) continue;
+                    // i interset j
 
-                    } 
+                    if (!colliders[i].IsColliding && !colliders[i].BoundingBox.Intersects(colliders[j].BoundingBox))
+                    {
+                        continue;
+                    }
+
+                    //if (!colliders[i].IsColliding && colliders[i].BoundingBox.Intersects(colliders[j].BoundingBox))
+                    //{
+                    //    colliders[i].OnCollisionEnter(colliders[j]);
+                    //    colliders[j].OnCollisionEnter(colliders[i]);
+                    //    continue;
+                    //}
+                    if (/*colliders[i].IsColliding &&*/ colliders[i].BoundingBox.Intersects(colliders[j].BoundingBox))
+                    {
+
+                        colliders[i].OnCollisionStay(colliders[j]);
+                        colliders[j].OnCollisionStay(colliders[i]);
+                        continue;
+                    }
+                    //if (colliders[i].IsColliding && !colliders[i].BoundingBox.Intersects(colliders[j].BoundingBox))
+                    //{
+                    //    colliders[i].OnCollisionExit(colliders[j]);
+                    //    colliders[j].OnCollisionExit(colliders[i]);
+                    //    continue;
+                    //}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 }
             }
         }
 
+
         public override void Update(GameTime gameTime)
         {
-            processCollisions();
+            ProcessCollisions();
             base.Update(gameTime);
         }
     }

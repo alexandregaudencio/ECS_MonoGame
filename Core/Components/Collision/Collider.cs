@@ -6,13 +6,15 @@ using System.Diagnostics;
 
 namespace ECS.Core.Components.Collision
 {
-    public class Collider : Entity
+    public class Collider : Entity, ICollider
     {
         //private Transform Transform;
         LineBox lineBox;
-        public BoundingBox BoundingBox { get; private set; }
+        public BoundingBox BoundingBox { get; set; }
+
         public bool Intersects(BoundingBox box) => BoundingBox.Intersects(box);
-        public bool isColliding = false;
+        private bool isColliding;
+        public bool IsColliding => isColliding;
         public bool movivel = true;
         public Collider(Game game, ICameraPerspective iCameraPerspective, bool movivel) : base(game)
         {
@@ -50,48 +52,77 @@ namespace ECS.Core.Components.Collision
 
         }
 
-
         public void SetVisible(bool value)
         {
             lineBox.Visible  = value;
         }
 
-
         private void ProcessInputCommands()
         {
+            //if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            //{
+            //    isColliding = false;
+            //    OnCollisionExit(null);
+            //}
+
             if (!movivel) return;
 
             float speed = 0.05f;
-            if (Keyboard.GetState().IsKeyDown(Keys.Q))
+            if (Keyboard.GetState().IsKeyDown(Keys.E))
             {
                 Transform.RotateY(-0.01f);
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.E))
+            if (Keyboard.GetState().IsKeyDown(Keys.Q))
             {
                 Transform.RotateY(0.01f);
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.A))
+
+            if (Keyboard.GetState().IsKeyDown(Keys.W))
             {
                 Transform.Translate(-Vector3.UnitX*speed);
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.D))
+            if (Keyboard.GetState().IsKeyDown(Keys.S))
             {
                 this.Transform.Translate(Vector3.UnitX * speed);
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.W))
+            if (Keyboard.GetState().IsKeyDown(Keys.A))
             {
                 this.Transform.Translate(Vector3.UnitZ * speed);
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.S))
+            if (Keyboard.GetState().IsKeyDown(Keys.D))
             {
                 this.Transform.Translate(-Vector3.UnitZ * speed);
             }
+
+
+            
 
 
         }
 
 
 
+        public  void OnCollisionEnter(ICollider other)
+        {
+            isColliding = true;
 
+            Debug.WriteLine(guid+ " On collision Enter");
+            lineBox.SetColor(Color.Red);
+        }
+
+        public  void OnCollisionExit(ICollider other)
+        {
+            isColliding = false;
+            lineBox.SetColor(Color.Black);
+
+            Debug.WriteLine(guid + " On collision exit");
+
+        }
+
+        public  void OnCollisionStay(ICollider other)
+        {
+            Debug.WriteLine(guid + " On collision STAY");
+
+        }
     }
 }

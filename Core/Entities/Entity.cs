@@ -7,14 +7,16 @@ namespace ECS.Core.Entities
 {
     public abstract class Entity : DrawableGameComponent, IComposite<Entity>
     {
-        public readonly Guid guid;
+        //public readonly Guid guid;
+        public readonly Int32 guid;
         public Transform Transform { get; set; }
         public List<Entity> Childs { get; set; } = new List<Entity>();
 
         public Entity(Game game) : base(game)
         {
             Transform = new Transform(game);
-            guid = Guid.NewGuid();
+            //guid = Guid.NewGuid();
+            guid = new Random().Next(Int16.MaxValue);
             PassTransformToChilds();
         }
 

@@ -30,6 +30,8 @@ namespace ECS
         private readonly CollisionManager collisionManager;
         private Collider collider;
         Collider collider1;
+        Collider collider2;
+        Collider collider3;
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -46,10 +48,14 @@ namespace ECS
 
             collider = new Collider(this, camera, true);
             collider1 = new Collider(this, camera, false);
+            collider2 = new Collider(this, camera, false);
+            collider3 = new Collider(this, camera, false);
             collider1.Transform.Translate(Vector3.UnitZ * 10);
+            collider2.Transform.Translate(-Vector3.UnitZ * 5);
+            collider3.Transform.Translate(-Vector3.UnitX * 10);
+            
             collisionManager = new CollisionManager(this);
-            collisionManager.AddCollider(collider);
-            collisionManager.AddCollider(collider1);
+            collisionManager.AddColliders(collider, collider1, collider2, collider3);
             //house = new House(this, camera);
             windMill = new WindMill(this, camera, new Vector3(0,0,30 ));
         }
@@ -64,6 +70,8 @@ namespace ECS
             Components.Add(collisionManager);
             Components.Add(collider);
             Components.Add(collider1);
+            Components.Add(collider2);
+            Components.Add(collider3);
 
             //Components.Add(house);
             Components.Add(windMill);
