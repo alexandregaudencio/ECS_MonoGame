@@ -1,14 +1,9 @@
-﻿using ECS.Core.BaseObject;
-using ECS.Core.BaseObject.House;
-using ECS.Core.Components;
-using ECS.Core.Components.Cam;
+﻿using ECS.Core.Components.Cam;
 using ECS.Core.Components.Collision;
-using ECS.Core.Components.Renderer;
 using ECS.Core.Object;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System;
 using Plane = ECS.Core.Primitives.Plane;
 
 namespace ECS
@@ -42,7 +37,7 @@ namespace ECS
 
             collisionManager = new CollisionManager(this);
 
-            camera = new Camera(this, new Vector3(5, 10, 0));
+            camera = new Camera(this, new Vector3(0, 10, 2));
             cameraController = new CameraController(this, camera);
 
             floor = new Plane(this, camera, Color.DarkBlue);
@@ -52,7 +47,8 @@ namespace ECS
             box2.SetObjectOnFloorY();
             box.SetObjectOnFloorY();
             box2.Transform.Translate(Vector3.UnitX * 4);
-            box2.movivel = false;
+            box2.MovementControl.Active = true;
+
 
             sphere = new Sphere(this, camera);
             sphere.SetObjectOnFloorY();

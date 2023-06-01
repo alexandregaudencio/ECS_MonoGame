@@ -1,12 +1,6 @@
 ﻿using ECS.Core.Components.Cam;
 using ECS.Core.Entities;
-using ECS.Core.Primitives;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ECS.Core.BaseObject.House
 {
@@ -21,7 +15,7 @@ namespace ECS.Core.BaseObject.House
 
             for (int i = 0; i < triangles.Length; i++)
             {
-                
+
                 triangles[i] = new HoofTriangle(game, iCamPerspective, Color.White, texturePath);
                 //triangles[i].Transform.IncreaseScale(Vector3.One);
                 triangles[i].Transform.Rotate(Vector3.UnitY * MathHelper.ToRadians(i * 90));

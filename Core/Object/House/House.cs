@@ -3,11 +3,6 @@ using ECS.Core.Entities;
 using ECS.Core.Primitives;
 using ECS.Core.Util.Extensions;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ECS.Core.BaseObject.House
 {
@@ -23,7 +18,7 @@ namespace ECS.Core.BaseObject.House
             cuboid.Transform.IncreaseScale(Vector3.One * (size));
             cuboid.Transform.IncreaseScale(-new Vector3(1, 0, 1) * (size * 0.2f));
             hoof = new Hoof(game, iCamPerspective, "madeira", size);
-            hoof.Transform.Translate(Vector3.UnitY*size);
+            hoof.Transform.Translate(Vector3.UnitY * size);
 
             AddChild(cuboid);
             AddChild(hoof);

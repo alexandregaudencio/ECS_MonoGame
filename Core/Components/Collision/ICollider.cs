@@ -1,19 +1,25 @@
 ﻿using ECS.Core.Boundary;
 using ECS.Core.Object;
-using Microsoft.Xna.Framework;
-
+using System;
+using System.Collections.Generic;
 
 namespace ECS.Core.Components.Collision
 {
     public interface ICollider
     {
-        public Object.GameObject GameObject { get; }
-        bool IsColliding { get; }
+        public GameObject GameObject { get; }
         public IBoundary Boundary { get; }
+        bool IsContacting(ICollider collider);
 
-        virtual void  OnCollisionEnter(ICollider other) { }
-        virtual void OnCollisionExit(ICollider other) { }
-        virtual void OnCollisionStay(ICollider other) { }
+        List<ICollider> Contacts { get; set; }
+
+        public event EventHandler<ICollider> CollisionStay;
+        public event EventHandler<ICollider> CollisionEnter;
+        public event EventHandler<ICollider> CollisionExit;
+
+        virtual void Enter(ICollider other) { }
+        virtual void Exit(ICollider other) { }
+        virtual void Stay(ICollider other) { }
 
     }
 }

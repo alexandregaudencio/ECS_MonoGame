@@ -6,6 +6,7 @@ using ECS.Core.Primitives;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace ECS.Core.Components.Collision
@@ -13,23 +14,24 @@ namespace ECS.Core.Components.Collision
     public class Collider : Entity, ICollider
     {
         private readonly Cuboid wireframe;
-        
-        private bool isColliding;
-        public bool IsColliding => isColliding;
-
         private readonly GameObject gameObject;
         public GameObject GameObject => gameObject;
-
         private OBB boundary;
         public IBoundary Boundary => boundary;
+        public List<ICollider> Contacts { get; set; } = new List<ICollider>();
+        public bool IsContacting(ICollider collider) => 
+            (Contacts.Contains(collider)) ? true : false;
 
         public event EventHandler<ICollider> CollisionStay;
+        public event EventHandler<ICollider> CollisionEnter;
+        public event EventHandler<ICollider> CollisionExit;
+
         public Collider(Game game, ICameraPerspective iCameraPerspective, GameObject gameObject, bool isVisible = true) : base(game)
         {
             this.gameObject = gameObject;
             wireframe = new Cuboid(game, iCameraPerspective, Color.Green);
             boundary = new OBB(Transform);
-            
+
             SetVisible(isVisible);
         }
 
@@ -38,7 +40,6 @@ namespace ECS.Core.Components.Collision
         {
             AddChild(wireframe);
             Game.Components.Add(wireframe);
-
             wireframe.SetPrimitiveType(PrimitiveType.LineList);
             CollisionManager.Instance.AddColliders(this);
 
@@ -53,7 +54,7 @@ namespace ECS.Core.Components.Collision
             //Debug.WriteLine("MAX: " + MathF.Cos(MathHelper.ToDegrees(boundary.Transform.World.Forward.X)));
             //Debug.WriteLine("MAX: "+boundary.Transform.World.Forward);
 
-
+            frame++;
 
             base.Update(gameTime);
         }
@@ -61,7 +62,7 @@ namespace ECS.Core.Components.Collision
 
         public void SetVisible(bool value)
         {
-            wireframe.Visible  = value;
+            wireframe.Visible = value;
         }
 
         public void SetColor(Color color)
@@ -69,30 +70,32 @@ namespace ECS.Core.Components.Collision
             wireframe.SetColor(color);
         }
 
+        //TODO: just for test (remove after)
+        int frame = 0;
 
-        public  void OnCollisionEnter(ICollider other)
+        public void Enter(ICollider other)
         {
-            isColliding = true;
-
-            Debug.WriteLine(guid+ " On collision Enter");
+            Contacts.Add(other);
+            CollisionEnter?.Invoke(this, other);
             wireframe.SetColor(Color.Red);
-        }
 
-        public  void OnCollisionExit(ICollider other)
-        {
-
-            isColliding = false;
-            wireframe.SetColor(Color.Green);
-
-            Debug.WriteLine(" On collision exit");
 
         }
 
-        public  void OnCollisionStay(ICollider other)
+        public void Stay(ICollider other)
         {
-            //Debug.WriteLine(other.GameObject.GetTypeInfo());
             CollisionStay?.Invoke(this, other);
 
         }
+
+        public void Exit(ICollider other)
+        {
+            Contacts.Remove(other);
+            CollisionExit?.Invoke(this, other);
+            wireframe.SetColor(Color.Green);
+
+        }
+
+
     }
 }

@@ -1,7 +1,5 @@
-﻿using ECS.Core.Entities;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using System.Diagnostics;
 
 namespace ECS.Core.Components.Cam
 {
@@ -40,7 +38,7 @@ namespace ECS.Core.Components.Cam
             //LEFT
             if (Keyboard.GetState().IsKeyDown(Keys.NumPad4))
             {
-                Camera.Transform.Translate(Camera.Transform.World.Backward*gameTime.ElapsedGameTime.Milliseconds*0.1f);
+                Camera.Transform.Translate(Camera.Transform.World.Backward * gameTime.ElapsedGameTime.Milliseconds * 0.1f);
             }
 
             //RIGHT

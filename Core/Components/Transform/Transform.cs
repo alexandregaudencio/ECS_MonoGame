@@ -1,7 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
-using System;
-using System.Diagnostics;
 
 namespace ECS.Core.Components
 {
@@ -60,7 +57,7 @@ namespace ECS.Core.Components
 
         public override void Update(GameTime gameTime)
         {
-           UpdateTransform();
+            UpdateTransform();
 
             base.Update(gameTime);
         }
@@ -71,7 +68,7 @@ namespace ECS.Core.Components
             World = Matrix.Invert(World);
 
             World = Matrix.Identity;
-            World *= Matrix.CreateScale(Scale); 
+            World *= Matrix.CreateScale(Scale);
             World *= Matrix.CreateRotationX(Rotation.X);
             World *= Matrix.CreateRotationY(Rotation.Y);
             World *= Matrix.CreateRotationZ(Rotation.Z);

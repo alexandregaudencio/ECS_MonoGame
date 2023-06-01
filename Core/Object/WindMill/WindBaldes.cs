@@ -13,14 +13,14 @@ namespace ECS.Core.BaseObject
     {
 
         private List<Shape> blades = new List<Shape>();
-        private Vector3 bladeScale = new Vector3(3, 0, 1.5f)*5;
+        private Vector3 bladeScale = new Vector3(3, 0, 1.5f) * 5;
 
         public WindBaldes(Game game, ICameraPerspective camPerspective) : base(game)
         {
 
             GenerateBlades(game, camPerspective);
             AddChild(blades);
-            
+
 
         }
 
@@ -55,7 +55,7 @@ namespace ECS.Core.BaseObject
         {
             for (int i = 0; i < 4; i++)
             {
-                blades[i].Transform.RotateY(i*MathF.PI / 2);
+                blades[i].Transform.RotateY(i * MathF.PI / 2);
                 blades[i].Transform.RotateZ(MathF.PI / 2);
 
             }

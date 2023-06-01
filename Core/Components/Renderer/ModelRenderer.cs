@@ -23,7 +23,8 @@ namespace ECS.Core.Components.Renderer
 
         protected override void LoadContent()
         {
-            if (string.IsNullOrEmpty(modelPath)) {
+            if (string.IsNullOrEmpty(modelPath))
+            {
                 //throw new NullReferenceException("modelPath is null."); 
                 model = Game.Content.Load<Model>(defaultModelPath);
                 return;

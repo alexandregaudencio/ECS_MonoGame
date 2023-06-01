@@ -16,7 +16,7 @@ namespace ECS.Core.BaseObject
         private Cuboid cuboid;
         private Random random = new Random();
         private int RandomColorIndex => random.Next(0, 255);
-        
+
         private Color RandomColor => new Color(RandomColorIndex, RandomColorIndex, RandomColorIndex);
 
         public WindMill(Game game, ICameraPerspective camPerspective, Vector3 position) : base(game)
@@ -25,12 +25,12 @@ namespace ECS.Core.BaseObject
 
             cuboid = new Cuboid(game, camPerspective, Color.White, "madeira");
             cuboid.Transform.SetScale(new Vector3(5, 10, 5));
-            cuboid.Transform.Translate(Vector3.UnitY*10);
+            cuboid.Transform.Translate(Vector3.UnitY * 10);
 
             windBaldes = new WindBaldes(game, camPerspective);
-            windBaldes.Transform.Translate(new Vector3(5.1f,15,0));
+            windBaldes.Transform.Translate(new Vector3(5.1f, 15, 0));
 
-            AddChild(windBaldes,cuboid);
+            AddChild(windBaldes, cuboid);
         }
 
         public override void Initialize()
@@ -41,7 +41,7 @@ namespace ECS.Core.BaseObject
             base.Initialize();
         }
 
-        
+
         public override void Update(GameTime gameTime)
         {
             windBaldes.Transform.RotateX(0.001f * gameTime.ElapsedGameTime.Milliseconds);

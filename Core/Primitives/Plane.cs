@@ -1,5 +1,4 @@
-﻿using ECS.Core.Components;
-using ECS.Core.Components.Cam;
+﻿using ECS.Core.Components.Cam;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -19,7 +18,7 @@ namespace ECS.Core.Primitives
 
             vertsTexture = new VertexPositionColorTexture[]
             {
-                 
+
                 new VertexPositionColorTexture(new Vector3( 1, 0, 1), Color,new Vector2(1,1)),
                 new VertexPositionColorTexture(new Vector3( 1, 0,-1), Color,new Vector2(1,0)),
                 new VertexPositionColorTexture(new Vector3(-1, 0,-1), Color,new Vector2(0,0)),

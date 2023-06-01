@@ -18,7 +18,7 @@ namespace ECS.Core.Components.Cam
 
 
         //View properties
-        public Vector3 CameraTarget { get; set; } 
+        public Vector3 CameraTarget { get; set; }
         public Vector3 CameraUpVector { get; set; }
 
         //CAMERA PROPERTIES

@@ -28,7 +28,7 @@ namespace ECS.Core.Entities
                 Childs.Add(item);
 
             }
-           
+
             PassTransformToChilds();
 
 

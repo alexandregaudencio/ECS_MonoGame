@@ -20,15 +20,15 @@ namespace ECS.Core.Boundary
 
         public BoundType Type => _type;
 
-        public float MinX => Transform.Translation.X - Transform.Scale.X* -Transform.World.Backward.X;
+        public float MinX => Transform.Translation.X - Transform.Scale.X * -Transform.World.Backward.X;
 
-        public float MinY => Transform.Translation.Y - Transform.Scale.Y* -Transform.World.Backward.Y;
+        public float MinY => Transform.Translation.Y - Transform.Scale.Y * -Transform.World.Backward.Y;
 
-        public float MinZ => Transform.Translation.Z - Transform.Scale.Z* Transform.World.Backward.Z;
+        public float MinZ => Transform.Translation.Z - Transform.Scale.Z * Transform.World.Backward.Z;
 
-        public float MaxX => Transform.Translation.X + Transform.Scale.X* Transform.World.Forward.X;
+        public float MaxX => Transform.Translation.X + Transform.Scale.X * Transform.World.Forward.X;
 
-        public float MaxY => Transform.Translation.Y + Transform.Scale.Y* Transform.World.Forward.Y;
+        public float MaxY => Transform.Translation.Y + Transform.Scale.Y * Transform.World.Forward.Y;
 
         public float MaxZ => Transform.Translation.Z + Transform.Scale.Z * Transform.World.Forward.Z;
 
@@ -54,7 +54,7 @@ namespace ECS.Core.Boundary
         }
 
         public Transform Transform => transform;
-        
+
         public bool Intersects(BoundingBox box)
         {
             return this.Box.Intersects(box);
@@ -65,7 +65,7 @@ namespace ECS.Core.Boundary
         public bool Intersects(IBoundary other)
         {
 
-           return Intersects(other.Box);
+            return Intersects(other.Box);
 
             //if (other == null) return false;
             //return false;
@@ -91,7 +91,7 @@ namespace ECS.Core.Boundary
 
             ////if (Max.X > other.Min.X && Min.X < other.Min.X) return true;
             //if(other.Max.X > Min.X && other.Max.X < Max.X) return true; //intersecta no x
-            
+
             //return false;
             ////(a.X > -b.X && -a.X < -b.Y) //intersecta no x
 
@@ -132,7 +132,7 @@ namespace ECS.Core.Boundary
         }
 
 
-        public void UpdateTransform(Transform transform) 
+        public void UpdateTransform(Transform transform)
         {
             this.transform = transform;
 

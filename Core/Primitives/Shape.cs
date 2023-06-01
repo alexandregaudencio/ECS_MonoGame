@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace ECS.Core.Primitives
 {
-    public abstract class Shape : Entity 
+    public abstract class Shape : Entity
     {
 
         protected VertexPositionColorTexture[] vertsTexture;
@@ -70,12 +70,12 @@ namespace ECS.Core.Primitives
 
             vertexBuffer.SetData(vertsTexture);
         }
-        
+
         public override void Draw(GameTime gameTime)
         {
             Game.GraphicsDevice.SetVertexBuffer(vertexBuffer);
             Game.GraphicsDevice.Indices = indexBuffer;
-            
+
             basicEffect.World = Transform.World;
             basicEffect.View = iCameraProperties.View;
             basicEffect.Projection = iCameraProperties.Projection;

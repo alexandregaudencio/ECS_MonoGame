@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 
 namespace ECS.Core.Components.Collision
 {
@@ -14,7 +13,7 @@ namespace ECS.Core.Components.Collision
 
         public CollisionManager(Game game) : base(game)
         {
-            instance  = this;
+            instance = this;
             colliders = new List<ICollider>();
         }
 
@@ -25,7 +24,7 @@ namespace ECS.Core.Components.Collision
         //}
         public override void Update(GameTime gameTime)
         {
-            ProcessCollisions();
+             ProcessCollisions();
             base.Update(gameTime);
         }
 
@@ -34,48 +33,52 @@ namespace ECS.Core.Components.Collision
         {
             if (colliders == null) return;
             Debug.WriteLine(colliders.Length);
-            foreach(ICollider collider in colliders)
+            foreach (ICollider collider in colliders)
                 this.colliders.Add(collider);
         }
 
 
         public void ProcessCollisions()
         {
+            if (colliders.Count <= 1) return;
 
-            //from the first one to previous last.
-            for (int i = 0;i < colliders.Count-1; i++)
+            //from the first one to previous last(penultimate)
+            for (int i = 0; i < colliders.Count - 1; i++)
             {
                 //from the next to fist to last 
-                for (int j = i+1; j < colliders.Count; j++)
-                
+                for (int j = i + 1; j < colliders.Count; j++)
                 {
-                    //if (j == colliders.Count - 1) continue;
-                    // i interset j
 
-                    if (!colliders[i].IsColliding && !colliders[i].Boundary.Intersects(colliders[j].Boundary))
+                    //intesects and...
+                    if (colliders[i].Boundary.Intersects(colliders[j].Boundary))
                     {
-                        continue;
+                        //was not in contact
+                        if (!colliders[i].IsContacting(colliders[j]))
+                        {
+                            colliders[i].Enter(colliders[j]);
+                            colliders[j].Enter(colliders[i]);
+                            continue;
+                        }
+
+                        if (colliders[i].IsContacting(colliders[j]))
+                        {
+                            colliders[i].Stay(colliders[j]);
+                            colliders[j].Stay(colliders[i]);
+                            continue;
+                        }
+                    }
+                    //not intersect
+                    else
+                    {
+                        if (colliders[i].IsContacting(colliders[j]))
+                        {
+                            colliders[i].Exit(colliders[j]);
+                            colliders[j].Exit(colliders[i]);
+                            continue;
+                        }
                     }
 
-                    //if (!colliders[i].IsColliding && colliders[i].BoundingBox.Intersects(colliders[j].BoundingBox))
-                    //{
-                    //    colliders[i].OnCollisionEnter(colliders[j]);
-                    //    colliders[j].OnCollisionEnter(colliders[i]);
-                    //    continue;
-                    //}
-                    if (/*colliders[i].IsColliding &&*/ colliders[i].Boundary.Intersects(colliders[j].Boundary))
-                    {
 
-                        colliders[i].OnCollisionStay(colliders[j]);
-                        colliders[j].OnCollisionStay(colliders[i]);
-                        continue;
-                    }
-                    //if (colliders[i].IsColliding && !colliders[i].BoundingBox.Intersects(colliders[j].BoundingBox))
-                    //{
-                    //    colliders[i].OnCollisionExit(colliders[j]);
-                    //    colliders[j].OnCollisionExit(colliders[i]);
-                    //    continue;
-                    //}
 
 
                 }

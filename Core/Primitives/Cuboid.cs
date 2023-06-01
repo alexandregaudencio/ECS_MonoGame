@@ -1,5 +1,4 @@
-﻿using ECS.Core.Components;
-using ECS.Core.Components.Cam;
+﻿using ECS.Core.Components.Cam;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -10,7 +9,7 @@ namespace ECS.Core.Primitives
 
         public Cuboid(Game game, ICameraPerspective iCamPerspective, Color color, string texturePath = "") : base(game, iCamPerspective, color, texturePath)
         {
-            
+
         }
 
         public override void Initialize()

@@ -59,7 +59,7 @@
 //        }
 
 //        public Transform Transform => transform;
-        
+
 //        public bool Intersects(BoundingSphere bounding)
 //        {
 //            return Bounding.Intersects(bounding);
@@ -96,7 +96,7 @@
 
 //            ////if (Max.X > other.Min.X && Min.X < other.Min.X) return true;
 //            //if(other.Max.X > Min.X && other.Max.X < Max.X) return true; //intersecta no x
-            
+
 //            //return false;
 //            ////(a.X > -b.X && -a.X < -b.Y) //intersecta no x
 
