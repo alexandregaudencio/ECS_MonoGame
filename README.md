@@ -1,6 +1,6 @@
 # ECS_MonoGame
 
-Este projeto tem por objetivo facilitar a produção de jogos usnado Monogame/XNA, abstraindo o processo de implementação dos elmentos de jogo.
+Este projeto tem por objetivo facilitar a produção de jogos usando Monogame/XNA, abstraindo o processo de implementação dos elmentos de jogo e o modularizando.
 Foi construído no âmbito de uma disciplina de curos superior, no IFRJ.
 
 O projeto apresenta  várias classes comuns e úteis no desenvolvimento de jogos, como:
