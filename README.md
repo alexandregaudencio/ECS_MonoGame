@@ -4,11 +4,12 @@ Este projeto tem por objetivo facilitar a produção de jogos usando Monogame/XN
 Foi construído no âmbito de uma disciplina de curos superior, no IFRJ.
 
 O projeto apresenta  várias classes comuns e úteis no desenvolvimento de jogos, como:
-- renderizadores de modelos,
+- Rendização de modelos,
 - formas primitivas, 
-- colisão, 
+- colisão e gerenciamento de colisão,
 - câmera, 
 - transformações, 
+- GameObjects,
 - movimentação por inputs de teclado, 
 - etc... 
 
