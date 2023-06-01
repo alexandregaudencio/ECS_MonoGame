@@ -79,5 +79,16 @@ namespace ECS.Core.Components.Renderer
 
 
 
+        public void SetColor(Color color)
+        {
+
+            //if (vertsTexture == null) return;
+            //for (int i = 0; i < vertsTexture?.Length; i++)
+            //{
+            //    vertsTexture[i].Color = Color;
+            //}
+        }
+
+
     }
 }

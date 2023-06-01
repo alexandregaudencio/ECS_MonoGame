@@ -12,7 +12,7 @@ namespace ECS.Core.Boundary
     {
         //AABB,
         OBB,
-        //SPHERE
+        SB
     }
     public interface IBoundary
     {

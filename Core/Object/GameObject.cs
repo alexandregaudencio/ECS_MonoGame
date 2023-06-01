@@ -16,7 +16,7 @@ namespace ECS.Core.Object
 {
     public abstract class GameObject : Entity
     {
-        public ModelRenderer ModelRenderer { get;private set; }
+        protected ModelRenderer ModelRenderer { get; set; }
         public Collider Collider { get; private set; }
         
         
@@ -52,6 +52,10 @@ namespace ECS.Core.Object
             Debug.WriteLine("on collision do gameobject");
         }
 
+        public void SetColor(Color color)
+        {
+
+        }
 
     }
 }

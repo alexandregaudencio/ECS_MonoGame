@@ -1,11 +1,6 @@
 ﻿using ECS.Core.Components;
-using ECS.Core.Entities;
 using Microsoft.Xna.Framework;
-using System;
-using System.Diagnostics;
-using System.Drawing;
-using System.Numerics;
-using System.Reflection.Metadata.Ecma335;
+
 using Vector3 = System.Numerics.Vector3;
 
 namespace ECS.Core.Boundary
@@ -70,8 +65,10 @@ namespace ECS.Core.Boundary
         public bool Intersects(IBoundary other)
         {
 
-            if (other == null) return false;
-            return false;
+           return Intersects(other.Box);
+
+            //if (other == null) return false;
+            //return false;
 
             ////(0,0,0)
             //Vector3 origin = transform.Translation.ToNumerics();

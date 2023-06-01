@@ -29,12 +29,13 @@ namespace ECS
         //private House house;
         private readonly Box box;
         private readonly Box box2;
-
+        private Sphere sphere;
         #endregion
 
 
         public Game1()
         {
+
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
@@ -52,6 +53,10 @@ namespace ECS
             box.SetObjectOnFloorY();
             box2.Transform.Translate(Vector3.UnitX * 4);
             box2.movivel = false;
+
+            sphere = new Sphere(this, camera);
+            sphere.SetObjectOnFloorY();
+            sphere.Transform.Translate(Vector3.UnitZ * 3);
             //box.Transform.IncreaseScale(Vector3.One * 2);
 
             //collisionManager.AddColliders(collider, collider1, collider2, collider3);
@@ -69,6 +74,7 @@ namespace ECS
             Components.Add(floor);
             Components.Add(box);
             Components.Add(box2);
+            Components.Add(sphere);
             //Components.Add(collisionManager);
 
             //Components.Add(house);
