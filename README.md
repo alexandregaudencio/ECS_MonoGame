@@ -11,3 +11,8 @@ O projeto apresenta  várias classes comuns e úteis no desenvolvimento de jogos
 - transformações, 
 - movimentação por inputs de teclado, 
 - etc... 
+
+**Para abrir o projeto:**
+Foi utilziado o Visual Studio 2022, instalando o MonoGame a partir do gerenciador de pacotes.
+após a instalanção, configurar o gerenciador de conteúdos, conforme orienta o site:
+[https://docs.monogame.net/index.html](https://docs.monogame.net/articles/tools/mgcb.html)
