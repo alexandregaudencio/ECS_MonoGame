@@ -13,7 +13,6 @@ namespace ECS.Core.Components.Collision
     public class Collider : Entity, ICollider
     {
         private readonly Cuboid wireframe;
-        public BoundingBox BoundingBox { get; set; }
         
         private bool isColliding;
         public bool IsColliding => isColliding;
@@ -49,17 +48,16 @@ namespace ECS.Core.Components.Collision
         public override void Update(GameTime gameTime)
         {
             boundary.UpdateTransform(gameObject.Transform);
-            //Debug.WriteLine(boundary.Transform.Translation);
-            
+            //boundary.Transform.SetRotation(Vector3.Zero);
+            //Debug.WriteLine("MAX: " +string.Format("forward:{0:0}", boundary.Transform.World.Forward.x));
+            //Debug.WriteLine("MAX: " + MathF.Cos(MathHelper.ToDegrees(boundary.Transform.World.Forward.X)));
+            //Debug.WriteLine("MAX: "+boundary.Transform.World.Forward);
+
 
 
             base.Update(gameTime);
         }
 
-
-
-        public bool Intersects(BoundingBox box) => BoundingBox.Intersects(box);
-        public bool Intersects(IBoundary bound) => Boundary.Intersects(bound);
 
         public void SetVisible(bool value)
         {

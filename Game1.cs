@@ -51,7 +51,7 @@ namespace ECS
             box2.SetObjectOnFloorY();
             box.SetObjectOnFloorY();
             box2.Transform.Translate(Vector3.UnitX * 4);
-            box.movivel = false;
+            box2.movivel = false;
             //box.Transform.IncreaseScale(Vector3.One * 2);
 
             //collisionManager.AddColliders(collider, collider1, collider2, collider3);
