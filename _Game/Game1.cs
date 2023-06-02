@@ -1,12 +1,12 @@
-﻿using ECS.Core.Components.Collision;
+﻿using ECS._Game._Scenes;
+using ECS.Core.Components.Collision;
 using ECS.Core.Managers;
 using ECS.Core.Scene;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Plane = ECS.Core.Primitives.Plane;
 
-namespace ECS
+namespace ECS._Game
 {
     public class Game1 : Game
     {
@@ -28,7 +28,7 @@ namespace ECS
             IsMouseVisible = true;
 
             collisionManager = new CollisionManager(this);
-            timeManager =  new TimeManager(this);
+            timeManager = new TimeManager(this);
             sceneManager = new SceneManager(this);
 
             sceneTest = new SceneTest(this, "Scene Test");
@@ -38,7 +38,7 @@ namespace ECS
 
         protected override void Initialize()
         {
-            
+
             Components.Add(collisionManager);
             Components.Add(timeManager);
             Components.Add(sceneManager);
@@ -73,7 +73,7 @@ namespace ECS
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.DarkSlateGray);
 
             base.Draw(gameTime);
         }

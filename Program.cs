@@ -1,5 +1,6 @@
-﻿
-using var game = new ECS.Game1();
+﻿using ECS._Game;
+
+using var game = new Game1();
 game.Run();
 
 

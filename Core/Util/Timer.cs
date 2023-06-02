@@ -27,7 +27,7 @@ namespace ECS.Core.Util
 
         public Timer(Game game, float maxTime) : base(game)
         {
-            SetMaxTime(maxTime);
+            MaxTime = maxTime;
         }
 
         public override void Update(GameTime gameTime)
@@ -36,10 +36,10 @@ namespace ECS.Core.Util
             base.Update(gameTime);
         }
 
-        public void SetMaxTime(float maxTime)
-        {
-            MaxTime = maxTime;
-        }
+        //public void SetMaxTime(float maxTime)
+        //{
+        //    MaxTime = maxTime;
+        //}
 
         public void Start()
         {

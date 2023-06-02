@@ -3,7 +3,7 @@ using ECS.Core.Object;
 using ECS.Core.Scene;
 using Microsoft.Xna.Framework;
 
-namespace ECS
+namespace ECS._Game._Scenes
 {
     public class SceneTest : Scene
     {
@@ -15,7 +15,7 @@ namespace ECS
 
 
         #region Objects - just for test
-        private readonly ECS.Core.Primitives.Plane floor;
+        private readonly Core.Primitives.Plane floor;
         //private WindMill windMill;
         //private WindMill windMill2;
         //private House house;
@@ -30,7 +30,7 @@ namespace ECS
             camera = new Camera(game, new Vector3(0, 10, 2));
             cameraController = new CameraController(game, camera);
 
-            floor = new Core.Primitives.Plane(game, camera, Microsoft.Xna.Framework.Color.DarkBlue);
+            floor = new Core.Primitives.Plane(game, camera, new Color(0,0,100));
             floor.Transform.SetScale(Vector3.One * 1000);
             box = new Box(game, camera);
             box2 = new Box(game, camera);
