@@ -1,14 +1,14 @@
 ﻿using ECS.Core.Components.Cam;
 using ECS.Core.Components.Collision;
 using ECS.Core.Components.Renderer;
-using ECS.Core.Entities;
+using ECS.Core.Entity;
 using ECS.Core.MovementController;
 using Microsoft.Xna.Framework;
 using System.Diagnostics;
 
 namespace ECS.Core.Object
 {
-    public abstract class GameObject : Entity
+    public abstract class GameObject : Entity.Entity
     {
         protected ModelRenderer ModelRenderer { get; set; }
         protected Collider Collider { get; private set; }

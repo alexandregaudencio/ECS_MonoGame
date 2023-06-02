@@ -1,6 +1,6 @@
 ﻿using ECS.Core.Boundary;
 using ECS.Core.Components.Cam;
-using ECS.Core.Entities;
+using ECS.Core.Entity;
 using ECS.Core.Object;
 using ECS.Core.Primitives;
 using Microsoft.Xna.Framework;
@@ -11,7 +11,7 @@ using System.Diagnostics;
 
 namespace ECS.Core.Components.Collision
 {
-    public class Collider : Entity, ICollider
+    public class Collider : Entity.Entity, ICollider
     {
         private readonly Cuboid wireframe;
         private readonly GameObject gameObject;

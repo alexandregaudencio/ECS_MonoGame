@@ -1,12 +1,12 @@
 ﻿using ECS.Core.Components;
 using ECS.Core.Components.Cam;
-using ECS.Core.Entities;
+using ECS.Core.Entity;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace ECS.Core.Primitives
 {
-    public abstract class Shape : Entity
+    public abstract class Shape : Entity.Entity
     {
 
         protected VertexPositionColorTexture[] vertsTexture;

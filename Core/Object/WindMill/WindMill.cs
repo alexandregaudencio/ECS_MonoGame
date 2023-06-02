@@ -1,6 +1,6 @@
 ﻿using ECS.Core.Components;
 using ECS.Core.Components.Cam;
-using ECS.Core.Entities;
+using ECS.Core.Entity;
 using ECS.Core.Primitives;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
@@ -8,7 +8,7 @@ using System;
 
 namespace ECS.Core.BaseObject
 {
-    public class WindMill : Entity
+    public class WindMill : Entity.Entity
     {
 
         private WindBaldes windBaldes;

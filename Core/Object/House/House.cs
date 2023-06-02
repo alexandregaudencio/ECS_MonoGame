@@ -1,12 +1,12 @@
 ﻿using ECS.Core.Components.Cam;
-using ECS.Core.Entities;
+using ECS.Core.Entity;
 using ECS.Core.Primitives;
 using ECS.Core.Util.Extensions;
 using Microsoft.Xna.Framework;
 
 namespace ECS.Core.BaseObject.House
 {
-    public class House : Entity
+    public class House : Entity.Entity
     {
         private readonly Hoof hoof;
         private readonly Cuboid cuboid;

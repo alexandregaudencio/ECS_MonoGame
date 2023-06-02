@@ -1,12 +1,12 @@
 ﻿using ECS.Core.Components.Cam;
-using ECS.Core.Entities;
+using ECS.Core.Entity;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Linq;
 
 namespace ECS.Core.Components.Renderer
 {
-    public class ModelRenderer : Entity
+    public class ModelRenderer : Entity.Entity
     {
         private readonly ICameraPerspective icameraPerspective;
         private Model model;

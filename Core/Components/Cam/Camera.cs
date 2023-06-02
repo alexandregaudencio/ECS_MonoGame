@@ -1,9 +1,9 @@
-﻿using ECS.Core.Entities;
+﻿using ECS.Core.Entity;
 using Microsoft.Xna.Framework;
 
 namespace ECS.Core.Components.Cam
 {
-    public class Camera : Entity, ICameraPerspective, ICameraProjectionProperties, ICameraViewProperties
+    public class Camera : Entity.Entity, ICameraPerspective, ICameraProjectionProperties, ICameraViewProperties
     {
 
         //PROJECTION PROPERTIES
