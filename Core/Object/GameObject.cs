@@ -1,10 +1,8 @@
 ﻿using ECS.Core.Components.Cam;
 using ECS.Core.Components.Collision;
 using ECS.Core.Components.Renderer;
-using ECS.Core.Entity;
 using ECS.Core.MovementController;
 using Microsoft.Xna.Framework;
-using System.Diagnostics;
 
 namespace ECS.Core.Object
 {
