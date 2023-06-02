@@ -59,7 +59,7 @@ namespace ECS.Core.Components.Collision
                             colliders[j].Enter(colliders[i]);
                             continue;
                         }
-
+                        //was  in contact
                         if (colliders[i].IsContacting(colliders[j]))
                         {
                             colliders[i].Stay(colliders[j]);
@@ -67,9 +67,10 @@ namespace ECS.Core.Components.Collision
                             continue;
                         }
                     }
-                    //not intersect
+                    //not intersect...
                     else
                     {
+                        //and is contacting
                         if (colliders[i].IsContacting(colliders[j]))
                         {
                             colliders[i].Exit(colliders[j]);
