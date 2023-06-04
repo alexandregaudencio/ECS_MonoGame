@@ -16,6 +16,7 @@ namespace ECS.Core.Util.Extensions
             return (1 - (1 - release) * (1 - release));
         }
 
+
         //TODO: SmoothDamp ?
         public static float EaseInOutQuad(float elapsed, float limit = 1)
         {

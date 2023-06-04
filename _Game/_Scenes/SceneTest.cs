@@ -1,7 +1,13 @@
 ﻿using ECS.Core.Components.Cam;
+using ECS.Core.Managers;
 using ECS.Core.Object;
 using ECS.Core.Scene;
+using ECS.Core.Util.Extensions;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
+using System;
+using System.Diagnostics;
+using Color = Microsoft.Xna.Framework.Color;
 
 namespace ECS._Game._Scenes
 {
@@ -64,6 +70,22 @@ namespace ECS._Game._Scenes
             #endregion
 
             base.Initialize();
+        }
+
+        public override  void Update(GameTime gameTime)
+        {
+
+            base.Update(gameTime);
+        }
+
+
+        public struct NewVector3
+        {
+            public static Microsoft.Xna.Framework.Vector3 Random(int min, int max)
+            {
+                Random random = new Random();
+                return new Microsoft.Xna.Framework.Vector3(random.Next(min, max), random.Next(min, max), random.Next(min, max));
+            }
         }
 
     }

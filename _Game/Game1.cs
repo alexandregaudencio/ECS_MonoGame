@@ -15,7 +15,7 @@ namespace ECS._Game
 
         #region Keep Managers on Game1
         private readonly CollisionManager collisionManager;
-        private readonly TimeManager timeManager;
+        private readonly Time time;
         private readonly SceneManager sceneManager;
         #endregion
 
@@ -28,7 +28,7 @@ namespace ECS._Game
             IsMouseVisible = true;
 
             collisionManager = new CollisionManager(this);
-            timeManager = new TimeManager(this);
+            time = new Time(this);
             sceneManager = new SceneManager(this);
 
             sceneTest = new SceneTest(this, "Scene Test");
@@ -40,7 +40,7 @@ namespace ECS._Game
         {
 
             Components.Add(collisionManager);
-            Components.Add(timeManager);
+            Components.Add(time);
             Components.Add(sceneManager);
 
             base.Initialize();

@@ -1,6 +1,7 @@
 ﻿using ECS.Core.Components;
 using ECS.Core.Managers;
 using Microsoft.Xna.Framework;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace ECS.Core.Util.Extensions
@@ -19,7 +20,7 @@ namespace ECS.Core.Util.Extensions
                 float t = NumberInterpolationExtensions.EaseOutQuad(elapsedTime, interval);
                 transform.SetScale(Vector3.Lerp(start, scale, t));
 
-                double deltaTime = TimeManager.Instance.ElapsedTime.TotalMilliseconds;
+                double deltaTime = Time.Instance.ElapsedTime;
 
                 elapsedTime += (float)deltaTime;
                 await Task.Delay((int)deltaTime);
@@ -33,15 +34,13 @@ namespace ECS.Core.Util.Extensions
 
             Vector3 start = transform.Translation;
             float elapsedTime = 0;
-            // float timeInterval = 0.1f;
 
             while (elapsedTime < interval)
             {
                 float t = NumberInterpolationExtensions.EaseOutQuad(elapsedTime, interval);
-                transform.SetTranslation(Vector3.Lerp(start, targetPosition, t));
+                transform.Translate(Vector3.Lerp(start, targetPosition, t));
 
-                double deltaTime = TimeManager.Instance.ElapsedTime.TotalMilliseconds;
-
+                float deltaTime = Time.Instance.ElapsedTime;
                 elapsedTime += (float)deltaTime;
                 await Task.Delay((int)deltaTime);
             }
