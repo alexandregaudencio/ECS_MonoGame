@@ -17,17 +17,11 @@ namespace ECS.Core.Components.Collision
             colliders = new List<ICollider>();
         }
 
-        //public override void Initialize()
-        //{
-        //    Game.Components.Add(this);
-        //    base.Initialize();
-        //}
         public override void Update(GameTime gameTime)
         {
              ProcessCollisions();
             base.Update(gameTime);
         }
-
 
         public void AddColliders(params ICollider[] colliders)
         {

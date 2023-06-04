@@ -1,13 +1,11 @@
 ﻿using ECS.Core.Boundary;
 using ECS.Core.Components.Cam;
-using ECS.Core.Entity;
 using ECS.Core.Object;
 using ECS.Core.Primitives;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace ECS.Core.Components.Collision
 {
@@ -18,9 +16,8 @@ namespace ECS.Core.Components.Collision
         public GameObject GameObject => gameObject;
         private OBB boundary;
         public IBoundary Boundary => boundary;
-        public List<ICollider> Contacts { get; set; } = new List<ICollider>();
-        public bool IsContacting(ICollider collider) => 
-            (Contacts.Contains(collider)) ? true : false;
+        public List<ICollider> Contacts { get;private set; } = new List<ICollider>();
+        public bool IsContacting(ICollider collider) => Contacts.Contains(collider);
 
         public event EventHandler<ICollider> CollisionStay;
         public event EventHandler<ICollider> CollisionEnter;
@@ -49,12 +46,6 @@ namespace ECS.Core.Components.Collision
         public override void Update(GameTime gameTime)
         {
             boundary.UpdateTransform(gameObject.Transform);
-            //boundary.Transform.SetRotation(Vector3.Zero);
-            //Debug.WriteLine("MAX: " +string.Format("forward:{0:0}", boundary.Transform.World.Forward.x));
-            //Debug.WriteLine("MAX: " + MathF.Cos(MathHelper.ToDegrees(boundary.Transform.World.Forward.X)));
-            //Debug.WriteLine("MAX: "+boundary.Transform.World.Forward);
-
-            frame++;
 
             base.Update(gameTime);
         }
@@ -70,22 +61,17 @@ namespace ECS.Core.Components.Collision
             wireframe.SetColor(color);
         }
 
-        //TODO: just for test (remove after)
-        int frame = 0;
-
         public void Enter(ICollider other)
         {
             Contacts.Add(other);
             CollisionEnter?.Invoke(this, other);
             wireframe.SetColor(Color.Red);
 
-
         }
 
         public void Stay(ICollider other)
         {
             CollisionStay?.Invoke(this, other);
-
         }
 
         public void Exit(ICollider other)
