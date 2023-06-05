@@ -1,9 +1,10 @@
 ﻿using ECS.Core.Components.Cam;
 using ECS.Core.Components.Renderers;
 using ECS.Core.Components.Renderers.Primivites;
+using ECS.Core.Object;
 using Microsoft.Xna.Framework;
 
-namespace ECS.Core.Object
+namespace ECS._Game
 {
     internal class Floor : GameObject
     {

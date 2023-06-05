@@ -1,11 +1,10 @@
 ﻿using ECS.Core.Components.Cam;
-using ECS.Core.Object;
-using ECS.Core.Util.Extensions;
+using ECS.Core.Entities;
 using Microsoft.Xna.Framework;
 
-namespace ECS.Core.BaseObject.House
+namespace ECS._Game.House
 {
-    public class House : Entities.Entity
+    public class House : Entity
     {
         private readonly Hoof hoof;
         private readonly Box cuboid;
@@ -14,7 +13,7 @@ namespace ECS.Core.BaseObject.House
         {
             this.size = size;
             cuboid = new Box(game, iCamPerspective);
-            cuboid.Transform.IncreaseScale(Vector3.One * (size));
+            cuboid.Transform.IncreaseScale(Vector3.One * size);
             cuboid.Transform.IncreaseScale(-new Vector3(1, 0, 1) * (size * 0.2f));
             hoof = new Hoof(game, iCamPerspective, "madeira", size);
             hoof.Transform.Translate(Vector3.UnitY * size);

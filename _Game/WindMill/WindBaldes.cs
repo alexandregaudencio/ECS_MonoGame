@@ -7,9 +7,9 @@ using System;
 using System.Collections.Generic;
 
 
-namespace ECS.Core.BaseObject
+namespace ECS._Game.WindMill
 {
-    public class WindBaldes : Entities.Entity
+    public class WindBaldes : Entity
     {
 
         private List<Shape> blades = new List<Shape>();

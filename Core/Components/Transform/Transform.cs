@@ -12,8 +12,6 @@ namespace ECS.Core.Components
         public Vector3 Translation { get; private set; } = Vector3.Zero;
         public Vector3 Rotation { get; private set; } = Vector3.Zero;
 
-        //public event PropertyChangedEventHandler PropertyChanged;
-
         //used to notify childs transform: position, rotation, scale;
         //public event Action<Vector3, Vector3> TransformChanged;
 
@@ -32,8 +30,7 @@ namespace ECS.Core.Components
         public Transform(Game game) : base(game)
         {
             UpdateTransform();
-            //TransformChanged += Transformate;
-            //Transformate(Translation, Rotation);
+
         }
 
         public Transform(Game game, Vector3 Position) : base(game)
@@ -77,11 +74,6 @@ namespace ECS.Core.Components
             World *= (Parent != null) ? Parent.World : Matrix.Identity;
 
         }
-
-        //public Matrix GetWorldMatrix()
-        //{
-        //    return  Matrix.CreateWorld(Vector3.Zero, Vector3.Forward, Vector3.Up);
-        //}
 
 
         public void SetTranslation(Vector3 position)

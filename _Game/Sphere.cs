@@ -1,8 +1,9 @@
 ﻿using ECS.Core.Components.Cam;
 using ECS.Core.Components.Renderers;
+using ECS.Core.Object;
 using Microsoft.Xna.Framework;
 
-namespace ECS.Core.Object
+namespace ECS._Game
 {
     public class Sphere : GameObject
     {

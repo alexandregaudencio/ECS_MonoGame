@@ -1,10 +1,9 @@
-﻿
-using ECS.Core.Components.Cam;
+﻿using ECS.Core.Components.Cam;
 using ECS.Core.Primitives;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace ECS.Core.BaseObject.House
+namespace ECS._Game.House
 {
     internal class HoofTriangle : Shape
     {

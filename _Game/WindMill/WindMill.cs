@@ -1,15 +1,13 @@
 ﻿using ECS.Core.Components;
 using ECS.Core.Components.Cam;
 using ECS.Core.Entities;
-using ECS.Core.Object;
-using ECS.Core.Primitives;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;
 
-namespace ECS.Core.BaseObject
+namespace ECS._Game.WindMill
 {
-    public class WindMill : Entities.Entity
+    public class WindMill : Entity
     {
 
         private WindBaldes windBaldes;

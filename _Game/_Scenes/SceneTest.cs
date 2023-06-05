@@ -1,5 +1,4 @@
 ﻿using ECS.Core.Components.Cam;
-using ECS.Core.Object;
 using ECS.Core.Scene;
 using Microsoft.Xna.Framework;
 

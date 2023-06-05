@@ -2,9 +2,9 @@
 using ECS.Core.Entities;
 using Microsoft.Xna.Framework;
 
-namespace ECS.Core.BaseObject.House
+namespace ECS._Game.House
 {
-    public class Hoof : Entities.Entity
+    public class Hoof : Entity
     {
         HoofTriangle[] triangles = new HoofTriangle[4];
 

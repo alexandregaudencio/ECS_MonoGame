@@ -4,8 +4,6 @@ using ECS.Core.Components.Renderers;
 using ECS.Core.Entities;
 using ECS.Core.MovementController;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
 
 namespace ECS.Core.Object
 {

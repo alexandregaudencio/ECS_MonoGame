@@ -8,7 +8,6 @@ namespace ECS.Core.Components.Renderers
     public class ModelRenderMethod : RenderMethod
     {
         public Model model { get; set; }
-        //private readonly Transform transform;
         public readonly string modelPath = "";
         public readonly string defaultModelPath = "cube";
 
