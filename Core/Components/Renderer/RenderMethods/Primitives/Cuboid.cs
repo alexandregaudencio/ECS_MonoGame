@@ -1,23 +1,18 @@
 ﻿using ECS.Core.Components.Cam;
+using ECS.Core.Components.Renderers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace ECS.Core.Primitives
+namespace ECS.Core.Components.Renderers.Primivites
 {
-    public class Cuboid : Shape
+    public class Cuboid : ShapeRenderMethod
     {
-
-        public Cuboid(Game game, ICameraPerspective iCamPerspective, Color color, string texturePath = "") : base(game, iCamPerspective, color, texturePath)
+        public Cuboid(Color color, string texturePath = "") : base(color, texturePath)
         {
 
         }
 
-        public override void Initialize()
-        {
-            base.Initialize();
-        }
-
-        protected override void SetVertexTexture()
+        public override void SetVertexTextureData()
         {
             vertsTexture = new VertexPositionColorTexture[]
             {
@@ -30,11 +25,9 @@ namespace ECS.Core.Primitives
                 new VertexPositionColorTexture(new Vector3( 1,-1,-1), Color, new Vector2(1,0)), // 6
                 new VertexPositionColorTexture(new Vector3(-1,-1,-1), Color, new Vector2(1,1)) // 7
             };
-
-
         }
 
-        protected override void SetIndexBuffer()
+        public override void SetIndexData()
         {
             indexData = new short[]
             {
@@ -51,16 +44,7 @@ namespace ECS.Core.Primitives
                 3, 2, 6, // down
                 3, 6, 7,
             };
-
-            indexBuffer = new IndexBuffer(GraphicsDevice,
-                                               IndexElementSize.SixteenBits,
-                                               indexData.Length,
-                                               BufferUsage.None);
-
-            indexBuffer.SetData(indexData);
-
         }
-
 
 
     }

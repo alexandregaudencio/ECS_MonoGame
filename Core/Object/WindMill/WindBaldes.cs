@@ -1,5 +1,5 @@
 ﻿using ECS.Core.Components.Cam;
-using ECS.Core.Entity;
+using ECS.Core.Entities;
 using ECS.Core.Primitives;
 using ECS.Core.Util.Extensions;
 using Microsoft.Xna.Framework;
@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace ECS.Core.BaseObject
 {
-    public class WindBaldes : Entity.Entity
+    public class WindBaldes : Entities.Entity
     {
 
         private List<Shape> blades = new List<Shape>();

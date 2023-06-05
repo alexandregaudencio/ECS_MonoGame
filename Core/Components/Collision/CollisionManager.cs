@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 
 namespace ECS.Core.Components.Collision
 {
@@ -9,12 +10,11 @@ namespace ECS.Core.Components.Collision
         private static CollisionManager instance;
         public static CollisionManager Instance => instance;
 
-        private readonly List<ICollider> colliders;
+        public List<ICollider> Colliders { get; private set; } = new List<ICollider>();
 
         public CollisionManager(Game game) : base(game)
         {
             instance = this;
-            colliders = new List<ICollider>();
         }
 
         public override void Update(GameTime gameTime)
@@ -26,38 +26,51 @@ namespace ECS.Core.Components.Collision
         public void AddColliders(params ICollider[] colliders)
         {
             if (colliders == null) return;
-            Debug.WriteLine(colliders.Length);
+            
             foreach (ICollider collider in colliders)
-                this.colliders.Add(collider);
+            {
+                if (Colliders.Contains(collider)) continue;
+                Colliders.Add(collider);
+            }
         }
+        public void RemoveColliders(params ICollider[] colliders)
+        {
+            if (colliders == null) return;
+            
+            foreach (ICollider collider in colliders)
+            {
+                if (!Colliders.Contains(collider)) continue;
+                Colliders.Remove(collider);
+            }
 
+        }
 
         public void ProcessCollisions()
         {
-            if (colliders.Count <= 1) return;
+            if (Colliders.Count <= 1) return;
 
             //from the first one to previous last(penultimate)
-            for (int i = 0; i < colliders.Count - 1; i++)
+            for (int i = 0; i < Colliders.Count - 1; i++)
             {
                 //from the next to fist to last 
-                for (int j = i + 1; j < colliders.Count; j++)
+                for (int j = i + 1; j < Colliders.Count; j++)
                 {
 
                     //intesects and...
-                    if (colliders[i].Boundary.Intersects(colliders[j].Boundary))
+                    if (Colliders[i].Boundary.Intersects(Colliders[j].Boundary))
                     {
                         //was not in contact
-                        if (!colliders[i].IsContacting(colliders[j]))
+                        if (!Colliders[i].IsContacting(Colliders[j]))
                         {
-                            colliders[i].Enter(colliders[j]);
-                            colliders[j].Enter(colliders[i]);
+                            Colliders[i].Enter(Colliders[j]);
+                            Colliders[j].Enter(Colliders[i]);
                             continue;
                         }
                         //was  in contact
-                        if (colliders[i].IsContacting(colliders[j]))
+                        if (Colliders[i].IsContacting(Colliders[j]))
                         {
-                            colliders[i].Stay(colliders[j]);
-                            colliders[j].Stay(colliders[i]);
+                            Colliders[i].Stay(Colliders[j]);
+                            Colliders[j].Stay(Colliders[i]);
                             continue;
                         }
                     }
@@ -65,10 +78,10 @@ namespace ECS.Core.Components.Collision
                     else
                     {
                         //and is contacting
-                        if (colliders[i].IsContacting(colliders[j]))
+                        if (Colliders[i].IsContacting(Colliders[j]))
                         {
-                            colliders[i].Exit(colliders[j]);
-                            colliders[j].Exit(colliders[i]);
+                            Colliders[i].Exit(Colliders[j]);
+                            Colliders[j].Exit(Colliders[i]);
                             continue;
                         }
                     }

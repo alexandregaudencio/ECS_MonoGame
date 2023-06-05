@@ -1,10 +1,10 @@
 ﻿using ECS.Core.Components.Cam;
-using ECS.Core.Entity;
+using ECS.Core.Entities;
 using Microsoft.Xna.Framework;
 
 namespace ECS.Core.BaseObject.House
 {
-    public class Hoof : Entity.Entity
+    public class Hoof : Entities.Entity
     {
         HoofTriangle[] triangles = new HoofTriangle[4];
 

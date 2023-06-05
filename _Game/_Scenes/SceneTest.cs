@@ -1,13 +1,7 @@
 ﻿using ECS.Core.Components.Cam;
-using ECS.Core.Managers;
 using ECS.Core.Object;
 using ECS.Core.Scene;
-using ECS.Core.Util.Extensions;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
-using System;
-using System.Diagnostics;
-using Color = Microsoft.Xna.Framework.Color;
 
 namespace ECS._Game._Scenes
 {
@@ -19,9 +13,10 @@ namespace ECS._Game._Scenes
         private readonly CameraController cameraController;
         #endregion
 
-
         #region Objects - just for test
-        private readonly Core.Primitives.Plane floor;
+        private readonly Floor floor;
+
+        //private readonly Core.Primitives.Plane floor;
         //private WindMill windMill;
         //private WindMill windMill2;
         //private House house;
@@ -36,10 +31,11 @@ namespace ECS._Game._Scenes
             camera = new Camera(game, new Vector3(0, 10, 2));
             cameraController = new CameraController(game, camera);
 
-            floor = new Core.Primitives.Plane(game, camera, new Color(0,0,100));
-            floor.Transform.SetScale(Vector3.One * 1000);
+            floor = new Floor(game,camera);
             box = new Box(game, camera);
             box2 = new Box(game, camera);
+
+            floor.Transform.SetScale(new Vector3(1,0,1) * 10);
             box2.SetObjectOnFloorY();
             box.SetObjectOnFloorY();
             box2.Transform.Translate(Vector3.UnitX * 4);
@@ -49,13 +45,8 @@ namespace ECS._Game._Scenes
             sphere.SetObjectOnFloorY();
             sphere.Transform.Translate(Vector3.UnitZ * 3);
 
-            //box.Transform.IncreaseScale(Vector3.One * 2);
-            //house = new House(this, camera);
-            //windMill = new WindMill(this, camera, new Vector3(0,0,30 ));
 
         }
-
-
 
         public override void Initialize()
         {
@@ -72,21 +63,8 @@ namespace ECS._Game._Scenes
             base.Initialize();
         }
 
-        public override  void Update(GameTime gameTime)
-        {
-
-            base.Update(gameTime);
-        }
 
 
-        public struct NewVector3
-        {
-            public static Microsoft.Xna.Framework.Vector3 Random(int min, int max)
-            {
-                Random random = new Random();
-                return new Microsoft.Xna.Framework.Vector3(random.Next(min, max), random.Next(min, max), random.Next(min, max));
-            }
-        }
 
     }
 }

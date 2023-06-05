@@ -1,4 +1,5 @@
 ﻿using ECS.Core.Components.Cam;
+using ECS.Core.Components.Renderers;
 using Microsoft.Xna.Framework;
 
 namespace ECS.Core.Object
@@ -8,7 +9,20 @@ namespace ECS.Core.Object
 
         public Sphere(Game game, ICameraPerspective cameraPerspective) : base(game, cameraPerspective)
         {
-            ModelRenderer = new Components.Renderer.ModelRenderer(game, cameraPerspective, Transform, "sphere");
+            Renderer = new Renderer(game, cameraPerspective, new ModelRenderMethod("sphere"));
+
         }
+
+        public override void Initialize()
+        {
+            Collider.SetActive(true);
+            Collider.SetVisible(false);
+
+            base.Initialize();
+        }
+
+
+
+
     }
 }

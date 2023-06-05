@@ -1,12 +1,12 @@
 ﻿using ECS.Core.Components;
 using ECS.Core.Components.Cam;
-using ECS.Core.Entity;
+using ECS.Core.Entities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace ECS.Core.Primitives
 {
-    public abstract class Shape : Entity.Entity
+    public abstract class Shape : Entity
     {
 
         protected VertexPositionColorTexture[] vertsTexture;
@@ -27,17 +27,11 @@ namespace ECS.Core.Primitives
             this.texturePath = texturePath;
             SetColor(color);
 
-
         }
 
         protected override void LoadContent()
         {
-            if (string.IsNullOrEmpty(texturePath))
-            {
-                texture = Game.Content.Load<Texture2D>("default");
-                return;
-            }
-            texture = Game.Content.Load<Texture2D>(texturePath);
+
 
             base.LoadContent();
         }

@@ -1,28 +1,29 @@
 ﻿using ECS.Core.Components.Cam;
 using ECS.Core.Components.Collision;
-using ECS.Core.Components.Renderer;
-using ECS.Core.Managers;
+using ECS.Core.Components.Renderers;
+using ECS.Core.Entities;
 using ECS.Core.MovementController;
 using Microsoft.Xna.Framework;
-using System.Diagnostics;
+using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace ECS.Core.Object
 {
-    public abstract class GameObject : Entity.Entity
+    public abstract class GameObject : Entity
     {
-        protected ModelRenderer ModelRenderer { get; set; }
+        protected Renderer Renderer { get; set; }
         protected Collider Collider { get; private set; }
         //protected Physics Physics { get; private set; }
         public DirectionalMovementControl MovementControl { get; private set; }
 
-        public GameObject(Game game, ICameraPerspective cameraPerspective, string modelPath = "") : base(game)
+        public GameObject(Game game, ICameraPerspective cameraPerspective) : base(game)
         {
-            ModelRenderer = new ModelRenderer(game, cameraPerspective, Transform, modelPath);
             Collider = new Collider(game, cameraPerspective, this);
             MovementControl = new DirectionalMovementControl(game, Transform);
-
+            //Renderer = new Renderer(game, cameraPerspective, Transform, new ModelRenderMethod());
             //Physics = new Physics(game, Transform, Collider);
             //Physics.Active = true;
+
 
             Collider.CollisionStay += OnCollisionStay;
             Collider.CollisionEnter += OnCollisionEnter;
@@ -31,16 +32,22 @@ namespace ECS.Core.Object
 
         }
 
+        protected override void Dispose(bool disposing)
+        {
+            Collider.CollisionStay -= OnCollisionStay;
+            Collider.CollisionEnter -= OnCollisionEnter;
+            Collider.CollisionExit -= OnCollisionExit;
+
+            base.Dispose(disposing);
+        }
 
         public override void Initialize()
         {
             AddChild(Collider);
-            AddChild(ModelRenderer);
+            AddChild(Renderer);
 
-            Game.Components.Add(ModelRenderer);
+            /*if(Renderer != null) */Game.Components.Add(Renderer);
             Game.Components.Add(Collider);
-
-            //Game.Components.Add(Physics);
             Game.Components.Add(MovementControl);
 
             base.Initialize();
@@ -48,7 +55,6 @@ namespace ECS.Core.Object
 
         public override void Update(GameTime gameTime)
         {
-
             MovementControl.UpdateTransform(Transform);
             base.Update(gameTime);
         }
@@ -62,6 +68,7 @@ namespace ECS.Core.Object
 
         public virtual void OnCollisionEnter(object sender, ICollider other)
         {
+
         }
         public virtual void OnCollisionStay(object sender, ICollider other)
         {
@@ -70,5 +77,7 @@ namespace ECS.Core.Object
         public virtual void OnCollisionExit(object sender, ICollider other)
         {
         }
+
+
     }
 }

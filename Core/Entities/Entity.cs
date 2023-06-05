@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 
-namespace ECS.Core.Entity
+namespace ECS.Core.Entities
 {
     public abstract class Entity : DrawableGameComponent, IComposite<Entity>
     {
@@ -60,8 +60,10 @@ namespace ECS.Core.Entity
         private void PassTransformToChilds()
         {
             if (Childs.Count == 0) return;
+            if (Transform == null) return;
             foreach (Entity entity in Childs)
             {
+                if (entity == null) return;
                 entity.Transform.SetParent(Transform);
             }
         }

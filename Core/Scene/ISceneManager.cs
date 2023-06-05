@@ -5,6 +5,7 @@ namespace ECS.Core.Scene
     public interface ISceneManager
     {
         public List<Scene> Scenes { get; }
+        public Scene CurrentScene { get; }
         public void RegisterScene(Scene scene);
         public void UnregisterScene(Scene scene);
         //public Scene GetNextScene(Scene scene);

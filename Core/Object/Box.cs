@@ -1,33 +1,20 @@
 ﻿using ECS.Core.Components.Cam;
+using ECS.Core.Components.Renderers;
+using ECS.Core.Components.Renderers.Primivites;
+using ECS.Core.Primitives;
 using Microsoft.Xna.Framework;
 
 namespace ECS.Core.Object
 {
-    internal class Box : GameObject
+    public class Box : GameObject
     {
-        public Box(Game game, ICameraPerspective cameraPerspective, string modelPath = "") : base(game, cameraPerspective, modelPath)
+        public Box(Game game, ICameraPerspective cameraPerspective ) : base(game, cameraPerspective)
         {
-            //Transform.SetScale(Vector3.One * 0.05f);
-            //Transform.Translate(Vector3.UnitZ );
-
+            Renderer = new Renderer(game, cameraPerspective, new Cuboid(Color.White, "madeira"));
+            Collider.SetActive(true);
         }
-
-
-        public override void Initialize()
-        {
-
-            //AddChild(Collider);
-            //AddChild(ModelRenderer);
-            base.Initialize();
-        }
-
-        public override void Update(GameTime gameTime)
-        {
-
-            base.Update(gameTime);
-        }
-
 
 
     }
+
 }

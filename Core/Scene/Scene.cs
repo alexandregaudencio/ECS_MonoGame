@@ -10,13 +10,9 @@ namespace ECS.Core.Scene
         { 
             Name = name;
 
+            //TODO: we really need auto register Scenes or register manually to control the order?
             SceneManager.Instance.RegisterScene(this);
 
-        }
-
-        public override void Initialize()
-        {
-            base.Initialize();
         }
 
 

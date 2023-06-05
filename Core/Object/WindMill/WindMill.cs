@@ -1,6 +1,7 @@
 ﻿using ECS.Core.Components;
 using ECS.Core.Components.Cam;
-using ECS.Core.Entity;
+using ECS.Core.Entities;
+using ECS.Core.Object;
 using ECS.Core.Primitives;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
@@ -8,12 +9,12 @@ using System;
 
 namespace ECS.Core.BaseObject
 {
-    public class WindMill : Entity.Entity
+    public class WindMill : Entities.Entity
     {
 
         private WindBaldes windBaldes;
 
-        private Cuboid cuboid;
+        private Box cuboid;
         private Random random = new Random();
         private int RandomColorIndex => random.Next(0, 255);
 
@@ -23,7 +24,7 @@ namespace ECS.Core.BaseObject
         {
             Transform.Translate(position);
 
-            cuboid = new Cuboid(game, camPerspective, Color.White, "madeira");
+            cuboid = new Box(game, camPerspective);
             cuboid.Transform.SetScale(new Vector3(5, 10, 5));
             cuboid.Transform.Translate(Vector3.UnitY * 10);
 
