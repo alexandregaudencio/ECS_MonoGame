@@ -23,27 +23,31 @@ namespace ECS._Game._Scenes
         private readonly Box box2;
 
         private readonly House house;
+        private readonly Player player;
         #endregion
 
 
         public SceneTest(Game game, string name) : base(game, name)
         {
-            camera = new Camera(game, new Vector3(10, 3, 2)*2);
+            camera = new Camera(game, new Vector3(2, 3, 10)*2);
             cameraController = new CameraController(game, camera);
 
             floor = new Floor(game,camera);
             box = new Box(game, camera);
             box2 = new Box(game, camera);
             windMill = new WindMill(game, camera, Vector3.One );
-            windMill.Transform.Translate(new Vector3(3, 0, 3));
+            windMill.Transform.Translate(new Vector3(+13, 0, 13));
            
             floor.Transform.SetScale(new Vector3(1,0,1) * 10);
-            box2.SetObjectOnFloorY();
+            box.Transform.Translate(new Vector3(-5, 0, 5));
             box.SetObjectOnFloorY();
+
+            //box2.Transform.Translate(new Vector3(-5, 0, +5));
+            box2.SetObjectOnFloorY();
             box2.Transform.Translate(Vector3.UnitX * 4);
-            box2.MovementControl.Active = true;
 
-
+            player = new Player(game, camera);
+            player.SetObjectOnFloorY();
             house = new House(game, camera);
 
             //sphere = new Sphere(game, camera);
@@ -65,6 +69,7 @@ namespace ECS._Game._Scenes
             //Game.Components.Add(sphere);
             Game.Components.Add(windMill);
             Game.Components.Add(house);
+            Game.Components.Add(player);
             #endregion
 
             base.Initialize();

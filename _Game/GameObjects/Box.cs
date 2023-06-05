@@ -8,6 +8,7 @@ namespace ECS._Game.GameObjects
 {
     public class Box : GameObject
     {
+
         public Box(Game game, ICameraPerspective cameraPerspective) : base(game, cameraPerspective)
         {
             Renderer = new Renderer(game, cameraPerspective, new Cuboid(Color.White, "madeira"));

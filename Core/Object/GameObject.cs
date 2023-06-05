@@ -18,12 +18,10 @@ namespace ECS.Core.Object
         {
             Collider = new Collider(game, cameraPerspective, this);
             MovementControl = new DirectionalMovementControl(game, Transform);
-            //Renderer = new Renderer(game, cameraPerspective, new ModelRenderMethod());
             //Physics = new Physics(game, Transform, Collider);
             //Physics.Active = true;
             Renderer?.SetActive(false);
             Collider.SetActive(false);
-
 
 
             Collider.CollisionStay += OnCollisionStay;
@@ -56,7 +54,7 @@ namespace ECS.Core.Object
 
         public override void Update(GameTime gameTime)
         {
-            MovementControl.UpdateTransform(Transform);
+            MovementControl.UpdateMovement(Transform);
             base.Update(gameTime);
         }
 
@@ -73,6 +71,7 @@ namespace ECS.Core.Object
         }
         public virtual void OnCollisionStay(object sender, ICollider other)
         {
+            
         }
 
         public virtual void OnCollisionExit(object sender, ICollider other)

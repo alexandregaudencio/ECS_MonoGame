@@ -3,10 +3,9 @@
 
 namespace ECS.Core.MovementController
 {
-    internal interface IMovementControl
+    internal interface IMovementControl : IActivable
     {
         float Speed { get; set; }
-        public bool Active { get; set; }
         public bool IncluseRotation { get; set; }
 
         public Keys Left { get; set; }

@@ -21,6 +21,7 @@ namespace ECS.Core.Components.Collision
         public Renderer Renderer { get; private set; }
         public bool Active { get; private set; } = true;
         public List<ICollider> Contacts { get;private set; } = new List<ICollider>();
+        public bool IsColliding => Contacts.Count >0;
         public bool IsContacting(ICollider collider) => Contacts.Contains(collider);
 
         public event EventHandler<ICollider> CollisionStay;
@@ -77,7 +78,6 @@ namespace ECS.Core.Components.Collision
 
         public void Enter(ICollider other)
         {
-            Debug.WriteLine(Active);
             if (!Active) return;
 
             Contacts.Add(other);
