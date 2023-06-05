@@ -2,7 +2,6 @@
 using ECS.Core.Components.Renderers;
 using ECS.Core.Components.Renderers.Primivites;
 using ECS.Core.Object;
-using ECS.Core.Primitives;
 using Microsoft.Xna.Framework;
 
 namespace ECS._Game.GameObjects
@@ -15,6 +14,14 @@ namespace ECS._Game.GameObjects
             Renderer.SetActive(true);
             //Collider.SetActive(true);
 
+            
+
+        }
+
+        public override void Initialize()
+        {
+            Collider.SetVisible(true);
+            base.Initialize();
         }
 
 

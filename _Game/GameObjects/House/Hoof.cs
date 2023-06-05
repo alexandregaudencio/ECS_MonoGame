@@ -10,7 +10,6 @@ namespace ECS._Game.GameObjects.House
 
         public Hoof(Game game, ICameraPerspective iCamPerspective, string texturePath, float size) : base(game)
         {
-            Transform.IncreaseScale(Vector3.One * size);
 
 
             for (int i = 0; i < triangles.Length; i++)

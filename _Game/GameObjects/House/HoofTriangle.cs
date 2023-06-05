@@ -9,6 +9,7 @@ namespace ECS._Game.GameObjects.House
     {
         public HoofTriangle(Game game, ICameraPerspective iCameraProperties, Color color, string texturePath) : base(game, iCameraProperties, color, texturePath)
         {
+
         }
 
         protected override void SetIndexBuffer()

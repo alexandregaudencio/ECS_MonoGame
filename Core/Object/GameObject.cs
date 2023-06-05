@@ -18,10 +18,11 @@ namespace ECS.Core.Object
         {
             Collider = new Collider(game, cameraPerspective, this);
             MovementControl = new DirectionalMovementControl(game, Transform);
-            //Renderer = new Renderer(game, cameraPerspective, Transform, new ModelRenderMethod());
+            //Renderer = new Renderer(game, cameraPerspective, new ModelRenderMethod());
             //Physics = new Physics(game, Transform, Collider);
             //Physics.Active = true;
-            
+            if(Renderer != null) Renderer.SetActive(false);
+            Collider.SetActive(false);
 
 
 

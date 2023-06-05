@@ -35,6 +35,9 @@ namespace ECS._Game.GameObjects.WindMill
             windBaldes.Transform.Translate(new Vector3(1.1f, 1, 0));
             SetObjectOnFloorY();
 
+            this.Renderer.SetActive(false);
+            cuboid.Collider.SetActive(false);
+
 
         }
 

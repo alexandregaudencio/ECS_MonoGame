@@ -1,4 +1,5 @@
 ﻿using ECS._Game.GameObjects;
+using ECS._Game.GameObjects.House;
 using ECS._Game.GameObjects.WindMill;
 using ECS.Core.Components.Cam;
 using ECS.Core.Scene;
@@ -18,11 +19,10 @@ namespace ECS._Game._Scenes
         private readonly Floor floor;
 
         private WindMill windMill;
-        //private WindMill windMill2;
-        //private House house;
         private readonly Box box;
         private readonly Box box2;
-        //private Sphere sphere;
+
+        private readonly House house;
         #endregion
 
 
@@ -37,12 +37,14 @@ namespace ECS._Game._Scenes
             windMill = new WindMill(game, camera, Vector3.One );
             windMill.Transform.Translate(new Vector3(3, 0, 3));
            
-
             floor.Transform.SetScale(new Vector3(1,0,1) * 10);
             box2.SetObjectOnFloorY();
             box.SetObjectOnFloorY();
             box2.Transform.Translate(Vector3.UnitX * 4);
             box2.MovementControl.Active = true;
+
+
+            house = new House(game, camera);
 
             //sphere = new Sphere(game, camera);
             //sphere.SetObjectOnFloorY();
@@ -62,6 +64,7 @@ namespace ECS._Game._Scenes
             Game.Components.Add(box2);
             //Game.Components.Add(sphere);
             Game.Components.Add(windMill);
+            Game.Components.Add(house);
             #endregion
 
             base.Initialize();

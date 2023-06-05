@@ -9,7 +9,7 @@ namespace ECS.Core.Components.Renderers
         public RenderMethod RenderMethod { get; private set; }
         public readonly ICameraPerspective icameraPerspective;
 
-        public bool Active { get; private set; } = false;
+        public bool Active { get; private set; } = true;
         public void SetActive(bool active) => Active = active;
 
         public Renderer(Game game, ICameraPerspective icameraPerspective, RenderMethod renderMethod) : base(game)

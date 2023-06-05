@@ -19,6 +19,7 @@ namespace ECS._Game.GameObjects.WindMill
         {
 
             GenerateBlades(game, camPerspective);
+
             AddChild(blades);
 
         }
@@ -46,6 +47,7 @@ namespace ECS._Game.GameObjects.WindMill
                 Triangle blade = new Triangle(game, camPerspective);
                 blade.Transform.SetScale(bladeScale);
                 blade.Renderer.SetActive(true);
+                blade.Collider.SetActive(false);
 
                 blades.Add(blade);
             }

@@ -19,7 +19,7 @@ namespace ECS.Core.Components.Collision
         public GameObject GameObject => gameObject;
         public IBoundary Boundary => boundary;
         public Renderer Renderer { get; private set; }
-        public bool Active { get; private set; } = false;
+        public bool Active { get; private set; } = true;
         public List<ICollider> Contacts { get;private set; } = new List<ICollider>();
         public bool IsContacting(ICollider collider) => Contacts.Contains(collider);
 
@@ -32,9 +32,10 @@ namespace ECS.Core.Components.Collision
             this.gameObject = gameObject;
             Renderer = new Renderer(game, iCameraPerspective, new Cuboid(Color.Black));
             SetVisible(isVisible);
-
             //TODO: NOT OBB
             boundary = new OBB(Transform);
+
+
         }
 
 
@@ -44,7 +45,6 @@ namespace ECS.Core.Components.Collision
             Game.Components.Add(Renderer);
             
             Renderer.RenderMethod.RenderOnlyLines(true);
-
             base.Initialize();
         }
 
@@ -77,6 +77,7 @@ namespace ECS.Core.Components.Collision
 
         public void Enter(ICollider other)
         {
+            Debug.WriteLine(Active);
             if (!Active) return;
 
             Contacts.Add(other);
