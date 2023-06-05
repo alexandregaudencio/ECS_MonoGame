@@ -6,7 +6,7 @@ namespace ECS._Game.GameObjects.House
 {
     public class Hoof : Entity
     {
-        HoofTriangle[] triangles = new HoofTriangle[4];
+        HoofTriangleObject[] triangles = new HoofTriangleObject[4];
 
         public Hoof(Game game, ICameraPerspective iCamPerspective, string texturePath, float size) : base(game)
         {
@@ -15,7 +15,7 @@ namespace ECS._Game.GameObjects.House
             for (int i = 0; i < triangles.Length; i++)
             {
 
-                triangles[i] = new HoofTriangle(game, iCamPerspective, Color.White, texturePath);
+                triangles[i] = new HoofTriangleObject(game, iCamPerspective);
                 //triangles[i].Transform.IncreaseScale(Vector3.One);
                 triangles[i].Transform.Rotate(Vector3.UnitY * MathHelper.ToRadians(i * 90));
                 //triangles[i].Transform.Rotate(Vector3.UnitX* MathHelper.ToRadians(i * 45));

@@ -12,7 +12,7 @@ namespace ECS._Game.GameObjects
         {
             Renderer = new Renderer(game, cameraPerspective, new Cuboid(Color.White, "madeira"));
             Renderer.SetActive(true);
-            //Collider.SetActive(true);
+            Collider.SetActive(true);
 
             
 
