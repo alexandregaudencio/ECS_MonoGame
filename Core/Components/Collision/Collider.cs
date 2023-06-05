@@ -83,7 +83,6 @@ namespace ECS.Core.Components.Collision
             Contacts.Add(other);
             CollisionEnter?.Invoke(this, other);
             Renderer.RenderMethod.SetColor(Color.Red);
-            Debug.WriteLine("collision enter");
 
         }
 
@@ -92,7 +91,6 @@ namespace ECS.Core.Components.Collision
             if (!Active) return;
 
             CollisionStay?.Invoke(this, other);
-            Debug.WriteLine("collision SATY");
 
         }
 
@@ -103,7 +101,6 @@ namespace ECS.Core.Components.Collision
             Contacts.Remove(other);
             CollisionExit?.Invoke(this, other);
             Renderer.RenderMethod.SetColor(Color.Green);
-            Debug.WriteLine("collision EXIT");
 
 
         }

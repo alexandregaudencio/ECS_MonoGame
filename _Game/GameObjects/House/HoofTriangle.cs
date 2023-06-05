@@ -1,6 +1,4 @@
-﻿using ECS.Core.Components.Cam;
-using ECS.Core.Components.Renderers;
-using ECS.Core.Primitives;
+﻿using ECS.Core.Components.Renderers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 

@@ -21,7 +21,7 @@ namespace ECS.Core.Object
             //Renderer = new Renderer(game, cameraPerspective, new ModelRenderMethod());
             //Physics = new Physics(game, Transform, Collider);
             //Physics.Active = true;
-            if(Renderer != null) Renderer.SetActive(false);
+            Renderer?.SetActive(false);
             Collider.SetActive(false);
 
 
