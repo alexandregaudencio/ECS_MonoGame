@@ -3,7 +3,7 @@ using ECS.Core.Components.Renderers;
 using ECS.Core.Object;
 using Microsoft.Xna.Framework;
 
-namespace ECS._Game
+namespace ECS._Game.GameObjects
 {
     public class Sphere : GameObject
     {

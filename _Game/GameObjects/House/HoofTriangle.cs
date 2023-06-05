@@ -3,7 +3,7 @@ using ECS.Core.Primitives;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace ECS._Game.House
+namespace ECS._Game.GameObjects.House
 {
     internal class HoofTriangle : Shape
     {

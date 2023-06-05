@@ -5,14 +5,16 @@ using ECS.Core.Object;
 using ECS.Core.Primitives;
 using Microsoft.Xna.Framework;
 
-namespace ECS._Game
+namespace ECS._Game.GameObjects
 {
     public class Box : GameObject
     {
         public Box(Game game, ICameraPerspective cameraPerspective) : base(game, cameraPerspective)
         {
             Renderer = new Renderer(game, cameraPerspective, new Cuboid(Color.White, "madeira"));
-            Collider.SetActive(true);
+            Renderer.SetActive(true);
+            //Collider.SetActive(true);
+
         }
 
 

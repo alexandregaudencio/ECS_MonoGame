@@ -1,8 +1,9 @@
-﻿using ECS.Core.Components.Cam;
+﻿using ECS._Game.GameObjects;
+using ECS.Core.Components.Cam;
 using ECS.Core.Entities;
 using Microsoft.Xna.Framework;
 
-namespace ECS._Game.House
+namespace ECS._Game.GameObjects.House
 {
     public class House : Entity
     {

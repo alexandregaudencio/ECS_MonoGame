@@ -1,19 +1,19 @@
 ﻿using ECS.Core.Components.Cam;
+using ECS.Core.Components.Renderers;
 using ECS.Core.Entities;
-using ECS.Core.Primitives;
-using ECS.Core.Util.Extensions;
+using ECS.Core.Object;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 
 
-namespace ECS._Game.WindMill
+namespace ECS._Game.GameObjects.WindMill
 {
     public class WindBaldes : Entity
     {
 
-        private List<Shape> blades = new List<Shape>();
-        private Vector3 bladeScale = new Vector3(3, 0, 1.5f) * 5;
+        private List<Triangle> blades = new List<Triangle>();
+        private Vector3 bladeScale = new Vector3(2.5f, 0, 1.1f);
 
         public WindBaldes(Game game, ICameraPerspective camPerspective) : base(game)
         {
@@ -21,13 +21,12 @@ namespace ECS._Game.WindMill
             GenerateBlades(game, camPerspective);
             AddChild(blades);
 
-
         }
 
         public override void Initialize()
         {
 
-            foreach (Shape blade in blades)
+            foreach (GameObject blade in blades)
             {
                 Game.Components.Add(blade);
             }
@@ -44,8 +43,9 @@ namespace ECS._Game.WindMill
         {
             for (int i = 0; i < 4; i++)
             {
-                Shape blade = new RightTriangle(game, camPerspective, new Color().Random(), "madeira");
+                Triangle blade = new Triangle(game, camPerspective);
                 blade.Transform.SetScale(bladeScale);
+                blade.Renderer.SetActive(true);
 
                 blades.Add(blade);
             }

@@ -9,8 +9,8 @@ namespace ECS.Core.Object
 {
     public abstract class GameObject : Entity
     {
-        protected Renderer Renderer { get; set; }
-        protected Collider Collider { get; private set; }
+        public Renderer Renderer { get;protected set; }
+        public Collider Collider { get; protected set; }
         //protected Physics Physics { get; private set; }
         public DirectionalMovementControl MovementControl { get; private set; }
 
@@ -21,6 +21,8 @@ namespace ECS.Core.Object
             //Renderer = new Renderer(game, cameraPerspective, Transform, new ModelRenderMethod());
             //Physics = new Physics(game, Transform, Collider);
             //Physics.Active = true;
+            
+
 
 
             Collider.CollisionStay += OnCollisionStay;
@@ -44,7 +46,7 @@ namespace ECS.Core.Object
             AddChild(Collider);
             AddChild(Renderer);
 
-            /*if(Renderer != null) */Game.Components.Add(Renderer);
+            if(Renderer != null) Game.Components.Add(Renderer);
             Game.Components.Add(Collider);
             Game.Components.Add(MovementControl);
 

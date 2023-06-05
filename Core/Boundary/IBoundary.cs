@@ -12,7 +12,7 @@ namespace ECS.Core.Boundary
     public interface IBoundary
     {
         Transform Transform { get; }
-        BoundType Type { get; }
+        //BoundType Type { get; }
         Microsoft.Xna.Framework.BoundingBox Box { get; set; }
         bool Intersects(Microsoft.Xna.Framework.BoundingBox box);
 

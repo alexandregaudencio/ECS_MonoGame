@@ -4,7 +4,7 @@ using ECS.Core.Components.Renderers.Primivites;
 using ECS.Core.Object;
 using Microsoft.Xna.Framework;
 
-namespace ECS._Game
+namespace ECS._Game.GameObjects
 {
     internal class Floor : GameObject
     {
@@ -12,6 +12,7 @@ namespace ECS._Game
         {
             Renderer = new Renderer(game, cameraPerspective, new Quad(Color.Brown));
             Collider.SetActive(false);
+            Renderer.SetActive(true);
 
         }
 

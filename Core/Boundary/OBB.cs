@@ -8,7 +8,7 @@ namespace ECS.Core.Boundary
     public class OBB : IBoundary
     {
         private Transform transform;
-        private BoundType _type;
+        //private BoundType _type;
         public BoundingBox Box { get; set; }
 
         public OBB(Transform transform)
@@ -18,7 +18,7 @@ namespace ECS.Core.Boundary
 
 
 
-        public BoundType Type => _type;
+        //public BoundType Type => _type;
 
         public float MinX => Transform.Translation.X - Transform.Scale.X * -Transform.World.Backward.X;
 

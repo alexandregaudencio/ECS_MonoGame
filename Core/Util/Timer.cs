@@ -22,6 +22,7 @@ namespace ECS.Core.Util
 
         public event Action<float> TimeChange;
         public event Action Init;
+        public event Action Paused;
         public event Action Finish;
 
 
@@ -44,8 +45,13 @@ namespace ECS.Core.Util
         public void Start()
         {
             Init?.Invoke();
+            IsReleasing = true;
         }
-
+        public void Pause()
+        {
+            Paused?.Invoke();
+            IsReleasing = false;
+        }
         public void Stop()
         {
             Finish?.Invoke();
@@ -57,11 +63,11 @@ namespace ECS.Core.Util
             CurrentTime = MaxTime;
         }
 
-
         public void UpdateTime()
         {
 
         }
+
         //private IEnumerator ClockUpdate()
         //{
         //    Init?.Invoke();
