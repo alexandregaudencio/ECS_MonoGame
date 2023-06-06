@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ECS.Core.Boundary.OBB" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAIEAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Core\Boundary\OBB.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ECS.Core.Components.Cam.Camera" Collapsed="true">
+    <Position X="9.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAwAAAAAAAAABAAACAAQAAAAQAgA=</HashCode>
+      <FileName>Core\Components\Cam\Camera.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ECS.Core.Components.Cam.CameraController" Collapsed="true">
+    <Position X="16.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAAAAAAAQAAIAAACAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Core\Components\Cam\CameraController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECS.Core.Components.Collision.Collider" Collapsed="true">
+    <Position X="4.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BBQEAAAgAAAIAQAAAAAAAAAAAAAGBAAwIgCAAIIABAA=</HashCode>
+      <FileName>Core\Components\Collision\Collider.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ECS.Core.Components.Collision.CollisionManager" Collapsed="true">
+    <Position X="12.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAACAAAAAAAAAAAAAAAAAABAAgAQQAAAEAAAAAA=</HashCode>
+      <FileName>Core\Components\Collision\CollisionManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECS.Core.Components.Renderers.Renderer" Collapsed="true">
+    <Position X="7" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAwCAAAAAAAAAAAAAAAAgAAAAAIAAAAQ=</HashCode>
+      <FileName>Core\Components\Renderers\Renderer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ECS.Core.Components.Renderers.ModelRenderMethod" Collapsed="true">
+    <Position X="3.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQgAAAAAAAAwAAAAAABAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Core\Components\Renderers\RenderMethods\ModelRenderMethod.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECS.Core.Components.Renderers.RightTriangle" Collapsed="true">
+    <Position X="7" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Components\Renderers\RenderMethods\Primitives\RightTriangle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECS.Core.Components.Renderers.RenderMethod" Collapsed="true">
+    <Position X="5.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAKAwAAAAAAAAAAAAAAACAAAAiAAAAIAAA=</HashCode>
+      <FileName>Core\Components\Renderers\RenderMethods\RenderMethod.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ECS.Core.Components.Renderers.ShapeRenderMethod" Collapsed="true">
+    <Position X="7" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAwgAAAEAABAwAAABAACAAABBAACgAAAAgAgAAAEAA=</HashCode>
+      <FileName>Core\Components\Renderers\RenderMethods\ShapeRenderMethod.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ECS.Core.Components.Renderers.Primivites.Cuboid" Collapsed="true">
+    <Position X="9.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Components\Renderers\RenderMethods\Primitives\Cuboid.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECS.Core.Components.Renderers.Primivites.Quad" Collapsed="true">
+    <Position X="4.75" Y="6.5" Width="1.5" />
+    <InheritanceLine Type="ECS.Core.Components.Renderers.ShapeRenderMethod" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.75" Y="5.691" />
+        <Point X="7.75" Y="6.125" />
+        <Point X="5.5" Y="6.125" />
+        <Point X="5.5" Y="6.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Components\Renderers\RenderMethods\Primitives\Quad.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECS.Core.Components.Transform" Collapsed="true">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAWAAQABAAAIACAAIAQAAAECAEAAgAAEIEAgAAAAA=</HashCode>
+      <FileName>Core\Components\Transform\Transform.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECS.Core.Entities.Entity" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEYAAAAAAAAQEAQIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Entities\Entity.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Transform" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ECS.Core.Managers.Time" Collapsed="true">
+    <Position X="12.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAQBAAAAAQAAAAAAAAAAAAAAAABAAAAAQAAAAEAAAAA=</HashCode>
+      <FileName>Core\Managers\Time.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECS.Core.MovementController.DirectionalMovementControl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAIAAAQAABAAAAAAFAAIEAAAgCACAAoAAAAA=</HashCode>
+      <FileName>Core\MovementController\DirectionalMovementControl.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ECS.Core.Object.GameObject" Collapsed="true">
+    <Position X="2.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAQAACAAAQAAAABAAAAAAAAAAAAcAACAAAAAAAA=</HashCode>
+      <FileName>Core\Object\GameObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECS.Core.Scene.Scene" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Scene\Scene.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ECS.Core.Scene.SceneManager" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAgAAKEIAAAABAAAAAQABAAAAAAAA=</HashCode>
+      <FileName>Core\Scene\SceneManager.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ECS.Core.Util.Extensions.CollectionExtensions" Collapsed="true">
+    <Position X="18.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAEAA=</HashCode>
+      <FileName>Core\Util\Extensions\CollectionExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECS.Core.Util.Extensions.StructUtil" Collapsed="true">
+    <Position X="18.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgBAAAAAAAQAAAAAAAAAAAABAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Core\Util\Extensions\StructUtil.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECS.Core.Util.Patterns.StateMachine.State" Collapsed="true">
+    <Position X="20" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgQAAAAAAAAAAIABAAAAAA=</HashCode>
+      <FileName>Core\Util\Patterns\StateMachine\State.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ECS.Core.Util.Patterns.StateMachine.StateController" Collapsed="true">
+    <Position X="20" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQABAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Util\Patterns\StateMachine\StateController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="ECS.Core.Boundary.IBoundary" Collapsed="true">
+    <Position X="16.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAIEAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Core\Boundary\IBoundary.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ECS.Core.Components.Cam.ICameraPerspective" Collapsed="true">
+    <Position X="20" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Core\Components\Cam\ICameraPerspective.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ECS.Core.Components.Cam.ICameraProjectionProperties" Collapsed="true">
+    <Position X="20" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAwAAAAAAAAAAAAACAAQAAAAAAAA=</HashCode>
+      <FileName>Core\Components\Cam\ICameraProjectionProperties.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ECS.Core.Components.Cam.ICameraViewProperties" Collapsed="true">
+    <Position X="20" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Core\Components\Cam\ICameraViewProperties.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ECS.Core.Components.Collision.ICollider" Collapsed="true">
+    <Position X="3.5" Y="9.5" Width="1.5" />
+    <InheritanceLine Type="ECS.Core.Components.Collision.ICollisionEvents" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="2.75" Y="10.75" />
+        <Point X="3.125" Y="10.75" />
+        <Point X="3.125" Y="10.062" />
+        <Point X="3.5" Y="10.062" />
+      </Path>
+    </InheritanceLine>
+    <InheritanceLine Type="ECS.Core.IActivable" FixedFromPoint="true">
+      <Path>
+        <Point X="5.75" Y="8.812" />
+        <Point X="5.75" Y="9.125" />
+        <Point X="4.25" Y="9.125" />
+        <Point X="4.25" Y="9.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>BBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIABAA=</HashCode>
+      <FileName>Core\Components\Collision\ICollider.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ECS.Core.Components.Collision.ICollisionEvents" Collapsed="true">
+    <Position X="1.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAAAACBAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Components\Collision\ICollisionEvents.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ECS.Core.Components.Collision.ICollisionState" Collapsed="true">
+    <Position X="1" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAQIAAAAAAAAAA=</HashCode>
+      <FileName>Core\Components\Collision\ICollisionState.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ECS.Core.Components.Renderers.IPrimitiveBuffer" Collapsed="true">
+    <Position X="16.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAABAACAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Components\Renderers\IPrimitiveBuffer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ECS.Core.Components.Renderers.IRenderMethod" Collapsed="true">
+    <Position X="18.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAACAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Components\Renderers\IRenderMethod.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ECS.Core.IActivable" Collapsed="true">
+    <Position X="5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAIAAAAA=</HashCode>
+      <FileName>Core\IActivable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ECS.Core.MovementController.IMovementControl" Collapsed="true">
+    <Position X="6.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAABAAAAAABAAIAAAAACACAAAAAAAA=</HashCode>
+      <FileName>Core\MovementController\IMovementControl.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ECS.Core.Scene.IScene" Collapsed="true">
+    <Position X="18.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Scene\IScene.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ECS.Core.Scene.ISceneManager" Collapsed="true">
+    <Position X="18.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAKAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Core\Scene\ISceneManager.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ECS.Core.Util.Patterns.IComposite&lt;T&gt;" Collapsed="true">
+    <Position X="16.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEIAAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Util\Patterns\IComposite.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ECS.Core.Util.Patterns.IStrategyGameComponent&lt;T&gt;" Collapsed="true">
+    <Position X="20" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Util\Patterns\IStrategyGameComponent.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
