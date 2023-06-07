@@ -160,6 +160,7 @@
     <Compile Include="_Game\Game1.cs" />
     <Compile Include="_Game\GameObjects\Box.cs" />
     <Compile Include="_Game\GameObjects\Floor.cs" />
+    <Compile Include="_Game\GameObjects\Forest.cs" />
     <Compile Include="_Game\GameObjects\House\Hoof.cs" />
     <Compile Include="_Game\GameObjects\House\HoofTriangle.cs" />
     <Compile Include="_Game\GameObjects\House\HoofTriangleObject.cs" />

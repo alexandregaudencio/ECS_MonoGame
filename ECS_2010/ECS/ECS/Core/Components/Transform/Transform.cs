@@ -140,9 +140,10 @@ namespace ECS.Core.Components
 
         public void LookAt(Transform target)
         {
-            Vector3 direction = (target.Translation - Translation);
+            Vector3 positonResult = Parent != null ? Parent.Translation + Translation : Translation;
+            Vector3 direction = target.Translation - positonResult;
             float angle = (float)Math.Atan2(direction.X, direction.Z);
-            
+
             SetRotation(new Vector3(0, 0, 0));
             RotateX(MathHelper.PiOver2);
             RotateY(angle);

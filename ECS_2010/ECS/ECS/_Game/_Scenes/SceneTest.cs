@@ -15,7 +15,6 @@ namespace ECS._Game._Scenes
         private readonly CameraController cameraController;
         #endregion
 
-        #region Objects - just for test
         private readonly Floor floor;
 
         private WindMill windMill; 
@@ -27,8 +26,7 @@ namespace ECS._Game._Scenes
         private readonly Player player;
 
         private readonly Tree tree;
-
-        #endregion
+        private readonly Forest forest;
 
 
         public SceneTest(Game game, string name) : base(game, name)
@@ -61,9 +59,7 @@ namespace ECS._Game._Scenes
 
             tree = new Tree(game, camera);
 
-            //sphere = new Sphere(game, camera);
-            //sphere.SetObjectOnFloorY();
-            //sphere.Transform.Translate(Vector3.UnitZ * 3);
+            forest = new Forest(game, camera, 300);
 
 
         }
@@ -71,7 +67,6 @@ namespace ECS._Game._Scenes
         public override void Initialize()
         {
 
-            #region Add Instances of test
             Game.Components.Add(camera);
             Game.Components.Add(cameraController);
             Game.Components.Add(floor);
@@ -83,10 +78,9 @@ namespace ECS._Game._Scenes
             Game.Components.Add(house);
             Game.Components.Add(player);
             Game.Components.Add(tree);
+            Game.Components.Add(forest);
 
 
-
-            #endregion
 
             base.Initialize();
         }
