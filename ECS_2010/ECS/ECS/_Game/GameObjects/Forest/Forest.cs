@@ -22,7 +22,7 @@ namespace ECS._Game.GameObjects
 
             this.camera = camera;
 
-            Transform.Translate(new Vector3(-60, 0, -130));
+            Transform.Translate(new Vector3(-30, 0, -70));
 
             GenerateTrees(TreeCount);
 

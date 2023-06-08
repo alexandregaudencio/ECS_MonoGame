@@ -33,7 +33,6 @@ namespace ECS._Game
 
         public override void Initialize()
         {
-            //Renderer.SetActive(true);
             Collider.SetActive(true);
             Collider.SetVisible(true);
             cuboid.Collider.SetActive(false);

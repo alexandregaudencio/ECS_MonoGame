@@ -25,7 +25,6 @@ namespace ECS._Game._Scenes
         private readonly House house;
         private readonly Player player;
 
-        private readonly Tree tree;
         private readonly Forest forest;
 
 
@@ -57,9 +56,7 @@ namespace ECS._Game._Scenes
             player.Transform.SetMinYOnFloor();
             house = new House(game, camera);
 
-            tree = new Tree(game, camera);
-
-            forest = new Forest(game, camera, 300);
+            forest = new Forest(game, camera, 100);
 
 
         }
@@ -72,12 +69,10 @@ namespace ECS._Game._Scenes
             Game.Components.Add(floor);
             Game.Components.Add(box);
             Game.Components.Add(box2);
-            //Game.Components.Add(sphere);
             Game.Components.Add(windMill); 
             Game.Components.Add(windMill2);
             Game.Components.Add(house);
             Game.Components.Add(player);
-            Game.Components.Add(tree);
             Game.Components.Add(forest);
 
 

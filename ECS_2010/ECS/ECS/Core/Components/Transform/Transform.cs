@@ -142,11 +142,24 @@ namespace ECS.Core.Components
         {
             Vector3 positonResult = Parent != null ? Parent.Translation + Translation : Translation;
             Vector3 direction = target.Translation - positonResult;
-            float angle = (float)Math.Atan2(direction.X, direction.Z);
 
+            //used
+            #region just XZ lookAt
+            float YawAngle = (float)Math.Atan2(direction.X, direction.Z);
             SetRotation(new Vector3(0, 0, 0));
+            RotateY(YawAngle);
             RotateX(MathHelper.PiOver2);
-            RotateY(angle);
+            #endregion
+
+            #region XYZ lookAt (Matrix transformations using vectors while avoiding dimension incompatibility)
+            //float YawAngle = (float)Math.Atan2(direction.X, direction.Z);
+            //float pitchAngle = (float)Math.Atan2(direction.Z, direction.Y);
+            //float pitchAngleClalmped = MathHelper.Clamp(Math.Abs(pitchAngle), 1, MathHelper.TwoPi);
+            //SetRotation(new Vector3(0, 0, 0));
+            //RotateY( YawAngle);
+            //RotateX(pitchAngleClalmped);
+            #endregion
+
 
 
         }
