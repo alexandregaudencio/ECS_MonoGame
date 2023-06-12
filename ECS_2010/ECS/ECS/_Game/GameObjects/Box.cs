@@ -10,7 +10,7 @@ namespace ECS._Game.GameObjects
 
         public Box(Game game, ICameraPerspective cameraPerspective) : base(game, cameraPerspective)
         {
-            Renderer = new Renderer(game, cameraPerspective, new Cuboid(Color.White, "madeira"));
+            Renderer = new Renderer(game, cameraPerspective, new Cuboid(Color.White, "madeira2"));
             Renderer.SetActive(true);
             Collider.SetActive(true);
 

@@ -21,11 +21,11 @@ namespace ECS.Core.Components.Renderers
         protected string effectPath = "";
 
 
-        public ShapeRenderMethod(Color color, string texturePath = "")
-        {
-            Color = color;
-            this.texturePath = texturePath;
-        }
+        //public ShapeRenderMethod(Color color, string texturePath = "")
+        //{
+        //    Color = color;
+        //    this.texturePath = texturePath;
+        //}
 
         public ShapeRenderMethod(Color color, string texturePath = "", string effectPath = "")
         {
@@ -78,18 +78,21 @@ namespace ECS.Core.Components.Renderers
 
         public override void Load()
         {
-            if (string.IsNullOrEmpty(texturePath)) {
+            if (string.IsNullOrWhiteSpace(texturePath)) 
+            {
                 texture = Renderer.Game.Content.Load<Texture2D>(@"Textures\default");
-            } else {
-                            texture = Renderer.Game.Content.Load<Texture2D>(string.Concat(@"Textures\",texturePath));
+            } 
+            else {
+                texture = Renderer.Game.Content.Load<Texture2D>(string.Concat(@"Textures\",texturePath));
             }
-            if (string.IsNullOrEmpty(effectPath))
+
+
+            if (string.IsNullOrWhiteSpace(effectPath))
             {
                 effect = Renderer.Game.Content.Load<Effect>(@"Effects\default");
             }
             else
             {
-
                 effect = Renderer.Game.Content.Load<Effect>(string.Concat(@"Effects\", effectPath));
             }
             

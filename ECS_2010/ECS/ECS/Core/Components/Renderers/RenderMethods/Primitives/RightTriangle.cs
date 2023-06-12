@@ -5,7 +5,7 @@ namespace ECS.Core.Components.Renderers
 {
     internal class RightTriangle : ShapeRenderMethod
     {
-        public RightTriangle(Color color, string texturePath = "") : base(color, texturePath)
+        public RightTriangle(Color color, string texturePath = "", string effectPath = "") : base(color, texturePath, effectPath)
         {
 
         }

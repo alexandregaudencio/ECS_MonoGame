@@ -14,7 +14,7 @@ namespace ECS._Game.GameObjects
     {
         public Triangle(Game game, ICameraPerspective cameraPerspective) : base(game, cameraPerspective)
         {
-            Renderer = new Renderer(game, cameraPerspective, new RightTriangle(Color.White, "madeira"));
+            Renderer = new Renderer(game, cameraPerspective, new RightTriangle(Color.White, "madeira", "grayscale"));
         }
 
     }

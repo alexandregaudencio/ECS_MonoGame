@@ -24,7 +24,7 @@ namespace ECS._Game.GameObjects.WindMill
 
         public WindMill(Game game, ICameraPerspective camPerspective) : base(game, camPerspective)
         {
-            Renderer = new Renderer(game, camPerspective, new Cuboid(Color.Wheat));
+            Renderer = new Renderer(game, camPerspective, new Cuboid(Color.Wheat, "", "grayscale"));
             Active = false;
             Transform.SetScale(Vector3.One * 2);
 

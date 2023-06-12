@@ -6,7 +6,7 @@ namespace ECS._Game.GameObjects.House
 {
     internal class HoofTriangle : ShapeRenderMethod
     {
-        public HoofTriangle(Color color, string texturePath) : base(color, texturePath)
+        public HoofTriangle(Color color, string texturePath = "", string effectPath = "") : base(color, texturePath, effectPath)
         {
 
         }

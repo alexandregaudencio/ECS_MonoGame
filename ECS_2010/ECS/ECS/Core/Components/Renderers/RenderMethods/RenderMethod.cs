@@ -29,7 +29,6 @@ namespace ECS.Core.Components.Renderers
         /// Call Just in Intitialize() Game Method
         /// </summary>
         /// <param name="value"></param>
-
         public void RenderOnlyLines(bool value)
         {
             if (value)
