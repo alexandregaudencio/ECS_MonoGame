@@ -38,7 +38,7 @@
       <FileName>Core\Components\Collision\CollisionManager.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ECS.Core.Components.Renderers.Renderer" Collapsed="true">
+  <Class Name="ECS.Core.Components.Renderers.Renderer">
     <Position X="7" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAIAAAAAAAwCAAAAAAAAAAAAAAAAgAAAAAIAAAAQ=</HashCode>
@@ -76,23 +76,15 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="ECS.Core.Components.Renderers.Primivites.Cuboid" Collapsed="true">
+  <Class Name="ECS.Core.Components.Renderers.Cuboid" Collapsed="true">
     <Position X="9.25" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAACAAABAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Core\Components\Renderers\RenderMethods\Primitives\Cuboid.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ECS.Core.Components.Renderers.Primivites.Quad" Collapsed="true">
+  <Class Name="ECS.Core.Components.Renderers.Quad" Collapsed="true">
     <Position X="4.75" Y="6.5" Width="1.5" />
-    <InheritanceLine Type="ECS.Core.Components.Renderers.ShapeRenderMethod" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="7.75" Y="5.691" />
-        <Point X="7.75" Y="6.125" />
-        <Point X="5.5" Y="6.125" />
-        <Point X="5.5" Y="6.5" />
-      </Path>
-    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAACAAABAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Core\Components\Renderers\RenderMethods\Primitives\Quad.cs</FileName>
@@ -101,7 +93,7 @@
   <Class Name="ECS.Core.Components.Transform" Collapsed="true">
     <Position X="8" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAWAAQABAAAIACAAIAQAAAECAEAAgAAEIEAgAAAAA=</HashCode>
+      <HashCode>AAQAWAAQABAAAIACCAIAQAAAECAEAAgAAEIEAgAAAAI=</HashCode>
       <FileName>Core\Components\Transform\Transform.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -134,7 +126,7 @@
   <Class Name="ECS.Core.Object.GameObject" Collapsed="true">
     <Position X="2.5" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAQAACAAAQAAAABAAAAAAAAAAAAcAACAAAAAAAA=</HashCode>
+      <HashCode>AAQAAAQAACAAAQAAAAAAAAAAAAAAAAAcAACAAAAAAAA=</HashCode>
       <FileName>Core\Object\GameObject.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -212,36 +204,20 @@
   </Interface>
   <Interface Name="ECS.Core.Components.Collision.ICollider" Collapsed="true">
     <Position X="3.5" Y="9.5" Width="1.5" />
-    <InheritanceLine Type="ECS.Core.Components.Collision.ICollisionEvents" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="2.75" Y="10.75" />
-        <Point X="3.125" Y="10.75" />
-        <Point X="3.125" Y="10.062" />
-        <Point X="3.5" Y="10.062" />
-      </Path>
-    </InheritanceLine>
-    <InheritanceLine Type="ECS.Core.IActivable" FixedFromPoint="true">
-      <Path>
-        <Point X="5.75" Y="8.812" />
-        <Point X="5.75" Y="9.125" />
-        <Point X="4.25" Y="9.125" />
-        <Point X="4.25" Y="9.5" />
-      </Path>
-    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>BBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIABAA=</HashCode>
       <FileName>Core\Components\Collision\ICollider.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="ECS.Core.Components.Collision.ICollisionEvents" Collapsed="true">
-    <Position X="1.25" Y="10.5" Width="1.5" />
+    <Position X="4.75" Y="11.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAAAACBAAAAAAAAAAAAAA=</HashCode>
       <FileName>Core\Components\Collision\ICollisionEvents.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="ECS.Core.Components.Collision.ICollisionState" Collapsed="true">
-    <Position X="1" Y="9.75" Width="1.5" />
+    <Position X="2.25" Y="11.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAQIAAAAAAAAAA=</HashCode>
       <FileName>Core\Components\Collision\ICollisionState.cs</FileName>

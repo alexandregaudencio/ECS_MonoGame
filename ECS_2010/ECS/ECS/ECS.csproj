@@ -130,6 +130,7 @@
     <Compile Include="Core\Components\Renderers\RenderMethods\Primitives\Cuboid.cs" />
     <Compile Include="Core\Components\Renderers\RenderMethods\Primitives\Quad.cs" />
     <Compile Include="Core\Components\Renderers\RenderMethods\Primitives\RightTriangle.cs" />
+    <Compile Include="Core\Components\Renderers\RenderMethods\Primitives\WireCuboid.cs" />
     <Compile Include="Core\Components\Renderers\RenderMethods\RenderMethod.cs" />
     <Compile Include="Core\Components\Renderers\RenderMethods\ShapeRenderMethod.cs" />
     <Compile Include="Core\Components\Transform\Transform.cs" />

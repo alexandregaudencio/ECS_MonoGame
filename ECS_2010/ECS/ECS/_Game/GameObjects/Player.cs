@@ -14,13 +14,14 @@ namespace ECS._Game.GameObjects
         public Player(Game game, ICameraPerspective cameraPerspective) : base(game, cameraPerspective)
         {
             LastPosition = Vector3.Zero;
-            Renderer = new Renderer(game, cameraPerspective, new Cuboid(Color.White, "metal2"));
+            Renderer = new Renderer(game, cameraPerspective, new WireCuboid(Color.White, "metal2"));
             MovementControl.SetActive(true);
         }
 
         public override void Initialize()
         {
-            Collider.SetActive(true);
+            //Collider.SetActive(true);
+            Renderer.RenderMethod.RenderOnlyLines(true);
             
             base.Initialize();
         }

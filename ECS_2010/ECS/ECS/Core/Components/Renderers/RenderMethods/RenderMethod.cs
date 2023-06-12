@@ -8,7 +8,6 @@ namespace ECS.Core.Components.Renderers
     {
         protected Renderer Renderer { get; set; }
         public PrimitiveType PrimitiveType { get; private set; }
-
         public void SetRenderer(Renderer renderer)
         {
             PrimitiveType = PrimitiveType.TriangleList;

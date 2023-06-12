@@ -11,12 +11,14 @@ namespace ECS.Core.Components.Renderers
     {
         protected VertexPositionColorTexture[] vertsTexture;
         protected VertexBuffer vertexBuffer;
-        protected BasicEffect basicEffect;
+        //protected BasicEffect basicEffect;
+        protected Effect effect;
         protected short[] indexData;
         protected IndexBuffer indexBuffer;
         public Color Color { get; set; }
         protected Texture2D texture;
         protected string texturePath = "";
+        protected string effectPath = "";
 
 
         public ShapeRenderMethod(Color color, string texturePath = "")
@@ -24,6 +26,15 @@ namespace ECS.Core.Components.Renderers
             Color = color;
             this.texturePath = texturePath;
         }
+
+        public ShapeRenderMethod(Color color, string texturePath = "", string effectPath = "")
+        {
+            Color = color;
+            this.texturePath = texturePath;
+            this.effectPath = effectPath;
+        }
+
+
         public abstract void SetVertexTextureData();
 
         public abstract void SetIndexData();
@@ -50,7 +61,8 @@ namespace ECS.Core.Components.Renderers
 
         public override void Initialize()
         {
-            basicEffect = new BasicEffect(Renderer.Game.GraphicsDevice);
+            //basicEffect = new BasicEffect(Renderer.Game.GraphicsDevice);
+
             SetVertexTextureData();
             SetIndexData();
             SetIndexBuffer();
@@ -66,12 +78,22 @@ namespace ECS.Core.Components.Renderers
 
         public override void Load()
         {
-            if (string.IsNullOrEmpty(texturePath))
-            {
+            if (string.IsNullOrEmpty(texturePath)) {
                 texture = Renderer.Game.Content.Load<Texture2D>(@"Textures\default");
-                return;
+            } else {
+                            texture = Renderer.Game.Content.Load<Texture2D>(string.Concat(@"Textures\",texturePath));
             }
-            texture = Renderer.Game.Content.Load<Texture2D>(string.Concat(@"Textures\",texturePath));
+            if (string.IsNullOrEmpty(effectPath))
+            {
+                effect = Renderer.Game.Content.Load<Effect>(@"Effects\default");
+            }
+            else
+            {
+
+                effect = Renderer.Game.Content.Load<Effect>(string.Concat(@"Effects\", effectPath));
+            }
+            
+
         }
 
         public override void Draw()
@@ -79,16 +101,24 @@ namespace ECS.Core.Components.Renderers
             Renderer.Game.GraphicsDevice.SetVertexBuffer(vertexBuffer);
             Renderer.Game.GraphicsDevice.Indices = indexBuffer;
 
-            basicEffect.World = Renderer.Transform.World;
-            basicEffect.View = Renderer.icameraPerspective.View;
-            basicEffect.Projection = Renderer.icameraPerspective.Projection;
-            basicEffect.Texture = texture;
-            basicEffect.TextureEnabled = true;
-            basicEffect.VertexColorEnabled = true;
-            //basicEffect.FogEnabled = true;
-            //basicEffect.FogColor = 
-            //basicEffect.EnableDefaultLighting();
-            foreach (EffectPass pass in basicEffect.CurrentTechnique.Passes)
+            //basicEffect.World = Renderer.Transform.World;
+            //basicEffect.View = Renderer.icameraPerspective.View;
+            //basicEffect.Projection = Renderer.icameraPerspective.Projection;
+            //basicEffect.Texture = texture;
+            //basicEffect.TextureEnabled = true;
+            //basicEffect.VertexColorEnabled = true;
+            ////basicEffect.FogEnabled = true;
+            ////basicEffect.FogColor = 
+            ////basicEffect.EnableDefaultLighting();
+
+            effect.CurrentTechnique = effect.Techniques["Technique1"];
+            effect.Parameters["World"].SetValue(Renderer.Transform.World);
+            effect.Parameters["View"].SetValue(Renderer.icameraPerspective.View);
+            effect.Parameters["Projection"].SetValue(Renderer.icameraPerspective.Projection);
+            effect.Parameters["colorTexture"].SetValue(this.texture);
+
+
+            foreach (EffectPass pass in effect.CurrentTechnique.Passes)
             {
                 pass.Apply();
 
