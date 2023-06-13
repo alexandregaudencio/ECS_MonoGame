@@ -10,7 +10,7 @@ namespace ECS._Game.GameObjects
     {
         public Floor(Game game, ICameraPerspective cameraPerspective) : base(game, cameraPerspective)
         {
-            Renderer = new Renderer(game, cameraPerspective, new Quad(Color.White, "floor-dirt"));
+            Renderer = new Renderer(game, cameraPerspective, new Quad(Color.White, "grass"));
             Collider.SetActive(false);
             Renderer.SetActive(true);
 
