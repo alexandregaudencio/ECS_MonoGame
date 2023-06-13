@@ -120,15 +120,14 @@ namespace ECS.Core.Components.Renderers
             effect.Parameters["Projection"].SetValue(Renderer.icameraPerspective.Projection);
             effect.Parameters["colorTexture"].SetValue(this.texture);
 
-
             foreach (EffectPass pass in effect.CurrentTechnique.Passes)
             {
                 pass.Apply();
-
-                Renderer.Game.GraphicsDevice.DrawUserIndexedPrimitives(PrimitiveType,
-                 vertsTexture, 0, vertsTexture.Length, indexData, 0, indexData.Length / 3);
-
             }
+
+
+            Renderer.Game.GraphicsDevice.DrawUserIndexedPrimitives(PrimitiveType,
+             vertsTexture, 0, vertsTexture.Length, indexData, 0, indexData.Length / 3);
         }
 
 

@@ -44,7 +44,8 @@ namespace ECS._Game._Scenes
             windMill2.Transform.Translate(new Vector3(-13, 3, 3));
 
 
-            floor.Transform.SetScale(new Vector3(1,0,1) * 300);
+            floor.Transform.SetScale(new Vector3(1, 0, 1) * 50);
+            floor.Transform.Translate(-new Vector3(0, 0, 1) * 30);
             box.Transform.Translate(new Vector3(-5, 0, 5));
             box.Transform.SetMinYOnFloor();
 

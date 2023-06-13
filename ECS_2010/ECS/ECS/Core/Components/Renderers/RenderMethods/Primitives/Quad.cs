@@ -6,7 +6,7 @@ namespace ECS.Core.Components.Renderers
 {
     public class Quad : ShapeRenderMethod
     {
-        public Quad(Color color, string texturePath = "") : base(color, texturePath)
+        public Quad(Color color, string texturePath = "", string effectPath = "") : base(color, texturePath, effectPath)
         {
 
         }

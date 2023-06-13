@@ -18,7 +18,7 @@ namespace ECS._Game.GameObjects
         public Tree(Game game, Camera camera) : base(game, camera)
         {
             this.camera = camera;
-            Renderer = new Renderer(game, camera, new Quad(Color.White, "Tree"));
+            Renderer = new Renderer(game, camera, new Quad(Color.White, "Tree", "blur"));
 
 
             Transform.SetScale(Vector3.One *2);
