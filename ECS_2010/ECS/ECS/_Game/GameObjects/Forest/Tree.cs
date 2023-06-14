@@ -20,7 +20,7 @@ namespace ECS._Game.GameObjects
         {
             this.camera = camera;
             Renderer = new Renderer(game, camera, new Quad(Color.White, "Tree", "snow"));
-            //SnowController.instance.AddRenderer(Renderer);
+            SnowController.instance.AddRenderer(Renderer);
 
             Transform.SetScale(Vector3.One *2);
             Transform.Translate(new Vector3(4,0,4));

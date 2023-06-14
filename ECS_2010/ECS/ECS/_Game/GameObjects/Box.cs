@@ -12,7 +12,7 @@ namespace ECS._Game.GameObjects
     {
         private Texture secondTexture;
         private string secondTexturePath = "Textures/madeira-neve";
-        private float weatherSpeed = 1f;
+        private float weatherSpeed = 0.5f;
         private float elapsed = 0;
 
         public Box(Game game, ICameraPerspective cameraPerspective) : base(game, cameraPerspective)

@@ -9,6 +9,7 @@ namespace ECS.Core.Components.Renderers
         protected Renderer Renderer { get; set; }
         public PrimitiveType PrimitiveType { get; protected set; }
         public Effect effect;
+        public BasicEffect basicEffect;
 
         public void SetRenderer(Renderer renderer)
         {
@@ -18,9 +19,13 @@ namespace ECS.Core.Components.Renderers
 
         public virtual void Draw() { }
 
-        public virtual void Initialize() { }
+        public virtual void Initialize() {
 
-        public virtual void Load() { }
+        }
+
+        public virtual void Load() {
+            basicEffect = new BasicEffect(Renderer.Game.GraphicsDevice);
+        }
 
 
 

@@ -90,7 +90,7 @@ namespace ECS._Game._Scenes
             Game.Components.Add(house);
             Game.Components.Add(player);
             Game.Components.Add(forest);
-            Game.Components.Add(flag);
+            //Game.Components.Add(flag);
             Game.Components.Add(ocean);
 
 

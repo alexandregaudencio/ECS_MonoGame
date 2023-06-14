@@ -18,7 +18,7 @@ namespace ECS._Game.GameObjects
         {
             Renderer = new Renderer(game, camPerspective, new HeightMapGrid(Vector2.One * 100, "water", "", "waterWave"));
             Transform.IncreaseScale(new Vector3(1, 0, 1)*3);
-            Transform.Translate(Vector3.UnitY * -3);
+            Transform.Translate(Vector3.UnitY * -11);
         }
 
         public override void Initialize()

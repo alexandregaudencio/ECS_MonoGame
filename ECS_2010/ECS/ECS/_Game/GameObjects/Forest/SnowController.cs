@@ -10,7 +10,7 @@ namespace ECS._Game.GameObjects
     //Meio merda mas... sem tempo, irmão.
     class SnowController : GameComponent
     {
-        private float weatherSpeed = 1f;
+        private float weatherSpeed = 0.5f;
         private float elapsed = 0;
         public List<Renderer> rendersSnowing;
 

@@ -5,6 +5,7 @@ float4x4 Projection;
 Texture colorTexture;
 float gameTime = 1;
 float weatherSpeed = 1;
+static const float PI = 3.14159265f;
 
 sampler colorTextureSampler = sampler_state 
 {
@@ -62,7 +63,7 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 
 	float4 output = tex2D(colorTextureSampler, input.textureCoord);
     float4 output2  = tex2D(colorTextureSampler, input.textureCoord);
-	return lerp(dot(output, float3(1, 1, 1)), output2, sin(gameTime*weatherSpeed)/8 + 1/1.14 );
+	return lerp(dot(output, float3(1, 1, 16)), output2, sin(gameTime*weatherSpeed - PI)/8 + 1/1.14 );
 	
 }
 
