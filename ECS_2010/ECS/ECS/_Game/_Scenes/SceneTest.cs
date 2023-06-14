@@ -14,6 +14,7 @@ namespace ECS._Game._Scenes
         private readonly Camera camera;
         private readonly CameraController cameraController;
         #endregion
+        private readonly SnowController snowController;
 
         private readonly Floor floor;
 
@@ -28,10 +29,13 @@ namespace ECS._Game._Scenes
         private readonly Forest forest;
 
 
+
+
         public SceneTest(Game game, string name) : base(game, name)
         {
             camera = new Camera(game, new Vector3(5, 3, 10)*4);
             cameraController = new CameraController(game, camera);
+            snowController = new SnowController(game);
 
             floor = new Floor(game,camera);
             box = new Box(game, camera);
@@ -57,7 +61,7 @@ namespace ECS._Game._Scenes
             player.Transform.SetMinYOnFloor();
             house = new House(game, camera);
 
-            forest = new Forest(game, camera, 100);
+            forest = new Forest(game, camera, 10);
 
 
         }
@@ -67,6 +71,7 @@ namespace ECS._Game._Scenes
 
             Game.Components.Add(camera);
             Game.Components.Add(cameraController);
+            Game.Components.Add(snowController);
             Game.Components.Add(floor);
             Game.Components.Add(box);
             Game.Components.Add(box2);

@@ -1,6 +1,7 @@
 ﻿using ECS.Core.Components.Cam;
 using ECS.Core.Entities;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace ECS.Core.Components.Renderers
 {
@@ -19,6 +20,7 @@ namespace ECS.Core.Components.Renderers
             this.RenderMethod = renderMethod;
             renderMethod.SetRenderer(this);
 
+
         }
 
         protected override void LoadContent()
@@ -30,6 +32,11 @@ namespace ECS.Core.Components.Renderers
         public override void Initialize()
         {
             RenderMethod.Initialize();
+
+            Game.GraphicsDevice.RasterizerState = new RasterizerState()
+            {
+                CullMode = CullMode.None,
+            };
             base.Initialize();
         }
 

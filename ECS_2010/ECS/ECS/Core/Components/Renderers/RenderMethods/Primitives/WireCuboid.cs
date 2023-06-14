@@ -13,7 +13,10 @@ namespace ECS.Core.Components.Renderers
         public WireCuboid(Color color, string texturePath = "")
             : base(color, texturePath)
         {
+            PrimitiveType = PrimitiveType.LineList;
+            primitiveCount = 2;
         }
+
 
         public override void SetVertexTextureData()
         {
@@ -54,6 +57,7 @@ namespace ECS.Core.Components.Renderers
                 1, 5,
                 2, 6,
                 3, 7,
+
             };
         }
 

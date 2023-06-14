@@ -7,7 +7,9 @@ namespace ECS.Core.Components.Renderers
     public abstract class RenderMethod : IRenderMethod
     {
         protected Renderer Renderer { get; set; }
-        public PrimitiveType PrimitiveType { get; private set; }
+        public PrimitiveType PrimitiveType { get; protected set; }
+        public Effect effect;
+
         public void SetRenderer(Renderer renderer)
         {
             PrimitiveType = PrimitiveType.TriangleList;
@@ -34,12 +36,12 @@ namespace ECS.Core.Components.Renderers
             if (value)
             {
                 PrimitiveType = PrimitiveType.LineList;
-                SetFillMode(FillMode.WireFrame);
+                //SetFillMode(FillMode.WireFrame);
             }
             else
             {
                 PrimitiveType = PrimitiveType.TriangleList;
-                SetFillMode(FillMode.Solid);
+                //SetFillMode(FillMode.Solid);
             }
 
         }

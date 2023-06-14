@@ -11,27 +11,24 @@ namespace ECS.Core.Components.Renderers
     {
         protected VertexPositionColorTexture[] vertsTexture;
         protected VertexBuffer vertexBuffer;
-        //protected BasicEffect basicEffect;
-        protected Effect effect;
+
         protected short[] indexData;
         protected IndexBuffer indexBuffer;
+
         public Color Color { get; set; }
         protected Texture2D texture;
+
         protected string texturePath = "";
         protected string effectPath = "";
-
-
-        //public ShapeRenderMethod(Color color, string texturePath = "")
-        //{
-        //    Color = color;
-        //    this.texturePath = texturePath;
-        //}
+        protected int primitiveCount = 3;
 
         public ShapeRenderMethod(Color color, string texturePath = "", string effectPath = "")
         {
             Color = color;
             this.texturePath = texturePath;
             this.effectPath = effectPath;
+
+            
         }
 
 
@@ -57,22 +54,17 @@ namespace ECS.Core.Components.Renderers
              BufferUsage.WriteOnly);
 
             vertexBuffer.SetData(vertsTexture);
+
+            
         }
 
         public override void Initialize()
         {
-            //basicEffect = new BasicEffect(Renderer.Game.GraphicsDevice);
 
             SetVertexTextureData();
             SetIndexData();
             SetIndexBuffer();
             SetVertexBuffer();
-
-            Renderer.Game.GraphicsDevice.RasterizerState =
-                new RasterizerState()
-                {
-                    CullMode = CullMode.None,
-                };
 
         }
 
@@ -127,7 +119,7 @@ namespace ECS.Core.Components.Renderers
 
 
             Renderer.Game.GraphicsDevice.DrawUserIndexedPrimitives(PrimitiveType,
-             vertsTexture, 0, vertsTexture.Length, indexData, 0, indexData.Length / 3);
+             vertsTexture, 0, vertsTexture.Length, indexData, 0, indexData.Length / primitiveCount);
         }
 
 

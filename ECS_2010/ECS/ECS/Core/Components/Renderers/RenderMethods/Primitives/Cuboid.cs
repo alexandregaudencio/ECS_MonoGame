@@ -17,13 +17,13 @@ namespace ECS.Core.Components.Renderers
             vertsTexture = new VertexPositionColorTexture[]
             {
                 new VertexPositionColorTexture(new Vector3(-1, 1, 1), Color, new Vector2(1,0)), // 0
-                new VertexPositionColorTexture(new Vector3( 1, 1, 1), Color, new Vector2(0,0)), // 1
-                new VertexPositionColorTexture(new Vector3( 1,-1, 1), Color, new Vector2(0,1)), // 2
-                new VertexPositionColorTexture(new Vector3(-1,-1, 1), Color, new Vector2(1,1)), // 3
-                new VertexPositionColorTexture(new Vector3(-1, 1,-1), Color, new Vector2(0,1)), // 4
-                new VertexPositionColorTexture(new Vector3( 1, 1,-1), Color, new Vector2(1,1)), // 5
+                new VertexPositionColorTexture(new Vector3( 1, 1, 1), Color, new Vector2(1,1)), // 1
+                new VertexPositionColorTexture(new Vector3( 1,-1, 1), Color, new Vector2(0,0)), // 2
+                new VertexPositionColorTexture(new Vector3(-1,-1, 1), Color, new Vector2(0,1)), // 3
+                new VertexPositionColorTexture(new Vector3(-1, 1,-1), Color, new Vector2(0,0)), // 4
+                new VertexPositionColorTexture(new Vector3( 1, 1,-1), Color, new Vector2(0,1)), // 5
                 new VertexPositionColorTexture(new Vector3( 1,-1,-1), Color, new Vector2(1,0)), // 6
-                new VertexPositionColorTexture(new Vector3(-1,-1,-1), Color, new Vector2(1,1)) // 7
+                new VertexPositionColorTexture(new Vector3(-1,-1,-1), Color, new Vector2(1,1))  // 7
             };
         }
 
@@ -33,7 +33,7 @@ namespace ECS.Core.Components.Renderers
             {
                 0, 1, 2, // front
                 0, 2, 3,
-                1, 5, 6, // rigth
+                5, 6, 1,// rigth
                 1, 6, 2,
                 5, 4, 7, // back
                 5, 7, 6,

@@ -15,14 +15,14 @@ namespace ECS._Game.GameObjects
     class Tree : GameObject
     {
         private readonly Camera camera;
+
         public Tree(Game game, Camera camera) : base(game, camera)
         {
             this.camera = camera;
-            Renderer = new Renderer(game, camera, new Quad(Color.White, "Tree", "blur"));
-
+            Renderer = new Renderer(game, camera, new Quad(Color.White, "Tree", "snow"));
+            //SnowController.instance.AddRenderer(Renderer);
 
             Transform.SetScale(Vector3.One *2);
-            //Transform.RotateX(MathHelper.PiOver2);
             Transform.Translate(new Vector3(4,0,4));
 
              Transform.SetMinYOnFloor();
@@ -34,15 +34,14 @@ namespace ECS._Game.GameObjects
         public override void Initialize()
         {
             Renderer.Game.GraphicsDevice.BlendState = BlendState.AlphaBlend;
-
+ 
             base.Initialize();
         }
-
 
         public override void Update(GameTime gameTime)
         {
             Transform.LookAt(camera.Transform);
-            //Debug.WriteLine(Transform.Rotation.Y);
+
             base.Update(gameTime);
         }
 

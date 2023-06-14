@@ -3,6 +3,8 @@ float4x4 View;
 float4x4 Projection;
 
 Texture colorTexture;
+float gameTime = 1;
+float weatherSpeed = 1;
 
 sampler colorTextureSampler = sampler_state 
 {
@@ -57,12 +59,13 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 
 float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 {
-    // TODO: add your pixel shader code here.
-	float4 output;
-	output = tex2D(colorTextureSampler, input.textureCoord);
-    //return dot(output, float3(0.3, 0.59, 0.11));
-    return dot(output, float3(0.5, 0.5, 0.5));
+
+	float4 output = tex2D(colorTextureSampler, input.textureCoord);
+    float4 output2  = tex2D(colorTextureSampler, input.textureCoord);
+	return lerp(dot(output, float3(1, 1, 20)), output2, sin(gameTime*weatherSpeed)/8 + 1/1.14 );
+	
 }
+
 
 
 technique Technique1
@@ -70,8 +73,9 @@ technique Technique1
     pass Pass1
     {
         // TODO: set renderstates here.
-
+		 
         VertexShader = compile vs_2_0 VertexShaderFunction();
         PixelShader = compile ps_2_0 PixelShaderFunction();
     }
+
 }
