@@ -207,7 +207,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Textures\sand2.jpg">
+    <Compile Include="Textures\sand2.png">
       <Name>sand2</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
