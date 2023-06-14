@@ -144,8 +144,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Textures\normal-moutain.jpg">
-      <Name>normal-moutain</Name>
+    <Compile Include="Textures\HeightMap\mountain1.jpg">
+      <Name>mountain1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -160,6 +160,13 @@
   <ItemGroup>
     <Compile Include="Textures\madeira-neve.jpg">
       <Name>madeira-neve</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\sand.jpg">
+      <Name>sand</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
