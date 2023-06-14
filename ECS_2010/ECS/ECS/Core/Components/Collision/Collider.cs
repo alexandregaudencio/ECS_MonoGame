@@ -33,7 +33,7 @@ namespace ECS.Core.Components.Collision
             Contacts = new List<ICollider>();
 
             this.gameObject = gameObject;
-            Renderer = new Renderer(game, iCameraPerspective, new Cuboid(Color.Black));
+            Renderer = new Renderer(game, iCameraPerspective, new WireCuboid(Color.Black));
             SetVisible(isVisible);
             //TODO: NOT OBB
             boundary = new OBB(Transform);
