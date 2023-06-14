@@ -29,7 +29,9 @@ namespace ECS._Game._Scenes
 
         private readonly Forest forest;
 
+        private readonly Flag flag;
 
+        private readonly Ocean ocean;
 
 
         public SceneTest(Game game, string name) : base(game, name)
@@ -67,6 +69,9 @@ namespace ECS._Game._Scenes
 
             forest = new Forest(game, camera, 10);
 
+            flag = new Flag(game, camera);
+
+            ocean = new Ocean(game, camera);
 
         }
 
@@ -77,7 +82,7 @@ namespace ECS._Game._Scenes
             Game.Components.Add(cameraController);
             Game.Components.Add(snowController);
             Game.Components.Add(floor);
-            //Game.Components.Add(heightMap);
+ 
             Game.Components.Add(box);
             Game.Components.Add(box2);
             Game.Components.Add(windMill); 
@@ -85,6 +90,8 @@ namespace ECS._Game._Scenes
             Game.Components.Add(house);
             Game.Components.Add(player);
             Game.Components.Add(forest);
+            Game.Components.Add(flag);
+            Game.Components.Add(ocean);
 
 
 

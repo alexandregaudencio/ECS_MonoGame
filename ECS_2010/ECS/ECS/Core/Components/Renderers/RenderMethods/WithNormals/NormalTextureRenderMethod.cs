@@ -14,8 +14,8 @@ namespace ECS.Core.Components.Renderers
         protected short[] indexData;
         protected IndexBuffer indexBuffer;
 
-        protected Texture2D heightMap;
-        protected Texture2D texture;
+        public Texture2D heightMap { get; protected set; }
+        public Texture2D texture { get; protected set; }
 
         private string heightMapPath = "";
         protected string texturePath = "";
