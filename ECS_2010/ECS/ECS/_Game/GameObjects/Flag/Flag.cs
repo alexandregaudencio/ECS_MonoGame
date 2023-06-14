@@ -19,12 +19,14 @@ namespace ECS._Game.GameObjects
             Transform.IncreaseScale(Vector3.UnitX *0.2f);
             Transform.Translate(Vector3.One * 8); 
             Transform.RotateX(MathHelper.PiOver2);
+            Transform.Translate(new Vector3(5, 0, -5)*2);
 
             Renderer = new Renderer(game, camPerspective, new HeightMapGrid(Vector2.One * 30, "bandeira-brasil", "", "linearWave"));
             pole = new Pole(game, camPerspective);
             pole.Transform.SetScale(new Vector3(1,5,40));
             pole.Transform.Translate(-Vector3.UnitX*15);
             pole.Transform.Translate(Vector3.UnitZ * 15);
+
         }
 
         public override void Initialize()

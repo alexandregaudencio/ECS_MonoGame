@@ -16,13 +16,15 @@ namespace ECS._Game.GameObjects
             LastPosition = Vector3.Zero;
             Renderer = new Renderer(game, cameraPerspective, new WireCuboid(Color.White, "metal2"));
             MovementControl.SetActive(true);
+            Collider.SetActive(true);
+
         }
 
         public override void Initialize()
         {
             //Collider.SetActive(true);
             Renderer.RenderMethod.RenderOnlyLines(true);
-            
+            //Collider.Renderer.RenderMethod.SetColor(Color.Red);
             base.Initialize();
         }
 
@@ -30,7 +32,10 @@ namespace ECS._Game.GameObjects
         {
             MovementControl.SetActive(false);
             MovementControl.RestorePosition(Transform);
+
+            Renderer.RenderMethod.SetColor(Color.Red);
             base.OnCollisionEnter(other);
+
         }
 
 
@@ -43,7 +48,7 @@ namespace ECS._Game.GameObjects
         public override void OnCollisionExit(ICollider other)
         {
             MovementControl.SetActive(true);
-
+            Renderer.RenderMethod.SetColor(Color.Blue);
             base.OnCollisionExit(other);
         }
 

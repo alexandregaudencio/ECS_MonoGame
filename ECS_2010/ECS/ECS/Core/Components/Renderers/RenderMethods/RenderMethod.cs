@@ -64,5 +64,6 @@ namespace ECS.Core.Components.Renderers
             Renderer.Game.GraphicsDevice.RasterizerState = rs;
         }
 
+        public virtual void SetNormalsVisible(bool value) { }
     }
 }
