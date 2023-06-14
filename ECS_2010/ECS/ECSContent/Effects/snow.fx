@@ -62,7 +62,7 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 
 	float4 output = tex2D(colorTextureSampler, input.textureCoord);
     float4 output2  = tex2D(colorTextureSampler, input.textureCoord);
-	return lerp(dot(output, float3(1, 1, 20)), output2, sin(gameTime*weatherSpeed)/8 + 1/1.14 );
+	return lerp(dot(output, float3(1, 1, 1)), output2, sin(gameTime*weatherSpeed)/8 + 1/1.14 );
 	
 }
 

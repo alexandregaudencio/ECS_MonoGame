@@ -40,7 +40,7 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 								//speed                           //frequency   //amplitude
 	input.Position.x += sin((time*speed - input.Position.x + input.Position.y)*frequency)*amplitude;
 	input.Position.y += sin((time*speed - input.Position.x + input.Position.y)*frequency)*1;
-		input.Position.z += sin((time*speed*2 - input.Position.x + input.Position.y)*frequency)*amplitude;
+	input.Position.z += sin((time*speed*2 - input.Position.x + input.Position.y)*frequency)*amplitude;
 
     float4 worldPosition = mul(input.Position, World);
     float4 viewPosition = mul(worldPosition, View);
@@ -54,9 +54,8 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 
 float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 {
-	float4 output = tex2D(flagTextureSampler, input.TexCoord);
-
-    return output;
+	float4 output = tex2D(flagTextureSampler, input.TexCoord);;
+    return lerp(output, dot(output, float4(0, 0, 0,0.2)), 0.2);
 }
 
 
