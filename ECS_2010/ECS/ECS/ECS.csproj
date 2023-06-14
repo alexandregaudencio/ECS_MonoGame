@@ -133,6 +133,8 @@
     <Compile Include="Core\Components\Renderers\RenderMethods\Primitives\WireCuboid.cs" />
     <Compile Include="Core\Components\Renderers\RenderMethods\RenderMethod.cs" />
     <Compile Include="Core\Components\Renderers\RenderMethods\ShapeRenderMethod.cs" />
+    <Compile Include="Core\Components\Renderers\RenderMethods\WithNormals\Grid.cs" />
+    <Compile Include="Core\Components\Renderers\RenderMethods\WithNormals\NormalTextureRenderMethod.cs" />
     <Compile Include="Core\Components\Transform\Transform.cs" />
     <Compile Include="Core\Entities\Entity.cs" />
     <Compile Include="Core\IActivable.cs" />

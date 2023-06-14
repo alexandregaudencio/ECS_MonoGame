@@ -16,8 +16,8 @@ namespace ECS._Game._Scenes
         #endregion
         private readonly SnowController snowController;
 
-        //private readonly Floor floor;
-        private readonly HeightMap heightMap;
+        private readonly Floor floor;
+        //private readonly HeightMap heightMap;
 
         private WindMill windMill; 
         private WindMill windMill2;
@@ -38,8 +38,8 @@ namespace ECS._Game._Scenes
             cameraController = new CameraController(game, camera);
             snowController = new SnowController(game);
 
-            //floor = new Floor(game,camera);
-            heightMap = new HeightMap(game, camera);
+            floor = new Floor(game,camera);
+            //heightMap = new HeightMap(game, camera);
 
             box = new Box(game, camera);
             box2 = new Box(game, camera);
@@ -76,8 +76,8 @@ namespace ECS._Game._Scenes
             Game.Components.Add(camera);
             Game.Components.Add(cameraController);
             Game.Components.Add(snowController);
-            //Game.Components.Add(floor);
-            Game.Components.Add(heightMap);
+            Game.Components.Add(floor);
+            //Game.Components.Add(heightMap);
             Game.Components.Add(box);
             Game.Components.Add(box2);
             Game.Components.Add(windMill); 
