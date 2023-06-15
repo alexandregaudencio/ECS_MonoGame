@@ -1,9 +1,10 @@
 ﻿using Microsoft.Xna.Framework.Input;
+using ECS.Core.Components;
 
 
 namespace ECS.Core.MovementController
 {
-    internal interface IMovementControl : IActivable
+    public interface IMovementControl : IActivable
     {
         float Speed { get; set; }
         bool IncluseRotation { get; set; }
@@ -12,6 +13,9 @@ namespace ECS.Core.MovementController
         Keys Right { get; set; }
         Keys UP { get; set; }
         Keys Down { get; set; }
+
+        void RestorePosition(Transform transform);
+        void UpdateMovement(Transform transform);
 
     }
 }

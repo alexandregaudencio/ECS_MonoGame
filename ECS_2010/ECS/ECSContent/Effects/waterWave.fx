@@ -17,6 +17,7 @@ sampler flagTextureSampler = sampler_state
 	magfilter = LINEAR;
 	minfilter = LINEAR;
 	mipfilter = LINEAR;
+
 };
 
 
@@ -41,7 +42,9 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 	input.Position.x += sin((time*speed - input.Position.x + input.Position.y)*frequency)*amplitude;
 	input.Position.y += sin((time*speed - input.Position.x + input.Position.y)*frequency)*1;
 	input.Position.z += sin((time*speed*2 - input.Position.x + input.Position.y)*frequency)*amplitude;
-
+	
+	input.TexCoord.y -= time*0.01*speed;
+	input.TexCoord.x -= time*0.02*speed;
     float4 worldPosition = mul(input.Position, World);
     float4 viewPosition = mul(worldPosition, View);
     output.Position = mul(viewPosition, Projection);

@@ -60,7 +60,7 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
     // TODO: add your pixel shader code here.
 	float4 output;
 	output = tex2D(colorTextureSampler, input.textureCoord);
-    //return dot(output, float3(0.3, 0.59, 0.11));
+    //return dot(output, float3(0.3, 0.59, 1));
     return dot(output, float3(0.5, 0.5, 0.5));
 }
 

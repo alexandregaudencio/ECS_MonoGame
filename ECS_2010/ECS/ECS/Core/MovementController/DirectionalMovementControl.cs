@@ -5,46 +5,16 @@ using Microsoft.Xna.Framework.Input;
 
 namespace ECS.Core.MovementController
 {
-    public class DirectionalMovementControl : GameComponent, IMovementControl
+    public class DirectionalMovementControl : MovementControl
     {
-        private Transform transform;
-        public float Speed { get; set; } 
-        public bool Active { get; private set; } 
-        public Keys Left { get; set; } 
-        public Keys Right { get; set; } 
-        public Keys UP { get; set; } 
-        public Keys Down { get; set; } 
-        public bool IncluseRotation { get; set; } 
-        public void SetActive(bool active) { Active = active;}
-        public Vector3 LastPosition { get; set; }   
 
-
-        public DirectionalMovementControl(Game game, Transform transform) : base(game)
+        public DirectionalMovementControl(Game game, Transform transform) : base(game, transform)
         {
-            Speed = 5;
-            Active = false;
-            Left = Keys.A;
-            Right= Keys.D;
-            UP = Keys.W;
-            Down = Keys.S;
-            IncluseRotation = false;
-
-            this.transform = transform;
-        }
-
-        public override void Initialize()
-        {
-            LastPosition = transform.Translation;
-
-            base.Initialize();
-        }
-        public void RestorePosition(Transform transform)
-        {
-            transform.SetTranslation(LastPosition);
 
         }
 
-        public void UpdateMovement(Transform transform)
+
+        public override void UpdateMovement(Transform transform)
         {
 
             if (!Active) return;

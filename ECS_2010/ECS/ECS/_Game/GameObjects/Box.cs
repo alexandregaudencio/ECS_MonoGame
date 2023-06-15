@@ -19,7 +19,6 @@ namespace ECS._Game.GameObjects
         {
             Renderer = new Renderer(game, cameraPerspective, new Cuboid(Color.White, "madeira", "lerpedTextures"));
 
-
             Renderer.SetActive(true);
             Collider.SetActive(true);
 
@@ -36,7 +35,7 @@ namespace ECS._Game.GameObjects
 
         protected override void LoadContent()
         {
-           secondTexture = Game.Content.Load<Texture>( string.Concat(@secondTexturePath));
+           secondTexture = Game.Content.Load<Texture>(@secondTexturePath);
             base.LoadContent();
         }
 

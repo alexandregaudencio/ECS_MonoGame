@@ -139,8 +139,10 @@
     <Compile Include="Core\Entities\Entity.cs" />
     <Compile Include="Core\IActivable.cs" />
     <Compile Include="Core\Managers\Time.cs" />
+    <Compile Include="Core\MovementController\CarMovementControl.cs" />
     <Compile Include="Core\MovementController\DirectionalMovementControl.cs" />
     <Compile Include="Core\MovementController\IMovementControl.cs" />
+    <Compile Include="Core\MovementController\MovementControl.cs" />
     <Compile Include="Core\Object\GameObject.cs" />
     <Compile Include="Core\Scene\IScene.cs" />
     <Compile Include="Core\Scene\ISceneManager.cs" />
@@ -161,13 +163,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="_Game\Game1.cs" />
+    <Compile Include="_Game\GameObjects\Boat\Boat.cs" />
+    <Compile Include="_Game\GameObjects\Boat\BoatStateMachineController.cs" />
+    <Compile Include="_Game\GameObjects\Boat\OnBoard.cs" />
     <Compile Include="_Game\GameObjects\Box.cs" />
     <Compile Include="_Game\GameObjects\Flag\Flag.cs" />
     <Compile Include="_Game\GameObjects\Flag\Pole.cs" />
     <Compile Include="_Game\GameObjects\Floor.cs" />
     <Compile Include="_Game\GameObjects\Forest\Forest.cs" />
     <Compile Include="_Game\GameObjects\Forest\SnowController.cs" />
-    <Compile Include="_Game\GameObjects\HeightMap.cs" />
     <Compile Include="_Game\GameObjects\House\Hoof.cs" />
     <Compile Include="_Game\GameObjects\House\HoofTriangle.cs" />
     <Compile Include="_Game\GameObjects\House\HoofTriangleObject.cs" />

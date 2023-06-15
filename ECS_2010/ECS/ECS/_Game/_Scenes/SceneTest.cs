@@ -32,6 +32,7 @@ namespace ECS._Game._Scenes
         private readonly Flag flag;
 
         private readonly Ocean ocean;
+        private readonly Boat boat;
 
 
         public SceneTest(Game game, string name) : base(game, name)
@@ -73,6 +74,8 @@ namespace ECS._Game._Scenes
 
             ocean = new Ocean(game, camera);
 
+            //boat = new Boat(game, camera);
+
         }
 
         public override void Initialize()
@@ -92,6 +95,7 @@ namespace ECS._Game._Scenes
             Game.Components.Add(forest);
             Game.Components.Add(flag);
             Game.Components.Add(ocean);
+            Game.Components.Add(boat);
 
 
 

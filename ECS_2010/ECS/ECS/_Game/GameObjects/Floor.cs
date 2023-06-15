@@ -4,6 +4,7 @@ using ECS.Core.Components.Renderers;
 using ECS.Core.Object;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace ECS._Game.GameObjects
 {
@@ -29,6 +30,7 @@ namespace ECS._Game.GameObjects
             Renderer.RenderMethod.SetNormalsVisible(true);
 
             Transform.SetMinYOnFloor();
+
             base.Initialize();
         }
 

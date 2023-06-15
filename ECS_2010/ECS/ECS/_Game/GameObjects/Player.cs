@@ -14,9 +14,12 @@ namespace ECS._Game.GameObjects
         public Player(Game game, ICameraPerspective cameraPerspective) : base(game, cameraPerspective)
         {
             LastPosition = Vector3.Zero;
+
             Renderer = new Renderer(game, cameraPerspective, new WireCuboid(Color.White, "metal2"));
             MovementControl.SetActive(true);
             Collider.SetActive(true);
+
+            tag = ObjectTag.Player;
 
         }
 
