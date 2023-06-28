@@ -26,7 +26,9 @@ Visual Studio 2022 até certo ponto.
 [https://docs.monogame.net/index.html](https://docs.monogame.net/articles/tools/mgcb.html)
 
 No contexto da disciplina citada, dei continuidade utilizando o Visual Studio 2010, por motivos de compatibilidade com os computadores do local das aulas.
+
 [VS 2010] (https://visualstudio.microsoft.com/pt-br/vs/older-downloads/)
+
 [XNA 4.0] (https://www.microsoft.com/en-us/download/details.aspx?id=23714)
 
 <h3>Organização de componentes:</h3>
