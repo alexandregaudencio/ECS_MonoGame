@@ -5,15 +5,28 @@ Foi construído no âmbito de uma disciplina de curos superior, no IFRJ.
 
 O projeto apresenta  várias classes comuns e úteis no desenvolvimento de jogos, como:
 - Rendização de modelos,
-- formas primitivas, 
+- formas primitivas,
+- Modelos
 - colisão e gerenciamento de colisão,
-- câmera, 
+- câmera e gerenciamento de câmera,
 - transformações, 
 - GameObjects,
-- movimentação por inputs de teclado, 
-- etc... 
+- Tags,
+- Movimentações,
+- Texturas, Efeitos e Shaders,
+- Gerenciamento de cenas,
+- Grid,
+- HeighMap,
+- Recalculo de Normais,
+- Interpolações (incompleto)
+- Timer
+  
 
-**Para abrir o projeto:**
-Foi utilziado o Visual Studio 2022, instalando o MonoGame a partir do gerenciador de pacotes.
-após a instalanção, configurar o gerenciador de conteúdos, conforme orienta o site:
+**Para abrir o projeto:** 
+Visual Studio 2022 até certo ponto.
 [https://docs.monogame.net/index.html](https://docs.monogame.net/articles/tools/mgcb.html)
+
+No contexto da disciplina citada, dei continuidade utilizando o Visual Studio 2010, por motivos de compatibilidade com os computadores do local das aulas.
+https://visualstudio.microsoft.com/pt-br/vs/older-downloads/
+
+
