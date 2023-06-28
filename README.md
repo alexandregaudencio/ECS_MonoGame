@@ -28,7 +28,11 @@ No contexto da disciplina citada, dei continuidade utilizando o Visual Studio 20
 [VS 2010] (https://visualstudio.microsoft.com/pt-br/vs/older-downloads/)
 [XNA 4.0] (https://www.microsoft.com/en-us/download/details.aspx?id=23714)
 
-<img src="https://github.com/alexandregaudencio/ECS_MonoGame/blob/master/_PRINTS/components.png">
+<b>Organização de componentes:</b>
+<img src="https://github.com/alexandregaudencio/ECS_MonoGame/blob/master/_PRINTS/components.png" width="300px" />
+
+<b>Diagrama: </b>
+<img src="[https://github.com/alexandregaudencio/ECS_MonoGame/blob/master/_PRINTS/components.png](https://github.com/alexandregaudencio/ECS_MonoGame/blob/master/_PRINTS/diagram-design.jpg)https://github.com/alexandregaudencio/ECS_MonoGame/blob/master/_PRINTS/diagram-design.jpg" width="300px" />
 
 
 
