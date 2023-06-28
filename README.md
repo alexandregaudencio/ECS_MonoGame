@@ -15,9 +15,8 @@ O projeto apresenta  várias classes comuns e úteis no desenvolvimento de jogos
 - Texturas, Efeitos e Shaders,
 - Gerenciamento de cenas,
 - Grid,
-- HeighMap,
-- Recalculo de Normais,
-- Interpolações (incompleto)
+- terrenos,
+- Interpolações (incompleto),
 - Timer
   
 
