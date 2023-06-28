@@ -14,6 +14,7 @@ O projeto apresenta  várias classes comuns e úteis no desenvolvimento de jogos
 - Movimentações,
 - Texturas, Efeitos e Shaders,
 - Gerenciamento de cenas,
+- Billboard,
 - Grid,
 - terrenos,
 - Interpolações (incompleto),
@@ -28,11 +29,14 @@ No contexto da disciplina citada, dei continuidade utilizando o Visual Studio 20
 [VS 2010] (https://visualstudio.microsoft.com/pt-br/vs/older-downloads/)
 [XNA 4.0] (https://www.microsoft.com/en-us/download/details.aspx?id=23714)
 
-<b>Organização de componentes:</b>
+<h3>Organização de componentes:</h3>
 <img src="https://github.com/alexandregaudencio/ECS_MonoGame/blob/master/_PRINTS/components.png" width="300px" />
 
-<b>Diagrama: </b>
-<img src="[https://github.com/alexandregaudencio/ECS_MonoGame/blob/master/_PRINTS/components.png](https://github.com/alexandregaudencio/ECS_MonoGame/blob/master/_PRINTS/diagram-design.jpg)https://github.com/alexandregaudencio/ECS_MonoGame/blob/master/_PRINTS/diagram-design.jpg" width="300px" />
+<h3>Diagrama: </h3>
+<img src="https://github.com/alexandregaudencio/ECS_MonoGame/blob/master/_PRINTS/diagram-design.jpg" width="auto" />
+
+<h3>Cena de exemplo (Camera, objetos 2D, primitivas, movimentação, terreno e shaders)</h3>h3>
+<img src="https://github.com/alexandregaudencio/ECS_MonoGame/blob/master/_PRINTS/screen-rec.gif" width="300px" />
 
 
 
