@@ -35,7 +35,7 @@ No contexto da disciplina citada, dei continuidade utilizando o Visual Studio 20
 <h3>Diagrama: </h3>
 <img src="https://github.com/alexandregaudencio/ECS_MonoGame/blob/master/_PRINTS/diagram-design.jpg" width="auto" />
 
-<h3>Cena de exemplo (Camera, objetos 2D, primitivas, movimentação, terreno e shaders)</h3>
+<h3> Exemplo (Camera, objetos 2D, primitivas, movimentação, terreno e shaders)</h3>
 <img src="https://github.com/alexandregaudencio/ECS_MonoGame/blob/master/_PRINTS/screen-rec.gif" width="auto" />
 
 
