@@ -28,5 +28,8 @@ No contexto da disciplina citada, dei continuidade utilizando o Visual Studio 20
 [VS 2010] (https://visualstudio.microsoft.com/pt-br/vs/older-downloads/)
 [XNA 4.0] (https://www.microsoft.com/en-us/download/details.aspx?id=23714)
 
+https://github.com/alexandregaudencio/ECS_MonoGame/blob/master/_PRINTS/components.png
+
+
 
 
